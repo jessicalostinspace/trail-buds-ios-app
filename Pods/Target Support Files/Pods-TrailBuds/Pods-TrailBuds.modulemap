@@ -1,0 +1,6 @@
+framework module Pods_TrailBuds {
+  umbrella header "Pods-TrailBuds-umbrella.h"
+
+  export *
+  module * { export * }
+}
