@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import RealmSwift
 
 class CreateEventViewController: UIViewController{
     
@@ -15,7 +16,12 @@ class CreateEventViewController: UIViewController{
     
 //    let fbID = FBSDKProfile.
 //    var userID: String! { get }
-
+    
+    let realm = try! Realm()
+    
+    // Get Realm objects
+    let users = try! Realm().objects(User)
+    
     
     var delegate: goBackProtocol?
     
@@ -33,13 +39,13 @@ class CreateEventViewController: UIViewController{
     
     @IBAction func datePickerSelected(sender: AnyObject) {
 //        var chosenDate = self.datePicker.date
-        print(sender)
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+       
         
 //        trailNameTextField.delegate = self
 //        cityHikeLocationTextField.delegate = self
@@ -53,24 +59,6 @@ class CreateEventViewController: UIViewController{
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
         
-//        let parameters = ["fields" : "id"]
-//        
-//        FBSDKGraphRequest(graphPath: "me", parameters: parameters).startWithCompletionHandler { (connection, result, error) -> Void in
-//                if error != nil {
-//                    print(error)
-//                    return
-//            }
-//            
-//            
-//            
-//            
-//            
-//            }).resume()
-//        }
-//    
-//    
-//                
-        
     
     }
 
@@ -82,9 +70,12 @@ class CreateEventViewController: UIViewController{
     
     @IBAction func saveButtonPressed(sender: UIBarButtonItem) {
         
-        //save to database
-        var eventRef = self.ref.childByAppendingPath("events")
-        var event = ["trailName": trailNameTextField.text!, "cityHikeLocation" : cityHikeLocationTextField.text!, "stateHikeLocation" : stateHikeLocationTextField.text!, "meetingLocation" : meetingLocationTextField.text!, "hikeDistance" : hikeDistanceTextField.text!, "elevationGain" : elevationGainTextField.text!, "maxAttendees" : maxAttendeesTextField.text!,"description" : descriptionTextField.text!, "createdBy" : "Jessica Wilson"]
+        //get user id from realm
+         let user_id = users[0].id
+        
+        //save to firebase database
+        let eventRef = self.ref.childByAppendingPath("events")
+        let event = ["trailName": trailNameTextField.text!, "cityHikeLocation" : cityHikeLocationTextField.text!, "stateHikeLocation" : stateHikeLocationTextField.text!, "meetingLocation" : meetingLocationTextField.text!, "hikeDistance" : hikeDistanceTextField.text!, "elevationGain" : elevationGainTextField.text!, "maxAttendees" : maxAttendeesTextField.text!,"description" : descriptionTextField.text!, "createdBy" : user_id]
         
         let eventsRef = eventRef.childByAutoId()
         eventsRef.setValue(event)
@@ -106,58 +97,6 @@ class CreateEventViewController: UIViewController{
         view.endEditing(true)
     }
     
-    func fetchProfile(){
-        
-        let parameters = ["fields": "email, first_name, last_name, picture.type(large), gender, location, birthday"]
-        FBSDKGraphRequest(graphPath: "me", parameters: parameters).startWithCompletionHandler { (connection, result, error) -> Void in
-            if error != nil{
-                print(error)
-                return
-            }
-            
-    
-            
-            let email = result["email"] as? String
-            let firstName = result["first_name"] as? String
-            let lastName = result["last_name"] as? String
-            let location = result["location"] as? String
-            let gender = result["gender"] as? String
-            let id = result["id"] as? String
-
-            
-            var pictureUrl = ""
-            
-            if let picture = result["picture"] as? NSDictionary, data = picture["data"] as? NSDictionary, url = data["url"] as? String {
-                pictureUrl = url
-            }
-            
-            
-            let url = NSURL(string: pictureUrl)
-            NSURLSession.sharedSession().dataTaskWithURL(url!, completionHandler: { (data, response, error) -> Void in
-                if error != nil {
-                    print(error)
-                    return
-                }
-                
-                let image = UIImage(data: data!)
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                    self.profilePicture.image = image
-                })
-                
-            }).resume()
-            
-        }
-        
-        
-        //=========================================================
-        
-        
-        
-        
-        //=========================================================
-        
-
-}
 
     // MARK: UITextFieldDelegate
     
