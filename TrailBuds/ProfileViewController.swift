@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import RealmSwift
 
 class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
     
@@ -15,6 +16,12 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     //This is a test
     var delegate: logOutProtocol?
+    
+    //instantiate Realm
+    let realm = try! Realm()
+    
+    // Get Realm objects
+    let users = try! Realm().objects(User)
     
     
     //MARK: Attributes
@@ -95,7 +102,8 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
             let email = result["email"] as? String
             let firstName = result["first_name"] as? String
             let lastName = result["last_name"] as? String
-             let location = result["location"] as? String
+            let location = result["location"] as? String
+            let birthday = result["birthday"] as? String
             let gender = result["gender"] as? String
             let id = result["id"] as? String
             self.nameLabel.text = "\(firstName!) \(lastName!)"
@@ -109,16 +117,35 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
             
             
             //=========================================================
+            //SAVING TO FIREBASE
             
-            var userRef = self.ref.childByAppendingPath("users")
+            let userRef = self.ref.childByAppendingPath("users")
             
-            var user = ["id": id!, "firstName" : firstName!, "lastName" : lastName!, "email" : email!]
-            print(user)
-            let usersRef = userRef.childByAutoId()
+            let user = [ "firstName" : firstName!, "lastName" : lastName!, "email" : email!]
+
+//            let usersRef = userRef.childByAutoId()
             
-            usersRef.setValue(user)
+            userRef.childByAppendingPath(id).setValue(user)
+//            userRef.setValue(users)
           
+            
+            
             //=========================================================
+            //SAVING TO REALM
+            
+            let user1 = User()
+            
+            user1.firstName = firstName!
+            user1.lastName = lastName!
+            user1.email = email!
+            user1.id = id!
+            
+            try! self.realm.write {
+                self.realm.add(user1)
+            }
+            //=========================================================
+            
+            
             
             
             let url = NSURL(string: pictureUrl)

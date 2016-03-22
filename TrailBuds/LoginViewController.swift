@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import RealmSwift
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, logOutProtocol {
     
@@ -16,9 +17,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, logOutPro
 //        button.readPermissions = ["email"]
 //        return button
 //    }()
+    
 
-    
-    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         
