@@ -97,7 +97,7 @@ class AllEventsViewController: UIViewController, UITableViewDataSource, UITableV
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        performSegueWithIdentifier("showSingleEventSegue", sender: indexPath)
+        performSegueWithIdentifier("SingleEventSegue", sender: indexPath)
         
     }
     
