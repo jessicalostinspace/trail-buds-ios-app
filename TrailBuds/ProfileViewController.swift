@@ -38,7 +38,7 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         fetchProfile()
         
-        view.addSubview(loginButton)
+//        view.addSubview(loginButton)
         view.addSubview(profilePicture)
         view.addSubview(nameLabel)
         view.addSubview(locationLabel)
@@ -78,10 +78,14 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+     
+        print("profile logout button pressed")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let LoginVC = storyboard.instantiateViewControllerWithIdentifier("LoginVC") as! LoginViewController
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.window?.rootViewController = LoginVC
         
-        delegate?.logOut()
-        
-        print("Log out completed")
+//        delegate?.logOut()
     }
     
     func loginButtonWillLogin(loginButton: FBSDKLoginButton!) -> Bool {

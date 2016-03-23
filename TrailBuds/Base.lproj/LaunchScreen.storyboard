@@ -26,7 +26,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="CXo-RP-cZs" secondAttribute="trailing" constant="39" id="JBX-a9-VoW"/>
                             <constraint firstItem="CXo-RP-cZs" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Og8-O4-Co6"/>

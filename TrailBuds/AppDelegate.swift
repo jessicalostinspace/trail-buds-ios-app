@@ -18,6 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions:launchOptions)
         
+        //Setting login page as first view controller to modally open tab bar
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let LoginVC = storyboard.instantiateViewControllerWithIdentifier("LoginVC") as! LoginViewController
+        self.window?.rootViewController = LoginVC
+
         // Override point for customization after application launch.
         return true
     }

@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import RealmSwift
 
-class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, logOutProtocol {
+class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
 //    let loginButton: FBSDKLoginButton = {
 //        let button = FBSDKLoginButton()
@@ -28,31 +28,44 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, logOutPro
 //        loginButton.delegate = self
         
         if let token = FBSDKAccessToken.currentAccessToken() {
-            print("if let token part")
+ 
 //            self.loginButton.hidden = true
-            self.performSegueWithIdentifier("loginSegue", sender: nil)
+//            self.performSegueWithIdentifier("loginSegue", sender: nil)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let tabBarController = storyboard.instantiateViewControllerWithIdentifier("profileTabBarController") as! UITabBarController
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            appDelegate.window?.rootViewController = tabBarController
         }
         
     }
     
     //Prepare for segue
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let navController = segue.destinationViewController as! UINavigationController
-        let controller = navController.topViewController as! ProfileViewController
-        controller.delegate = self
-    }
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        print("preparing for segue")
+//        if segue.identifier == "loginSegue"{
+//            let tabbarController = segue.destinationViewController as! UITabBarController
+//            let navController = tabbarController.viewControllers?[0] as! UINavigationController
+//            let controller = navController.topViewController as! ProfileViewController
+//            controller.delegate = self
+//        }
+//        
+//    }
     
-    func logOut() {
-        dismissViewControllerAnimated(true, completion: nil)
-    }
+//    func logOut() {
+//        dismissViewControllerAnimated(true, completion: nil)
+//    }
 
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         print("This function will hit after loginButtonWillLogin function")
         
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let tabBarController = storyboard.instantiateViewControllerWithIdentifier("profileTabBarController") as! UITabBarController
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.window?.rootViewController = tabBarController
         
-        performSegueWithIdentifier("loginSegue", sender: nil)
-        
+//        performSegueWithIdentifier("loginSegue", sender: nil)
+//        
         
     }
     
