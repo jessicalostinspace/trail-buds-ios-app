@@ -10,7 +10,13 @@ import UIKit
 import Firebase
 import RealmSwift
 
-class CreateEventViewController: UIViewController{
+class CreateEventViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
+    
+    // MARK: defining parameters
+    
+    var delegate: goBackProtocol?
+    
+    var maxAttendeesPickerData: [Int] = [Int]()
     
     let ref = Firebase(url: "https://trailbuds.firebaseio.com/")
     
@@ -22,8 +28,8 @@ class CreateEventViewController: UIViewController{
     // Get Realm objects
     let users = try! Realm().objects(User)
     
-    
-    var delegate: goBackProtocol?
+    @IBOutlet weak var maxAttendeesPicker: UIPickerView!
+    @IBOutlet weak var createEventScrollView: UIScrollView!
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var cancel: UIBarButtonItem!
@@ -41,11 +47,24 @@ class CreateEventViewController: UIViewController{
 //        var chosenDate = self.datePicker.date
     }
     
+    override func viewWillAppear(animated: Bool) {
+        
+        // creating max attendees array
+        for  i in 1...10{
+            maxAttendeesPickerData += [i]
+            print(maxAttendeesPickerData)
+        }
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.maxAttendeesPicker.delegate = self
+        self.maxAttendeesPicker.dataSource = self
 
-       
+       createEventScrollView.contentSize.height = 665
+        
         
 //        trailNameTextField.delegate = self
 //        cityHikeLocationTextField.delegate = self
@@ -97,6 +116,24 @@ class CreateEventViewController: UIViewController{
         view.endEditing(true)
     }
     
+    //MARK: UIPickerView Delegate functions
+    
+    // returns the number of 'columns' to display.
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    // returns the # of rows in each component..
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return maxAttendeesPickerData.count
+    }
+    
+
+    // The data to return for the row and component (column) that's being passed in
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        print(String(maxAttendeesPickerData[row]))
+        return String(maxAttendeesPickerData[row])
+    }
 
     // MARK: UITextFieldDelegate
     
