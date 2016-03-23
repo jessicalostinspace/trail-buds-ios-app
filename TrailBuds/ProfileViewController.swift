@@ -23,8 +23,9 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
     // Get Realm objects
     let users = try! Realm().objects(User)
     
-    
     //MARK: Attributes
+    
+    @IBOutlet weak var profileScrollView: UIScrollView!
     @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
@@ -37,6 +38,8 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
         loginButton.delegate = self
         
         fetchProfile()
+        
+        profileScrollView.contentSize.height = 1000
         
 //        view.addSubview(loginButton)
         view.addSubview(profilePicture)

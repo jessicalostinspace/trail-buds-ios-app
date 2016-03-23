@@ -71,114 +71,123 @@
                         <viewControllerLayoutGuide type="bottom" id="hvL-xp-Efh"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="RE6-C9-pXh">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="betty" translatesAutoresizingMaskIntoConstraints="NO" id="qoT-Zc-7oM">
-                                <rect key="frame" x="32" y="158" width="95" height="132"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gSd-aM-Gzy">
-                                <rect key="frame" x="151" y="231" width="429" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Seattle, WA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="obk-OS-zB8">
-                                <rect key="frame" x="151" y="260" width="429" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mistyTrees" translatesAutoresizingMaskIntoConstraints="NO" id="uf2-hN-DLg">
-                                <rect key="frame" x="0.0" y="64" width="600" height="159"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Completed Hikes:  7" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="60b-5F-gge">
-                                <rect key="frame" x="151" y="289" width="175" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="About Me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggF-UA-DHA">
-                                <rect key="frame" x="32" y="336" width="95" height="21"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Um8-4n-dFe">
-                                <rect key="frame" x="32" y="298" width="95" height="30"/>
-                                <color key="backgroundColor" red="0.29685299052218878" green="0.66874999999999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Message">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I love hiking and pizza!!!" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eYa-9r-mTe">
-                                <rect key="frame" x="32" y="365" width="95" height="43"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Upcoming Hikes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZOq-dJ-kIG">
-                                <rect key="frame" x="151" y="335" width="233" height="21"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ceu-nu-xIb">
-                                <rect key="frame" x="142" y="356" width="147" height="21"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Jaunt at Paradise"/>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location: Mt. Rainier" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MTW-on-f9S">
-                                <rect key="frame" x="155" y="376" width="156" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Distance: 5.6 mi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tDn-c8-mNV">
-                                <rect key="frame" x="155" y="396" width="123" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Elevation Gain: 1200 ft" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fC-Kl-RFc">
-                                <rect key="frame" x="155" y="415" width="164" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sat, Apr 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uD6-eQ-tTq">
-                                <rect key="frame" x="283" y="356" width="55" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CJf-62-aBN">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="951"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gSd-aM-Gzy">
+                                        <rect key="frame" x="36" y="459" width="429" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Seattle, WA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="obk-OS-zB8">
+                                        <rect key="frame" x="53" y="488" width="429" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mistyTrees" translatesAutoresizingMaskIntoConstraints="NO" id="uf2-hN-DLg">
+                                        <rect key="frame" x="0.0" y="64" width="600" height="159"/>
+                                        <gestureRecognizers/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Completed Hikes:  7" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="60b-5F-gge">
+                                        <rect key="frame" x="172" y="414" width="175" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="About Me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggF-UA-DHA">
+                                        <rect key="frame" x="246" y="443" width="95" height="21"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Um8-4n-dFe">
+                                        <rect key="frame" x="143" y="443" width="95" height="30"/>
+                                        <color key="backgroundColor" red="0.29685299052218878" green="0.66874999999999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Message">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I love hiking and pizza!!!" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eYa-9r-mTe">
+                                        <rect key="frame" x="119" y="303" width="95" height="43"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Upcoming Hikes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZOq-dJ-kIG">
+                                        <rect key="frame" x="143" y="386" width="233" height="21"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ceu-nu-xIb">
+                                        <rect key="frame" x="177" y="342" width="147" height="21"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Jaunt at Paradise"/>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location: Mt. Rainier" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MTW-on-f9S">
+                                        <rect key="frame" x="172" y="255" width="156" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Distance: 5.6 mi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tDn-c8-mNV">
+                                        <rect key="frame" x="222" y="274" width="123" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Elevation Gain: 1200 ft" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fC-Kl-RFc">
+                                        <rect key="frame" x="212" y="297" width="164" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sat, Apr 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uD6-eQ-tTq">
+                                        <rect key="frame" x="267" y="245" width="55" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="betty" translatesAutoresizingMaskIntoConstraints="NO" id="qoT-Zc-7oM">
+                                        <rect key="frame" x="16" y="331" width="95" height="132"/>
+                                    </imageView>
+                                </subviews>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="m11-I0-5ey">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="iBm-GP-Laq">
-                            <button key="customView" opaque="NO" alpha="0.84999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="wordWrap" id="VB9-RZ-URI" customClass="FBSDKLoginButton">
-                                <rect key="frame" x="450" y="7" width="130" height="30"/>
+                        <barButtonItem key="rightBarButtonItem" image="Event Button" style="plain" id="iBm-GP-Laq">
+                            <button key="customView" opaque="NO" alpha="0.84999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="wordWrap" id="VB9-RZ-URI" customClass="FBSDKLoginButton">
+                                <rect key="frame" x="440" y="9" width="140" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.69999999999999996" height="1"/>
-                                <state key="normal">
+                                <state key="normal" image="Trekking Filled-50">
                                     <color key="titleShadowColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="1000"/>
                     <connections>
                         <outlet property="locationLabel" destination="obk-OS-zB8" id="8Sl-K5-BBx"/>
                         <outlet property="loginButton" destination="VB9-RZ-URI" id="6Fy-mO-igb"/>
                         <outlet property="nameLabel" destination="gSd-aM-Gzy" id="Nna-Je-lW4"/>
                         <outlet property="profilePicture" destination="qoT-Zc-7oM" id="vOb-zl-oBu"/>
+                        <outlet property="profileScrollView" destination="CJf-62-aBN" id="LRy-ax-sU5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1dS-uQ-upu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-616" y="2294"/>
+            <point key="canvasLocation" x="-616" y="2321"/>
         </scene>
         <!--Messages-->
         <scene sceneID="iha-uq-gj8">
@@ -335,6 +344,7 @@
                                     <segment title="Date"/>
                                     <segment title="Distance"/>
                                 </segments>
+                                <color key="tintColor" red="0.1144914553" green="0.5" blue="0.09739612584" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="eventFilterButtonPressed:" destination="jjg-qA-znd" eventType="valueChanged" id="r8d-Uu-mFA"/>
                                 </connections>
@@ -399,6 +409,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Events" id="UQk-WR-COZ">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Afg-0J-PVi">
+                            <color key="tintColor" red="1" green="0.3219392136584025" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="addButtonPressed:" destination="jjg-qA-znd" id="BkU-Rp-YFl"/>
                                 <segue destination="pxs-fB-ta7" kind="presentation" identifier="CreateEventSegue" id="EuI-ZJ-9Ah"/>
@@ -522,7 +533,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GAR-o7-gJT">
-                                        <rect key="frame" x="101" y="434" width="130" height="79"/>
+                                        <rect key="frame" x="101" y="434" width="130" height="89"/>
                                         <color key="tintColor" red="0.11449145532676364" green="0.5" blue="0.097396125836195724" alpha="1" colorSpace="calibratedRGB"/>
                                     </pickerView>
                                 </subviews>
@@ -536,11 +547,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Create Event" id="MWc-qa-i2K">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="w59-mZ-MBf">
+                            <color key="tintColor" red="1" green="0.3219392137" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="cancelButtonPressed:" destination="85l-no-vgW" id="e6o-DS-fGZ"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="h82-ds-Pk5">
+                            <color key="tintColor" red="1" green="0.3219392137" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="saveButtonPressed:" destination="85l-no-vgW" id="yaB-VH-gc1"/>
                             </connections>
@@ -649,7 +662,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="pia-o7-Ty0">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="abW-Du-xOI"/>
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="abW-Du-xOI">
+                            <color key="tintColor" red="1" green="0.3219392137" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yDb-ku-qEr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -739,6 +754,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Event Button" width="32" height="35"/>
         <image name="Garik" width="160" height="160"/>
         <image name="Map Marker-50" width="25" height="25"/>
         <image name="Message-50" width="25" height="25"/>
