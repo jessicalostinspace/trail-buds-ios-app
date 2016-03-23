@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -209,7 +209,7 @@
                                         <rect key="frame" x="0.0" y="92" width="600" height="105"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SC5-X4-ZTq" id="92R-ia-gsC">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="104.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="105"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -236,79 +236,81 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="J9J-MZ-8xQ">
-                                <rect key="frame" x="0.0" y="64" width="600" height="204"/>
-                            </mapView>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="top" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="Knd-1F-Xei">
-                                <rect key="frame" x="20" y="337" width="206" height="112"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a6b-le-Hxa">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Jaunt at Paradise" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f7Z-IP-NyI">
-                                        <rect key="frame" x="0.0" y="0.0" width="206" height="33"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Location: Mt. Rainier" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYT-DU-7Z2">
-                                        <rect key="frame" x="0.0" y="39" width="156" height="21"/>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="J9J-MZ-8xQ">
+                                        <rect key="frame" x="0.0" y="166" width="600" height="204"/>
+                                    </mapView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="top" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="Knd-1F-Xei">
+                                        <rect key="frame" x="197" y="212" width="206" height="112"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Jaunt at Paradise" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f7Z-IP-NyI">
+                                                <rect key="frame" x="0.0" y="0.0" width="206" height="33"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Location: Mt. Rainier" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYT-DU-7Z2">
+                                                <rect key="frame" x="0.0" y="39" width="156" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Distance: 5.6 mi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VPW-QD-tpx">
+                                                <rect key="frame" x="0.0" y="65" width="123" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Elevation Gain: 1200 ft" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n5d-Qa-EAJ">
+                                                <rect key="frame" x="0.0" y="92" width="172" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description: Let's go hiking through the wildflowers this weekend!!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t7y-IF-VVU">
+                                        <rect key="frame" x="160" y="244" width="280" height="48"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Distance: 5.6 mi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VPW-QD-tpx">
-                                        <rect key="frame" x="0.0" y="65" width="123" height="21"/>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="We2-NJ-fua">
+                                        <rect key="frame" x="20" y="252" width="560" height="32"/>
+                                        <color key="backgroundColor" red="0.013282958611215312" green="0.63693323887312148" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="PG5-5w-1x2"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <state key="normal" title="Join">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Host:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vIE-aI-NdD">
+                                        <rect key="frame" x="279" y="258" width="41" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Elevation Gain: 1200 ft" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n5d-Qa-EAJ">
-                                        <rect key="frame" x="0.0" y="92" width="172" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="Garik" translatesAutoresizingMaskIntoConstraints="NO" id="8bJ-ae-SpU">
+                                        <rect key="frame" x="276" y="247" width="48" height="42"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="125" id="Gm9-kw-Uvs"/>
+                                            <constraint firstAttribute="height" constant="125" id="MfV-nA-r2g"/>
+                                            <constraint firstAttribute="width" secondItem="8bJ-ae-SpU" secondAttribute="height" multiplier="8:7" id="jYS-HN-Ei8"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
-                            </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description: Let's go hiking through the wildflowers this weekend!!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t7y-IF-VVU">
-                                <rect key="frame" x="20" y="449" width="280" height="48"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="We2-NJ-fua">
-                                <rect key="frame" x="20" y="560" width="560" height="32"/>
-                                <color key="backgroundColor" red="0.013282958611215312" green="0.63693323887312148" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="PG5-5w-1x2"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                <state key="normal" title="Join">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Host:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vIE-aI-NdD">
-                                <rect key="frame" x="20" y="505" width="41" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="Garik" translatesAutoresizingMaskIntoConstraints="NO" id="8bJ-ae-SpU">
-                                <rect key="frame" x="69" y="505" width="48" height="42"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="125" id="Gm9-kw-Uvs"/>
-                                    <constraint firstAttribute="height" constant="125" id="MfV-nA-r2g"/>
-                                    <constraint firstAttribute="width" secondItem="8bJ-ae-SpU" secondAttribute="height" multiplier="8:7" id="jYS-HN-Ei8"/>
-                                </constraints>
-                            </imageView>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="8sw-GU-Fdb" firstAttribute="top" secondItem="We2-NJ-fua" secondAttribute="bottom" constant="8" id="7DF-RK-7d0"/>
-                            <constraint firstItem="8sw-GU-Fdb" firstAttribute="top" secondItem="J9J-MZ-8xQ" secondAttribute="bottom" constant="332" id="CMp-vw-gCG"/>
-                            <constraint firstItem="We2-NJ-fua" firstAttribute="leading" secondItem="s9J-xt-2oG" secondAttribute="leadingMargin" id="MBR-7O-xw1"/>
-                            <constraint firstItem="J9J-MZ-8xQ" firstAttribute="leading" secondItem="s9J-xt-2oG" secondAttribute="leadingMargin" constant="-20" id="SvO-7h-wFG"/>
-                            <constraint firstItem="We2-NJ-fua" firstAttribute="trailing" secondItem="s9J-xt-2oG" secondAttribute="trailingMargin" id="qLQ-aJ-CMb"/>
-                            <constraint firstItem="J9J-MZ-8xQ" firstAttribute="top" secondItem="loS-ll-FeZ" secondAttribute="bottom" id="uWj-Lh-uo2"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="J9J-MZ-8xQ" secondAttribute="trailing" constant="-20" id="xHT-Lh-NFG"/>
+                            <constraint firstItem="a6b-le-Hxa" firstAttribute="height" secondItem="s9J-xt-2oG" secondAttribute="height" id="KVY-13-HHI"/>
+                            <constraint firstItem="a6b-le-Hxa" firstAttribute="width" secondItem="s9J-xt-2oG" secondAttribute="width" id="NeP-Ys-f2U"/>
+                            <constraint firstItem="a6b-le-Hxa" firstAttribute="centerX" secondItem="s9J-xt-2oG" secondAttribute="centerX" id="ccF-Ep-sBn"/>
+                            <constraint firstItem="a6b-le-Hxa" firstAttribute="centerY" secondItem="s9J-xt-2oG" secondAttribute="centerY" id="okv-gZ-K46"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ggx-IO-CmG">
@@ -320,6 +322,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="J9J-MZ-8xQ" id="9Jz-kB-NA0"/>
+                        <outlet property="singleEventScrollView" destination="a6b-le-Hxa" id="ErX-i4-uEl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U5m-mi-XGF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -357,11 +360,11 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="135"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="15U-vN-Cv7" id="DXF-sK-War">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="134.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="135"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background1" translatesAutoresizingMaskIntoConstraints="NO" id="iQa-Vf-hoc">
-                                                    <rect key="frame" x="0.0" y="0.0" width="132" height="133.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="132" height="134"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="NameOfHike:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="02H-GB-jMz">
                                                     <rect key="frame" x="140" y="8" width="452" height="21"/>
@@ -499,7 +502,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="John Muir Trail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p2g-O2-ajo">
-                                        <rect key="frame" x="8" y="36.5" width="584" height="30"/>
+                                        <rect key="frame" x="8" y="37" width="584" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                     </textField>
@@ -515,17 +518,6 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FTk-TX-qZg">
-                                        <rect key="frame" x="8" y="99" width="521" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                                    </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="State" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aaP-Mz-mWE">
-                                        <rect key="frame" x="537" y="99" width="55" height="30"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                                    </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Trail Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TwM-zI-il8">
                                         <rect key="frame" x="226" y="8" width="214" height="21"/>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
@@ -536,6 +528,19 @@
                                         <rect key="frame" x="101" y="434" width="130" height="89"/>
                                         <color key="tintColor" red="0.11449145532676364" green="0.5" blue="0.097396125836195724" alpha="1" colorSpace="calibratedRGB"/>
                                     </pickerView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r2w-9K-R3f">
+                                        <rect key="frame" x="117" y="99" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AvH-vx-IL6">
+                                        <rect key="frame" x="236" y="95" width="46" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="locationButtonPressed:" destination="85l-no-vgW" eventType="touchUpInside" id="b3d-md-xwE"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -562,14 +567,13 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="700"/>
                     <connections>
-                        <outlet property="cityHikeLocationTextField" destination="FTk-TX-qZg" id="4nR-f8-zNh"/>
                         <outlet property="createEventScrollView" destination="Sm5-NZ-mMt" id="YrS-g5-8Eb"/>
                         <outlet property="descriptionTextField" destination="NRm-aW-0Pf" id="mPA-WC-kWK"/>
                         <outlet property="elevationGainTextField" destination="pqO-3G-O21" id="K43-Xf-3iJ"/>
                         <outlet property="hikeDistanceTextField" destination="8q3-9A-9zg" id="cHJ-QU-3GU"/>
+                        <outlet property="locationLabel" destination="r2w-9K-R3f" id="FOC-RZ-QRk"/>
                         <outlet property="maxAttendeesPicker" destination="GAR-o7-gJT" id="2UQ-xO-Pdu"/>
                         <outlet property="meetingLocationTextField" destination="YXl-jG-bmq" id="Jhd-BO-W3C"/>
-                        <outlet property="stateHikeLocationTextField" destination="aaP-Mz-mWE" id="5vY-Ob-BgH"/>
                         <outlet property="trailNameTextField" destination="p2g-O2-ajo" id="Dz1-Dg-0wp"/>
                     </connections>
                 </viewController>
