@@ -9,8 +9,9 @@
 import UIKit
 import Firebase
 import RealmSwift
+import GoogleMaps
 
-class CreateEventViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
+class CreateEventViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UISearchBarDelegate, LocateOnTheMap{
     
     // MARK: defining parameters
     
@@ -34,8 +35,7 @@ class CreateEventViewController: UIViewController, UIPickerViewDelegate, UIPicke
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var cancel: UIBarButtonItem!
     @IBOutlet weak var trailNameTextField: UITextField!
-    @IBOutlet weak var cityHikeLocationTextField: UITextField!
-    @IBOutlet weak var stateHikeLocationTextField: UITextField!
+
     @IBOutlet weak var meetingLocationTextField: UITextField!
     @IBOutlet weak var hikeDistanceTextField: UITextField!
     @IBOutlet weak var elevationGainTextField: UITextField!
@@ -46,6 +46,73 @@ class CreateEventViewController: UIViewController, UIPickerViewDelegate, UIPicke
     @IBAction func datePickerSelected(sender: AnyObject) {
 //        var chosenDate = self.datePicker.date
     }
+    
+    // location information
+    var searchResultController: SearchResultsController!
+    var resultsArray = [String]()
+    var longitude: Double?
+    var latitude: Double?
+    var location: String?
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
+        searchResultController = SearchResultsController()
+        searchResultController.delegate = self
+    }
+    
+    @IBOutlet weak var locationLabel: UILabel!
+    
+    @IBAction func locationButtonPressed(sender: UIButton) {
+        let searchController = UISearchController(searchResultsController: searchResultController)
+        searchController.searchBar.delegate = self
+        self.presentViewController(searchController, animated: true, completion: nil)
+    }
+    
+    // searchbar when text change
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        let placeClient = GMSPlacesClient()
+        placeClient.autocompleteQuery(searchText, bounds: nil, filter: nil){
+            (results, error: NSError?) -> Void in
+            
+            self.resultsArray.removeAll()
+            if results == nil {
+                return
+            }
+            
+            for result in results! {
+                if let result = result as? GMSAutocompletePrediction{
+                    self.resultsArray.append(result.attributedFullText.string)
+                }
+            }
+            print(results)
+            
+            self.searchResultController.reloadDataWithArray(self.resultsArray)
+        }
+    }
+    
+    //Locate map with longitude and latitude after search location on UISearchBar
+    
+    func locateWithLongitude(lon: Double, andLatitude lat: Double, andTitle title: String) {
+        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            let position = CLLocationCoordinate2DMake(lat, lon)
+            let marker = GMSMarker(position: position)
+            print(lon)
+            self.longitude = lon
+            self.latitude = lat
+            self.location = title
+            print(lat)
+            print(title)
+            self.locationLabel.text = title
+            
+            
+        }
+    }
+    
+    //----------------------------
+    //----------------------------
+    
+    
+    
     
     override func viewWillAppear(animated: Bool) {
         
@@ -94,7 +161,8 @@ class CreateEventViewController: UIViewController, UIPickerViewDelegate, UIPicke
         
         //save to firebase database
         let eventRef = self.ref.childByAppendingPath("events")
-        let event = ["trailName": trailNameTextField.text!, "cityHikeLocation" : cityHikeLocationTextField.text!, "stateHikeLocation" : stateHikeLocationTextField.text!, "meetingLocation" : meetingLocationTextField.text!, "hikeDistance" : hikeDistanceTextField.text!, "elevationGain" : elevationGainTextField.text!, "maxAttendees" : maxAttendeesTextField.text!,"description" : descriptionTextField.text!, "createdBy" : user_id]
+        let event = ["trailName": trailNameTextField.text!, "meetingLocation" : meetingLocationTextField.text!, "hikeDistance" : hikeDistanceTextField.text!, "elevationGain" : elevationGainTextField.text!,
+            "hikeLocation" : location!, "latitude" : latitude!, "longitude": longitude!,"description" : descriptionTextField.text!, "createdBy" : user_id]
         
         let eventsRef = eventRef.childByAutoId()
         eventsRef.setValue(event)

@@ -8,5 +8,6 @@ target 'TrailBuds' do
 	pod 'RealmSwift'
 	pod 'Alamofire'
 	pod 'SwiftyJSON'
+	pod 'GoogleMaps'
 end
 

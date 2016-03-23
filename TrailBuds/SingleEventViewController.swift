@@ -18,6 +18,7 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate{
         delegate?.goBack()
     }
 
+    @IBOutlet weak var singleEventScrollView: UIScrollView!
     @IBOutlet weak var mapView: MKMapView!
     
    
@@ -28,6 +29,8 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate{
         let center = CLLocationCoordinate2DMake(46.852886, -121.760374)
         let annotation = MKPointAnnotation()
         annotation.coordinate = center
+        
+        singleEventScrollView.contentSize.height = 1000
 
 
     }
