@@ -670,6 +670,9 @@
                             <color key="tintColor" red="1" green="0.3219392137" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="M2l-Cl-jFC" id="mn9-28-eSl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yDb-ku-qEr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
