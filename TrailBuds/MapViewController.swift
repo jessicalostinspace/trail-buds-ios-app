@@ -48,12 +48,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             let annotation = MKPointAnnotation()
             annotation.coordinate = coordinate
             
-//            annotation.subtitle = subJson["descriptio"].string!
-//            annotation.title = subJson["park"].string!
+            annotation.subtitle = "test subtitle"
+            annotation.title = "test title"
             
             self.mapView.addAnnotation(annotation)
             //end pinpointing every location on a map
         })
+    
         
     } //end of viewDidLoad
+    
 }
