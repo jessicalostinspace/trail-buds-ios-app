@@ -8,16 +8,20 @@
 
 import UIKit
 import Firebase
+import FirebaseUI
 
-class AllEventsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, goBackProtocol {
+class AllEventsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, goBackProtocol {
     
-    var myRootRef = Firebase(url:"https://trailbuds.firebaseio.com/")
-
+    // MARK: Properties
     
+    // your firebase reference as a property
+    var ref: Firebase!
+    var dataSource: FirebaseTableViewDataSource!
+    var events = [FDataSnapshot]()
     
+    var hikeLocation: String?
     
     @IBOutlet weak var allEventsTableView: UITableView!
-    
     
     @IBAction func addButtonPressed(sender: UIBarButtonItem) {
 
@@ -45,8 +49,54 @@ class AllEventsViewController: UIViewController, UITableViewDataSource, UITableV
         
         allEventsTableView.delegate = self
         allEventsTableView.dataSource = self
+        
+        // initialize the ref in viewDidLoad
+        ref = Firebase(url:"https://trailbuds.firebaseio.com/events")
+    
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
 
-        // Do any additional setup after loading the view.
+//        self.dataSource = FirebaseTableViewDataSource(ref: self.ref,
+//                                                      prototypeReuseIdentifier: "allEventsCell",
+//                                                      view: self.allEventsTableView)
+//        
+//        
+//        self.dataSource.populateCellWithBlock { (cell: UITableViewCell, obj: NSObject) -> Void in
+//            
+//            let snap = obj as! FDataSnapshot
+//            
+//            print(cell)
+//            
+//            
+//            let eventCell =  cell as! allEventsCell
+//            
+////            print(snap.value.objectForKey("hikeLocation"))
+//            eventCell.eventNameLabel.text = "hey"
+////            eventCell.eventNameLabel?.text = String(snap.value.objectForKey("hikeLocation")!)
+//
+//        }
+//        
+//        self.allEventsTableView.dataSource = self.dataSource
+        
+         //listen for update with the .Value event
+        ref.observeEventType(.Value) { (snapshot: FDataSnapshot!) in
+            
+            var newEvents = [FDataSnapshot]()
+            
+            // loop through the children and append them to the new array
+            for event in snapshot.children {
+                newEvents.append(event as! FDataSnapshot)
+            }
+
+            // replace the old array
+            self.events = newEvents
+            print(self.events)
+            // reload the UITableView
+            self.allEventsTableView.reloadData()
+            
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,19 +106,25 @@ class AllEventsViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         //change this to .count
-        return 3
+        return events.count
     }
+    
+    
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("allEventsCell", forIndexPath: indexPath) as! allEventsCell
 //        cell.allEventsImage.image =//something
         
+        let eventInfo = events[indexPath.row]
+        
+        var latitude = eventInfo.value["latitude"] as! Double
+        print(latitude)
 
-        cell.eventNameLabel.text = "Jaunt at Paradise"
-        cell.locationLabel.text = "Mt. Rainier, WA"
-        cell.lengthOfHikeLabel.text = "5.6 mi"
-        cell.eventDateTimeLabel.text = "Sun, Apr 1"
+        cell.eventNameLabel!.text = eventInfo.value["trailName"] as! String
+        cell.locationLabel!.text = eventInfo.value["hikeLocation"] as! String
+        cell.lengthOfHikeLabel!.text = String(latitude)
+        cell.eventDateTimeLabel!.text = String(eventInfo.value!["longitude"])
       
         
         return cell
@@ -79,7 +135,7 @@ class AllEventsViewController: UIViewController, UITableViewDataSource, UITableV
         allEventsTableView.reloadData()
     }
     
-    // This method lets you configure a view controller before it's presented.
+     //This method lets you configure a view controller before it's presented.
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "CreateEventSegue"{

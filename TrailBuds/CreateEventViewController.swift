@@ -130,7 +130,7 @@ class CreateEventViewController: UIViewController, UIPickerViewDelegate, UIPicke
         self.maxAttendeesPicker.delegate = self
         self.maxAttendeesPicker.dataSource = self
 
-       createEventScrollView.contentSize.height = 665
+       createEventScrollView.contentSize.height = 669
         
         
 //        trailNameTextField.delegate = self

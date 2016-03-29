@@ -15,5 +15,14 @@ class allEventsCell: UITableViewCell {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var lengthOfHikeLabel: UILabel!
     @IBOutlet weak var eventDateTimeLabel: UILabel!
+    
+//    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+//        super.init(style: style, reuseIdentifier: reuseIdentifier)
+//        
+//    }
+////    
+//    required init?(coder aDecoder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
 
 }

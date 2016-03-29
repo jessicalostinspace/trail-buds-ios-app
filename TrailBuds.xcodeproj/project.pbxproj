@@ -136,10 +136,10 @@
 				FCFE960B1C9BA98200728D13 /* SingleEventViewController.swift */,
 				FCFE960D1C9BA99400728D13 /* AllEventsViewController.swift */,
 				FCFE960F1C9BA9DF00728D13 /* MessagesViewController.swift */,
-				E6B8D9001C9D0B0A00350228 /* allEventsCell.swift */,
 				FC474FBD1C9DC888003AB78D /* CreateEventViewController.swift */,
 				FC92E0651CA236660044A12C /* MapViewController.swift */,
 				E6A9132F1CA311BA001ED34D /* SearchResultsController.swift */,
+				E6B8D9001C9D0B0A00350228 /* allEventsCell.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -403,6 +403,7 @@
 					"$(PROJECT_DIR)/TrailBuds",
 				);
 				INFOPLIST_FILE = TrailBuds/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.garikkosai.TrailBuds;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -426,6 +427,7 @@
 					"$(PROJECT_DIR)/TrailBuds",
 				);
 				INFOPLIST_FILE = TrailBuds/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.garikkosai.TrailBuds;
 				PRODUCT_NAME = "$(TARGET_NAME)";
