@@ -8,10 +8,12 @@
 
 import UIKit
 import Firebase
-import RealmSwift
 import GoogleMaps
 
 class CreateEventViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UISearchBarDelegate, LocateOnTheMap{
+    
+    let prefs = NSUserDefaults.standardUserDefaults()
+    
     
     // MARK: defining parameters
     
@@ -24,10 +26,6 @@ class CreateEventViewController: UIViewController, UIPickerViewDelegate, UIPicke
 //    let fbID = FBSDKProfile.
 //    var userID: String! { get }
     
-    let realm = try! Realm()
-    
-    // Get Realm objects
-    let users = try! Realm().objects(User)
     
     @IBOutlet weak var maxAttendeesPicker: UIPickerView!
     @IBOutlet weak var createEventScrollView: UIScrollView!
@@ -45,6 +43,7 @@ class CreateEventViewController: UIViewController, UIPickerViewDelegate, UIPicke
     
     @IBAction func datePickerSelected(sender: AnyObject) {
 //        var chosenDate = self.datePicker.date
+        
     }
     
     // location information
@@ -58,6 +57,7 @@ class CreateEventViewController: UIViewController, UIPickerViewDelegate, UIPicke
         super.viewDidAppear(true)
         searchResultController = SearchResultsController()
         searchResultController.delegate = self
+    
     }
     
     @IBOutlet weak var locationLabel: UILabel!
@@ -122,10 +122,14 @@ class CreateEventViewController: UIViewController, UIPickerViewDelegate, UIPicke
             print(maxAttendeesPickerData)
         }
         
+
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         self.maxAttendeesPicker.delegate = self
         self.maxAttendeesPicker.dataSource = self
@@ -156,13 +160,13 @@ class CreateEventViewController: UIViewController, UIPickerViewDelegate, UIPicke
     
     @IBAction func saveButtonPressed(sender: UIBarButtonItem) {
         
-        //get user id from realm
-         let user_id = users[0].id
+        //gets facebook user id from NSUserDefaults
+        let user_id2 = prefs.stringForKey("user_id")
         
         //save to firebase database
         let eventRef = self.ref.childByAppendingPath("events")
         let event = ["trailName": trailNameTextField.text!, "meetingLocation" : meetingLocationTextField.text!, "hikeDistance" : hikeDistanceTextField.text!, "elevationGain" : elevationGainTextField.text!,
-            "hikeLocation" : location!, "latitude" : latitude!, "longitude": longitude!,"description" : descriptionTextField.text!, "createdBy" : user_id]
+            "hikeLocation" : location!, "latitude" : latitude!, "longitude": longitude!,"description" : descriptionTextField.text!, "createdBy" : user_id2!]
         
         let eventsRef = eventRef.childByAutoId()
         eventsRef.setValue(event)
