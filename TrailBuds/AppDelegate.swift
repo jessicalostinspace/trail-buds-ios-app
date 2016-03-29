@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleMaps
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+            //Keyboard manager moves up view on all pages when keyboard is shown
+            IQKeyboardManager.sharedManager().enable = true
         GMSServices.provideAPIKey("AIzaSyCmtTyVl1-2iDtZsvyNu9LXRYY0lzEgYqc")
 
         

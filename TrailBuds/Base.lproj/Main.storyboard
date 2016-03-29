@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--LoginVC-->
@@ -83,6 +84,9 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="betty" translatesAutoresizingMaskIntoConstraints="NO" id="qoT-Zc-7oM">
+                                        <rect key="frame" x="16" y="309" width="95" height="132"/>
+                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Seattle, WA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="obk-OS-zB8">
                                         <rect key="frame" x="53" y="488" width="429" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -105,14 +109,6 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Um8-4n-dFe">
-                                        <rect key="frame" x="143" y="443" width="95" height="30"/>
-                                        <color key="backgroundColor" red="0.29685299052218878" green="0.66874999999999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="Message">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I love hiking and pizza!!!" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eYa-9r-mTe">
                                         <rect key="frame" x="119" y="303" width="95" height="43"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -154,9 +150,17 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="betty" translatesAutoresizingMaskIntoConstraints="NO" id="qoT-Zc-7oM">
-                                        <rect key="frame" x="16" y="331" width="95" height="132"/>
-                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Um8-4n-dFe">
+                                        <rect key="frame" x="16" y="761" width="95" height="30"/>
+                                        <color key="backgroundColor" red="0.29685299052218878" green="0.66874999999999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Message">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="messageButtonPressed:" destination="Dr9-A2-2gX" eventType="touchUpInside" id="mCU-SB-npc"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -395,7 +399,7 @@
                                         <connections>
                                             <outlet property="allEventsImage" destination="iQa-Vf-hoc" id="gwl-Lh-P7p"/>
                                             <outlet property="eventDateTimeLabel" destination="pEG-wp-6Do" id="hXM-6J-VuT"/>
-                                            <outlet property="eventNameLabel" destination="02H-GB-jMz" id="UH5-b0-H4P"/>
+                                            <outlet property="eventNameLabel" destination="02H-GB-jMz" id="gsW-xI-jE4"/>
                                             <outlet property="lengthOfHikeLabel" destination="miY-yy-Xlj" id="Of2-P6-ux3"/>
                                             <outlet property="locationLabel" destination="Y4n-Py-cPh" id="4Im-tS-LqL"/>
                                         </connections>
@@ -438,116 +442,170 @@
                         <viewControllerLayoutGuide type="bottom" id="1wm-Dz-Hq6"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="6kC-Io-m9m">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="700"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="693"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="treesInMistBackground2" translatesAutoresizingMaskIntoConstraints="NO" id="7NL-wI-vcK">
-                                <rect key="frame" x="0.0" y="64" width="600" height="604"/>
+                            <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="treesInMistBackground2" translatesAutoresizingMaskIntoConstraints="NO" id="7NL-wI-vcK">
+                                <rect key="frame" x="0.0" y="0.0" width="1120" height="692"/>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sm5-NZ-mMt">
-                                <rect key="frame" x="0.0" y="64" width="600" height="636"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sm5-NZ-mMt">
+                                <rect key="frame" x="0.0" y="64" width="600" height="629"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Miles" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8q3-9A-9zg">
-                                        <rect key="frame" x="8" y="233" width="584" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done"/>
-                                    </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Feet" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pqO-3G-O21">
-                                        <rect key="frame" x="8" y="300" width="584" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
-                                    </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Meeting Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x6m-sN-inv">
-                                        <rect key="frame" x="177" y="137" width="312" height="21"/>
-                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Elevation Gain" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dgp-pG-uGc">
-                                        <rect key="frame" x="186" y="271" width="303" height="21"/>
-                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Bellevue Park &amp; Ride" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YXl-jG-bmq">
-                                        <rect key="frame" x="8" y="166" width="584" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                                    </textField>
-                                    <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="15" translatesAutoresizingMaskIntoConstraints="NO" id="3Zd-AW-twS">
-                                        <rect key="frame" x="129" y="521" width="343" height="65"/>
-                                        <date key="date" timeIntervalSinceReferenceDate="480107048.476776">
-                                            <!--2016-03-19 19:04:08 +0000-->
-                                        </date>
-                                        <connections>
-                                            <action selector="datePickerSelected:" destination="85l-no-vgW" eventType="valueChanged" id="3fW-gJ-2l9"/>
-                                        </connections>
-                                    </datePicker>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IMw-2c-nhu">
-                                        <rect key="frame" x="226" y="338" width="276" height="21"/>
-                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Max attendees" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LFb-Ks-4Tx">
-                                        <rect key="frame" x="190" y="405" width="307" height="21"/>
-                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hike Distance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UwW-yH-UdB">
-                                        <rect key="frame" x="236" y="204" width="266" height="21"/>
-                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="John Muir Trail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p2g-O2-ajo">
-                                        <rect key="frame" x="8" y="37" width="584" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                                    </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hike Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="muS-sc-gzw">
-                                        <rect key="frame" x="214" y="70" width="220" height="21"/>
-                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Bring microspikes?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NRm-aW-0Pf">
-                                        <rect key="frame" x="8" y="367" width="584" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                                    </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Trail Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TwM-zI-il8">
-                                        <rect key="frame" x="226" y="8" width="214" height="21"/>
-                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GAR-o7-gJT">
-                                        <rect key="frame" x="101" y="434" width="130" height="89"/>
-                                        <color key="tintColor" red="0.11449145532676364" green="0.5" blue="0.097396125836195724" alpha="1" colorSpace="calibratedRGB"/>
-                                    </pickerView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r2w-9K-R3f">
-                                        <rect key="frame" x="117" y="99" width="42" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AvH-vx-IL6">
-                                        <rect key="frame" x="236" y="95" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
-                                        <connections>
-                                            <action selector="locationButtonPressed:" destination="85l-no-vgW" eventType="touchUpInside" id="b3d-md-xwE"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d56-28-4fx">
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="629"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="nN3-d8-5Kd">
+                                                <rect key="frame" x="0.0" y="0.0" width="560" height="629"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="    " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g7a-UW-VXj">
+                                                        <rect key="frame" x="0.0" y="0.0" width="560" height="13"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Trail Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TwM-zI-il8">
+                                                        <rect key="frame" x="0.0" y="13" width="560" height="38"/>
+                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="John Muir Trail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p2g-O2-ajo">
+                                                        <rect key="frame" x="0.0" y="51" width="560" height="32"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="yes" spellCheckingType="yes" returnKeyType="done"/>
+                                                    </textField>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Hike Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="muS-sc-gzw">
+                                                        <rect key="frame" x="0.0" y="83" width="560" height="38"/>
+                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fgb-4l-TjJ">
+                                                        <rect key="frame" x="0.0" y="121" width="560" height="38"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r2w-9K-R3f">
+                                                                <rect key="frame" x="0.0" y="0.0" width="42" height="38"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AvH-vx-IL6">
+                                                                <rect key="frame" x="42" y="0.0" width="518" height="38"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <connections>
+                                                                    <action selector="locationButtonPressed:" destination="85l-no-vgW" eventType="touchUpInside" id="b3d-md-xwE"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Meeting Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x6m-sN-inv">
+                                                        <rect key="frame" x="0.0" y="159" width="560" height="38"/>
+                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Bellevue Park &amp; Ride" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YXl-jG-bmq">
+                                                        <rect key="frame" x="0.0" y="197" width="560" height="38"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="yes" spellCheckingType="yes" returnKeyType="done"/>
+                                                    </textField>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Hike Distance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UwW-yH-UdB">
+                                                        <rect key="frame" x="0.0" y="235" width="560" height="38"/>
+                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Miles" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8q3-9A-9zg">
+                                                        <rect key="frame" x="0.0" y="273" width="560" height="38"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done"/>
+                                                    </textField>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Elevation Gain" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dgp-pG-uGc">
+                                                        <rect key="frame" x="0.0" y="311" width="560" height="38"/>
+                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Feet" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pqO-3G-O21">
+                                                        <rect key="frame" x="0.0" y="349" width="560" height="38"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
+                                                    </textField>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IMw-2c-nhu">
+                                                        <rect key="frame" x="0.0" y="387" width="560" height="38"/>
+                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Bring microspikes?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NRm-aW-0Pf">
+                                                        <rect key="frame" x="0.0" y="425" width="560" height="95"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes" returnKeyType="done"/>
+                                                    </textField>
+                                                    <datePicker contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="15" translatesAutoresizingMaskIntoConstraints="NO" id="3Zd-AW-twS">
+                                                        <rect key="frame" x="0.0" y="520" width="560" height="76"/>
+                                                        <date key="date" timeIntervalSinceReferenceDate="480107048.476776">
+                                                            <!--2016-03-19 19:04:08 +0000-->
+                                                        </date>
+                                                        <connections>
+                                                            <action selector="datePickerSelected:" destination="85l-no-vgW" eventType="valueChanged" id="3fW-gJ-2l9"/>
+                                                        </connections>
+                                                    </datePicker>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="l18-ok-LMv">
+                                                        <rect key="frame" x="0.0" y="596" width="560" height="33"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Max attendees:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LFb-Ks-4Tx">
+                                                                <rect key="frame" x="0.0" y="0.0" width="150" height="33"/>
+                                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
+                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <pickerView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GAR-o7-gJT">
+                                                                <rect key="frame" x="157" y="0.0" width="404" height="33"/>
+                                                                <color key="tintColor" red="0.11449145532676364" green="0.5" blue="0.097396125836195724" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </pickerView>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="Dgp-pG-uGc" firstAttribute="height" secondItem="nN3-d8-5Kd" secondAttribute="height" multiplier="0.06" id="1HL-C8-7wm"/>
+                                                    <constraint firstItem="8q3-9A-9zg" firstAttribute="height" secondItem="nN3-d8-5Kd" secondAttribute="height" multiplier="0.06" id="5HE-YY-tjW"/>
+                                                    <constraint firstItem="NRm-aW-0Pf" firstAttribute="height" secondItem="nN3-d8-5Kd" secondAttribute="height" multiplier="0.15" id="Ewz-RT-dpO"/>
+                                                    <constraint firstItem="muS-sc-gzw" firstAttribute="height" secondItem="nN3-d8-5Kd" secondAttribute="height" multiplier="0.06" id="Nhl-zt-bJw"/>
+                                                    <constraint firstItem="l18-ok-LMv" firstAttribute="height" secondItem="nN3-d8-5Kd" secondAttribute="height" multiplier="0.12" id="Rek-HQ-5jv"/>
+                                                    <constraint firstItem="pqO-3G-O21" firstAttribute="height" secondItem="nN3-d8-5Kd" secondAttribute="height" multiplier="0.06" id="Yul-Qg-kG5"/>
+                                                    <constraint firstItem="3Zd-AW-twS" firstAttribute="height" secondItem="nN3-d8-5Kd" secondAttribute="height" multiplier="0.12" id="avV-iA-Fev"/>
+                                                    <constraint firstItem="x6m-sN-inv" firstAttribute="height" secondItem="nN3-d8-5Kd" secondAttribute="height" multiplier="0.06" id="bOs-v1-Qvq"/>
+                                                    <constraint firstItem="UwW-yH-UdB" firstAttribute="height" secondItem="nN3-d8-5Kd" secondAttribute="height" multiplier="0.06" id="dMX-OW-ssD"/>
+                                                    <constraint firstItem="TwM-zI-il8" firstAttribute="height" secondItem="nN3-d8-5Kd" secondAttribute="height" multiplier="0.06" id="rB5-uy-2Sq"/>
+                                                    <constraint firstItem="p2g-O2-ajo" firstAttribute="height" secondItem="nN3-d8-5Kd" secondAttribute="height" multiplier="0.05" id="vaj-Hg-aqW"/>
+                                                    <constraint firstItem="YXl-jG-bmq" firstAttribute="height" secondItem="nN3-d8-5Kd" secondAttribute="height" multiplier="0.06" id="vf1-cg-UIl"/>
+                                                    <constraint firstItem="fgb-4l-TjJ" firstAttribute="height" secondItem="nN3-d8-5Kd" secondAttribute="height" multiplier="0.06" id="wzh-S4-dEu"/>
+                                                    <constraint firstItem="g7a-UW-VXj" firstAttribute="height" secondItem="nN3-d8-5Kd" secondAttribute="height" multiplier="0.02" id="yl7-f8-TOt"/>
+                                                    <constraint firstItem="IMw-2c-nhu" firstAttribute="height" secondItem="nN3-d8-5Kd" secondAttribute="height" multiplier="0.06" id="zOd-v9-Kc0"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="nN3-d8-5Kd" firstAttribute="width" secondItem="d56-28-4fx" secondAttribute="width" id="Pch-Ee-Ktv"/>
+                                            <constraint firstItem="nN3-d8-5Kd" firstAttribute="height" secondItem="d56-28-4fx" secondAttribute="height" id="gmL-sL-dCn"/>
+                                        </constraints>
+                                    </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="d56-28-4fx" firstAttribute="width" secondItem="Sm5-NZ-mMt" secondAttribute="width" id="CkH-j7-gDb"/>
+                                    <constraint firstItem="d56-28-4fx" firstAttribute="height" secondItem="Sm5-NZ-mMt" secondAttribute="height" id="Nka-4X-eT3"/>
+                                </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="7NL-wI-vcK" firstAttribute="width" secondItem="6kC-Io-m9m" secondAttribute="width" id="MgS-Za-q9H"/>
-                            <constraint firstItem="7NL-wI-vcK" firstAttribute="top" secondItem="ecs-Aa-orb" secondAttribute="bottom" id="Q9y-XM-Vhh"/>
+                            <constraint firstItem="Sm5-NZ-mMt" firstAttribute="top" secondItem="ecs-Aa-orb" secondAttribute="bottom" id="1XR-Ns-W0x"/>
+                            <constraint firstItem="Sm5-NZ-mMt" firstAttribute="centerX" secondItem="6kC-Io-m9m" secondAttribute="centerX" id="3hM-kr-kfa"/>
+                            <constraint firstItem="Sm5-NZ-mMt" firstAttribute="leading" secondItem="6kC-Io-m9m" secondAttribute="leadingMargin" id="Auy-vn-S0G"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Sm5-NZ-mMt" secondAttribute="trailing" id="rrD-ZK-DuY"/>
+                            <constraint firstItem="1wm-Dz-Hq6" firstAttribute="top" secondItem="Sm5-NZ-mMt" secondAttribute="bottom" id="xCE-LZ-3go"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Create Event" id="MWc-qa-i2K">
@@ -565,7 +623,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="600" height="700"/>
+                    <size key="freeformSize" width="600" height="693"/>
                     <connections>
                         <outlet property="createEventScrollView" destination="Sm5-NZ-mMt" id="YrS-g5-8Eb"/>
                         <outlet property="descriptionTextField" destination="NRm-aW-0Pf" id="mPA-WC-kWK"/>
@@ -579,7 +637,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SaC-Cq-760" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="736" y="3695"/>
+            <point key="canvasLocation" x="736" y="3756.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3ay-f3-3oC">

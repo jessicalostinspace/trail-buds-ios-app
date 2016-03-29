@@ -109,9 +109,9 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
             let email = result["email"] as? String
             let firstName = result["first_name"] as? String
             let lastName = result["last_name"] as? String
-            let location = result["location"] as? String
-            let birthday = result["birthday"] as? String
-            let gender = result["gender"] as? String
+//            let location = result["location"] as? String
+//            let birthday = result["birthday"] as? String
+//            let gender = result["gender"] as? String
             let id = result["id"] as? String
             self.nameLabel.text = "\(firstName!) \(lastName!)"
 //            self.locationLabel.text = "\(location)"
@@ -171,6 +171,13 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
             
         }
     }
+    
+    
+    @IBAction func messageButtonPressed(sender: UIButton) {
+        
+        
+    }
+    
 
     /*
     // MARK: - Navigation
