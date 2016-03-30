@@ -22,6 +22,7 @@ class CreateEventViewController: UIViewController, UIPickerViewDelegate, UIPicke
     
     var delegate: goBackProtocol?
     
+    @IBOutlet weak var myDatePicker: UIDatePicker!
     var maxAttendeesPickerData: [Int] = [Int]()
     
     let ref = Firebase(url: "https://trailbuds.firebaseio.com/")

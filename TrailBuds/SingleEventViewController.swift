@@ -13,6 +13,8 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate{
     
     var delegate: goBackProtocol?
     
+    @IBOutlet var collectionView: [UICollectionView]!
+    
     @IBAction func cancelButtonPressed(sender: UIBarButtonItem) {
     dismissViewControllerAnimated(true, completion: nil)
         delegate?.goBack()
@@ -30,7 +32,7 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate{
         let annotation = MKPointAnnotation()
         annotation.coordinate = center
         
-        singleEventScrollView.contentSize.height = 1000
+        singleEventScrollView.contentSize.height = 1500
 
 
     }
