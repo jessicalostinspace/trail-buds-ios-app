@@ -10,9 +10,12 @@ import UIKit
 import Firebase
 import GoogleMaps
 
-class CreateEventViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UISearchBarDelegate, LocateOnTheMap{
+class CreateEventViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UISearchBarDelegate, LocateOnTheMap {
     
     let prefs = NSUserDefaults.standardUserDefaults()
+    
+    // this variable is used to enter the information in the database
+    var maxAttendeesPickerDataFinal: Int?
     
     
     // MARK: defining parameters
@@ -44,6 +47,13 @@ class CreateEventViewController: UIViewController, UIPickerViewDelegate, UIPicke
     
     @IBAction func datePickerSelected(sender: AnyObject) {
 //        var chosenDate = self.datePicker.date
+        
+        
+        //need to create outlet from datePicker called myDatePicker, type is UIDatePicker
+        
+//        var dateFormatter = NSDateFormatter()
+//        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
+//        var strDate = dateFormatter.stringFromDate(myDatePicker.date)
         
     }
     
@@ -167,7 +177,7 @@ class CreateEventViewController: UIViewController, UIPickerViewDelegate, UIPicke
         //save to firebase database
         let eventRef = self.ref.childByAppendingPath("events")
         let event = ["trailName": trailNameTextField.text!, "meetingLocation" : meetingLocationTextField.text!, "hikeDistance" : hikeDistanceTextField.text!, "elevationGain" : elevationGainTextField.text!,
-            "hikeLocation" : location!, "latitude" : latitude!, "longitude": longitude!,"description" : descriptionTextField.text!, "createdBy" : user_id2!]
+            "hikeLocation" : location!, "latitude" : latitude!, "longitude": longitude!,"description" : descriptionTextField.text!, "createdBy" : user_id2!, "maxAttendees": self.maxAttendeesPickerDataFinal!]
         
         let eventsRef = eventRef.childByAutoId()
         eventsRef.setValue(event)
@@ -207,6 +217,11 @@ class CreateEventViewController: UIViewController, UIPickerViewDelegate, UIPicke
         print(String(maxAttendeesPickerData[row]))
         return String(maxAttendeesPickerData[row])
     }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        maxAttendeesPickerDataFinal = maxAttendeesPickerData[row]
+    }
+    
 
     // MARK: UITextFieldDelegate
     
