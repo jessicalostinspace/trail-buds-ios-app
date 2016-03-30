@@ -8,20 +8,16 @@
 
 import UIKit
 import Firebase
-import RealmSwift
 
 class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
+    
+    let prefs = NSUserDefaults.standardUserDefaults()
     
     var ref = Firebase(url:"https://trailbuds.firebaseio.com/")
 
     //This is a test
     var delegate: logOutProtocol?
     
-    //instantiate Realm
-    let realm = try! Realm()
-    
-    // Get Realm objects
-    let users = try! Realm().objects(User)
     
     //MARK: Attributes
     
@@ -34,6 +30,7 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
 
         loginButton.delegate = self
         
@@ -122,7 +119,8 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
                 pictureUrl = url
             }
             
-            
+            // setting user_id variable
+            self.prefs.setValue(id, forKey: "user_id")
             //=========================================================
             //SAVING TO FIREBASE
             
@@ -136,20 +134,7 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
 //            userRef.setValue(users)
           
             
-            
-            //=========================================================
-            //SAVING TO REALM
-            
-            let user1 = User()
-            
-            user1.firstName = firstName!
-            user1.lastName = lastName!
-            user1.email = email!
-            user1.id = id!
-            
-            try! self.realm.write {
-                self.realm.add(user1)
-            }
+
             //=========================================================
             
             
