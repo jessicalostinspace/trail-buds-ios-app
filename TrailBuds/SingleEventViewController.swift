@@ -12,11 +12,13 @@ import MapKit
 class SingleEventViewController: UIViewController, MKMapViewDelegate{
     
     var delegate: goBackProtocol?
+    var eventInfoReceivedFromAllEventsViewController: AnyObject?
     
     @IBOutlet var collectionView: [UICollectionView]!
     
     @IBAction func cancelButtonPressed(sender: UIBarButtonItem) {
     dismissViewControllerAnimated(true, completion: nil)
+        eventInfoReceivedFromAllEventsViewController = nil
         delegate?.goBack()
     }
 
@@ -27,13 +29,33 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("---------------------------")
+        print("---------------------------")
+        print(eventInfoReceivedFromAllEventsViewController!)
+        print(eventInfoReceivedFromAllEventsViewController!.value["hikeLocation"] as! String)
+        print(eventInfoReceivedFromAllEventsViewController!.value["createdBy"] as! String)
+        print("---------------------------")
+        print("---------------------------")
         
-        let center = CLLocationCoordinate2DMake(46.852886, -121.760374)
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = center
         
         singleEventScrollView.contentSize.height = 1500
+        
+        
+        let latitudeAsDouble = eventInfoReceivedFromAllEventsViewController!.value["latitude"] as! Double
+        let longitudeAsDouble = eventInfoReceivedFromAllEventsViewController!.value["longitude"] as! Double
 
+
+        
+        let longitude = CLLocationDegrees(longitudeAsDouble)
+        let latitude = CLLocationDegrees(latitudeAsDouble)
+//
+        let coordinate = CLLocationCoordinate2DMake(latitude, longitude)
+        
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = coordinate
+        
+        
+        self.mapView.addAnnotation(annotation)
 
     }
 
