@@ -24,6 +24,7 @@ class CreateEventViewController: UIViewController, UIPickerViewDelegate, UIPicke
     
     @IBOutlet weak var myDatePicker: UIDatePicker!
     var maxAttendeesPickerData: [Int] = [Int]()
+    var strDate: String?
     
     let ref = Firebase(url: "https://trailbuds.firebaseio.com/")
     
@@ -51,9 +52,10 @@ class CreateEventViewController: UIViewController, UIPickerViewDelegate, UIPicke
         
         //need to create outlet from datePicker called myDatePicker, type is UIDatePicker
         
-//        var dateFormatter = NSDateFormatter()
-//        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
-//        var strDate = dateFormatter.stringFromDate(myDatePicker.date)
+        var dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
+        strDate = dateFormatter.stringFromDate(myDatePicker.date)
+        print(strDate)
         
     }
     
@@ -177,7 +179,7 @@ class CreateEventViewController: UIViewController, UIPickerViewDelegate, UIPicke
         //save to firebase database
         let eventRef = self.ref.childByAppendingPath("events")
         let event = ["trailName": trailNameTextField.text!, "meetingLocation" : meetingLocationTextField.text!, "hikeDistance" : hikeDistanceTextField.text!, "elevationGain" : elevationGainTextField.text!,
-            "hikeLocation" : location!, "latitude" : latitude!, "longitude": longitude!,"description" : descriptionTextField.text!, "createdBy" : user_id2!, "maxAttendees": self.maxAttendeesPickerDataFinal!]
+            "hikeLocation" : location!, "latitude" : latitude!, "longitude": longitude!,"description" : descriptionTextField.text!, "createdBy" : user_id2!, "maxAttendees": self.maxAttendeesPickerDataFinal!, "eventDate": strDate!]
         
         let eventsRef = eventRef.childByAutoId()
         eventsRef.setValue(event)

@@ -18,6 +18,7 @@ class AllEventsViewController: UIViewController, UITableViewDelegate, UITableVie
     var ref: Firebase!
     var dataSource: FirebaseTableViewDataSource!
     var events = [FDataSnapshot]()
+    var eventInfoPassedToSingleEventViewController: AnyObject?
     
     var hikeLocation: String?
     
@@ -57,6 +58,8 @@ class AllEventsViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
+        
+        eventInfoPassedToSingleEventViewController = nil
 
 //        self.dataSource = FirebaseTableViewDataSource(ref: self.ref,
 //                                                      prototypeReuseIdentifier: "allEventsCell",
@@ -127,6 +130,7 @@ class AllEventsViewController: UIViewController, UITableViewDelegate, UITableVie
         cell.eventDateTimeLabel!.text = String(eventInfo.value!["longitude"])
       
         
+        
         return cell
     }
     
@@ -148,10 +152,14 @@ class AllEventsViewController: UIViewController, UITableViewDelegate, UITableVie
             let navController = segue.destinationViewController as! UINavigationController
             let controller = navController.topViewController as! SingleEventViewController
             controller.delegate = self
+            controller.eventInfoReceivedFromAllEventsViewController
+                = eventInfoPassedToSingleEventViewController!
         }
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        eventInfoPassedToSingleEventViewController = events[indexPath.row]
         
         performSegueWithIdentifier("SingleEventSegue", sender: indexPath)
         
