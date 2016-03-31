@@ -88,8 +88,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-TrailBuds/Firebase.framework"
   install_framework "Pods-TrailBuds/FirebaseUI.framework"
   install_framework "Pods-TrailBuds/IQKeyboardManagerSwift.framework"
-  install_framework "Pods-TrailBuds/Realm.framework"
-  install_framework "Pods-TrailBuds/RealmSwift.framework"
   install_framework "Pods-TrailBuds/SwiftyJSON.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -97,7 +95,5 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-TrailBuds/Firebase.framework"
   install_framework "Pods-TrailBuds/FirebaseUI.framework"
   install_framework "Pods-TrailBuds/IQKeyboardManagerSwift.framework"
-  install_framework "Pods-TrailBuds/Realm.framework"
-  install_framework "Pods-TrailBuds/RealmSwift.framework"
   install_framework "Pods-TrailBuds/SwiftyJSON.framework"
 fi

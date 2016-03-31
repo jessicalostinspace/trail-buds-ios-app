@@ -5,11 +5,6 @@ PODS:
     - Firebase (~> 2.2)
   - GoogleMaps (1.12.3)
   - IQKeyboardManagerSwift (4.0.0)
-  - Realm (0.98.5):
-    - Realm/Headers (= 0.98.5)
-  - Realm/Headers (0.98.5)
-  - RealmSwift (0.98.5):
-    - Realm (= 0.98.5)
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
@@ -18,7 +13,6 @@ DEPENDENCIES:
   - FirebaseUI/Core (~> 0.3)
   - GoogleMaps
   - IQKeyboardManagerSwift
-  - RealmSwift
   - SwiftyJSON
 
 SPEC CHECKSUMS:
@@ -27,8 +21,6 @@ SPEC CHECKSUMS:
   FirebaseUI: 95621dce04f0313495c86e1fba503254e0ec48b1
   GoogleMaps: a4ac67918d0b5ba5f6b9893ac80487e357779e6c
   IQKeyboardManagerSwift: ede2a27b4e1ce053d03073b9c7fa439322f5e405
-  Realm: db08379969e45cea2edd1c3c0a090fe9e22d2d2f
-  RealmSwift: cb11ad1c35e15dc982f2dbf5afe2a3124193a358
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
 COCOAPODS: 0.39.0
