@@ -175,10 +175,11 @@ class CreateEventViewController: UIViewController, UIPickerViewDelegate, UIPicke
         
         //gets facebook user id from NSUserDefaults
         let user_id2 = prefs.stringForKey("user_id")
+        let user_name = prefs.stringForKey("user_name")
         
         //save to firebase database
         let eventRef = self.ref.childByAppendingPath("events")
-        let event = ["trailName": trailNameTextField.text!, "meetingLocation" : meetingLocationTextField.text!, "hikeDistance" : hikeDistanceTextField.text!, "elevationGain" : elevationGainTextField.text!, "hikeLocation" : location!, "latitude" : latitude!, "longitude": longitude!,"description" : descriptionTextField.text!, "createdBy" : user_id2!, "maxAttendees": self.maxAttendeesPickerDataFinal!, "eventDate": strDate!]
+        let event = ["trailName": trailNameTextField.text!, "meetingLocation" : meetingLocationTextField.text!, "hikeDistance" : hikeDistanceTextField.text!, "elevationGain" : elevationGainTextField.text!, "hikeLocation" : location!, "latitude" : latitude!, "longitude": longitude!,"description" : descriptionTextField.text!, "createdBy" : user_id2!, "maxAttendees": self.maxAttendeesPickerDataFinal!, "eventDate": strDate!, "createdByName": user_name!]
         
         let eventsRef = eventRef.childByAutoId()
         eventsRef.setValue(event)
