@@ -11,11 +11,31 @@ import MapKit
 
 class SingleEventViewController: UIViewController, MKMapViewDelegate{
     
+    //MARK: Attributes
+    
     var delegate: goBackProtocol?
     var eventInfoReceivedFromAllEventsViewController: AnyObject?
     
+    @IBOutlet weak var eventMainImage: UIImageView!
+    @IBOutlet weak var trailNameLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var elevationGainLabel: UILabel!
+    @IBOutlet weak var hostNameLabel: UILabel!
+    @IBOutlet weak var hostPicture: UIImageView!
+    @IBOutlet weak var forecastIconImage: UIImageView!
+    @IBOutlet weak var forecastDescriptionLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    
+    @IBAction func interestedButtonPressed(sender: UIButton) {
+    }
+    
+    @IBAction func joinButtonPressed(sender: UIButton) {
+    }
+    
     @IBOutlet var collectionView: [UICollectionView]!
     
+
     @IBAction func cancelButtonPressed(sender: UIBarButtonItem) {
     dismissViewControllerAnimated(true, completion: nil)
         eventInfoReceivedFromAllEventsViewController = nil
