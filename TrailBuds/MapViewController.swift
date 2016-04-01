@@ -21,6 +21,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     var trailName1: AnyObject?
     var description1: AnyObject?
     let locationMgr = CLLocationManager()
+    var mapRegion: MKCoordinateRegion?
     
     @IBOutlet weak var mapView: MKMapView!
 
@@ -75,11 +76,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             annotation.title = trailName2
             
             self.mapView.addAnnotation(annotation)
+            self.mapView.setRegion(self.mapRegion!, animated: true)
             //end pinpointing every location on a map
         })
     
         
     } //end of viewDidLoad
+    
+    
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
@@ -92,11 +96,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         // how zoomed in or zoomed out of our center do we want to be in
         //smaller the delta number, the more zoomed in it will be (1.25 probably see entire city)
         let mapSpan = MKCoordinateSpan(latitudeDelta: 2, longitudeDelta: 2)
-        let mapRegion = MKCoordinateRegion(center: userCenter, span: mapSpan)
+        mapRegion = MKCoordinateRegion(center: userCenter, span: mapSpan)
         
         
-        mapView.setRegion(mapRegion, animated: true)
-        locationMgr.stopUpdatingHeading()
+//        mapView.setRegion(mapRegion, animated: true)
+//        locationMgr.stopUpdatingHeading()
     }
     
 }
