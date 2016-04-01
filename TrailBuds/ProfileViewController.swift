@@ -121,6 +121,7 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
             
             // setting user_id variable
             self.prefs.setValue(id, forKey: "user_id")
+            self.prefs.setValue(firstName, forKey: "user_name")
             //=========================================================
             //SAVING TO FIREBASE
             
@@ -148,6 +149,7 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
                 }
                 
                 let image = UIImage(data: data!)
+
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.profilePicture.image = image
                 })

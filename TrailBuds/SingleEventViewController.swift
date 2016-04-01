@@ -57,8 +57,16 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate{
         print(eventInfoReceivedFromAllEventsViewController!.value["description"] as! String)
         print(eventInfoReceivedFromAllEventsViewController!.value["elevationGain"] as! String)
         print(eventInfoReceivedFromAllEventsViewController!.value["hikeDistance"] as! String)
+        print(eventInfoReceivedFromAllEventsViewController!.value["trailName"] as! String)
         print("---------------------------")
         print("---------------------------")
+        
+        trailNameLabel.text = eventInfoReceivedFromAllEventsViewController!.value["trailName"] as! String
+        locationLabel.text = "Location: \(eventInfoReceivedFromAllEventsViewController!.value["hikeLocation"] as! String)"
+        distanceLabel.text = "Distance: \(eventInfoReceivedFromAllEventsViewController!.value["hikeDistance"] as! String) miles"
+        elevationGainLabel.text = "Elevation Gain: \(eventInfoReceivedFromAllEventsViewController!.value["elevationGain"] as! String) feet"
+        hostNameLabel.text = "Host: \(eventInfoReceivedFromAllEventsViewController!.value["createdByName"] as! String)"
+        descriptionLabel.text = "Description: \(eventInfoReceivedFromAllEventsViewController!.value["description"] as! String)"
         
         
         singleEventScrollView.contentSize.height = 1500
@@ -73,12 +81,17 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate{
         let latitude = CLLocationDegrees(latitudeAsDouble)
 //
         let coordinate = CLLocationCoordinate2DMake(latitude, longitude)
+        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        let region = MKCoordinateRegion(center: coordinate, span: span)
+
         
         let annotation = MKPointAnnotation()
         annotation.coordinate = coordinate
         
         
         self.mapView.addAnnotation(annotation)
+        self.mapView.setRegion(region, animated: true)
+
 
     }
 
