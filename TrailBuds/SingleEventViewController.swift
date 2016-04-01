@@ -54,6 +54,9 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate{
         print(eventInfoReceivedFromAllEventsViewController!)
         print(eventInfoReceivedFromAllEventsViewController!.value["hikeLocation"] as! String)
         print(eventInfoReceivedFromAllEventsViewController!.value["createdBy"] as! String)
+        print(eventInfoReceivedFromAllEventsViewController!.value["description"] as! String)
+        print(eventInfoReceivedFromAllEventsViewController!.value["elevationGain"] as! String)
+        print(eventInfoReceivedFromAllEventsViewController!.value["hikeDistance"] as! String)
         print("---------------------------")
         print("---------------------------")
         
