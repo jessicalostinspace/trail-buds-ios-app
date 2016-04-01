@@ -72,7 +72,7 @@
                         <viewControllerLayoutGuide type="bottom" id="hvL-xp-Efh"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="RE6-C9-pXh">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="1000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="750"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CJf-62-aBN">
@@ -109,7 +109,7 @@
                                         <gestureRecognizers/>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="ZoI-az-DXi" userLabel="BoutMeStack View">
-                                        <rect key="frame" x="24" y="351" width="79" height="47"/>
+                                        <rect key="frame" x="16" y="343" width="79" height="47"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="About Me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggF-UA-DHA">
                                                 <rect key="frame" x="0.0" y="0.0" width="79" height="21"/>
@@ -148,7 +148,7 @@
                                                 <rect key="frame" x="0.0" y="21" width="447" height="143"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="upcomingHikesCell" rowHeight="170" id="mPw-4g-IKO">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="upcomingHikesCell" rowHeight="170" id="mPw-4g-IKO" customClass="UpcomingHikesTableViewCell" customModule="TrailBuds" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="28" width="447" height="170"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mPw-4g-IKO" id="XIg-st-4FU">
@@ -191,17 +191,18 @@
                                                                 </stackView>
                                                             </subviews>
                                                         </tableViewCellContentView>
+                                                        <connections>
+                                                            <outlet property="TrailNameButton" destination="twI-b8-fF8" id="Tcs-dY-PMM"/>
+                                                            <outlet property="upcomingHikeDateLabel" destination="RfP-H8-3PD" id="4qp-dF-rLw"/>
+                                                            <outlet property="upcomingHikeDistanceLabel" destination="daj-ku-ZwB" id="h0k-IB-ySL"/>
+                                                            <outlet property="upcomingHikeElevationGainLabel" destination="4ES-bm-2EJ" id="1Dp-WZ-BDT"/>
+                                                            <outlet property="upcomingHikeLocationLabel" destination="qWi-wV-PAp" id="K38-j7-gtM"/>
+                                                        </connections>
                                                     </tableViewCell>
                                                 </prototypes>
                                             </tableView>
                                         </subviews>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I love hiking and pizza!!!" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eYa-9r-mTe">
-                                        <rect key="frame" x="24" y="400" width="95" height="137"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="jTh-yV-n75" userLabel="hikesAttendedStack View">
                                         <rect key="frame" x="127" y="496" width="447" height="171"/>
                                         <subviews>
@@ -211,11 +212,11 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="142" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aS2-TC-90Q">
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="142" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aS2-TC-90Q" userLabel="AttendedHikesTable View">
                                                 <rect key="frame" x="0.0" y="21" width="447" height="150"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="hikesAttendedCell" rowHeight="142" id="akM-X4-W9U">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="hikesAttendedCell" rowHeight="142" id="akM-X4-W9U" customClass="HikesAttendedTableViewCell" customModule="TrailBuds" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="28" width="447" height="142"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="akM-X4-W9U" id="xPr-sm-IOh">
@@ -258,11 +259,24 @@
                                                                 </stackView>
                                                             </subviews>
                                                         </tableViewCellContentView>
+                                                        <connections>
+                                                            <outlet property="hikesAttendedDateLabel" destination="jSQ-jk-34B" id="qrX-6o-mOI"/>
+                                                            <outlet property="hikesAttendedDistanceLabel" destination="Av9-jn-hfT" id="b0h-El-8yS"/>
+                                                            <outlet property="hikesAttendedElevationGainLabel" destination="hks-Ct-H4x" id="yft-k6-TOX"/>
+                                                            <outlet property="hikesAttendedLocationLabel" destination="Imu-oP-6ct" id="k3G-bA-gab"/>
+                                                            <outlet property="hikesAttendedTrailNameButton" destination="k2V-0Q-F70" id="Yd3-an-2f3"/>
+                                                        </connections>
                                                     </tableViewCell>
                                                 </prototypes>
                                             </tableView>
                                         </subviews>
                                     </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I love hiking and pizza!!!" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eYa-9r-mTe">
+                                        <rect key="frame" x="16" y="388" width="95" height="137"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="uf2-hN-DLg" firstAttribute="top" secondItem="CJf-62-aBN" secondAttribute="top" constant="64" id="Vr5-kh-9tD"/>
@@ -285,18 +299,20 @@
                         </barButtonItem>
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="600" height="1000"/>
+                    <size key="freeformSize" width="600" height="750"/>
                     <connections>
+                        <outlet property="attendedHikesTableView" destination="aS2-TC-90Q" id="mFj-Tx-5ag"/>
                         <outlet property="locationLabel" destination="obk-OS-zB8" id="8Sl-K5-BBx"/>
                         <outlet property="loginButton" destination="VB9-RZ-URI" id="6Fy-mO-igb"/>
                         <outlet property="nameLabel" destination="gSd-aM-Gzy" id="Nna-Je-lW4"/>
                         <outlet property="profilePicture" destination="qoT-Zc-7oM" id="vOb-zl-oBu"/>
                         <outlet property="profileScrollView" destination="CJf-62-aBN" id="LRy-ax-sU5"/>
+                        <outlet property="upcomingHikesTableView" destination="9Ml-HN-Gjo" id="OdY-m0-B9z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1dS-uQ-upu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-616" y="2321"/>
+            <point key="canvasLocation" x="-616" y="2494"/>
         </scene>
         <!--Messages-->
         <scene sceneID="iha-uq-gj8">
@@ -482,19 +498,19 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fuF-7N-CHl" userLabel="DescriptionStack View">
-                                                <rect key="frame" x="0.0" y="858" width="600" height="45"/>
+                                                <rect key="frame" x="0.0" y="858" width="600" height="47"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fkL-IZ-3Ol" userLabel="descriptLabelStack View">
-                                                        <rect key="frame" x="0.0" y="0.0" width="600" height="23"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="600" height="24"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFO-vA-1jr">
-                                                                <rect key="frame" x="0.0" y="0.0" width="15" height="23"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="15" height="24"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="66R-Ny-hL7">
-                                                                <rect key="frame" x="15" y="0.0" width="585" height="23"/>
+                                                                <rect key="frame" x="15" y="0.0" width="585" height="24"/>
                                                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -505,7 +521,7 @@
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CkI-ok-65H" userLabel="descriptTextStack View">
-                                                        <rect key="frame" x="0.0" y="23" width="600" height="23"/>
+                                                        <rect key="frame" x="0.0" y="24" width="600" height="23"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V7P-Wf-meN">
                                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="23"/>
@@ -534,7 +550,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="2oX-za-yJY" userLabel="ButtonStack View">
-                                                <rect key="frame" x="0.0" y="907" width="600" height="85"/>
+                                                <rect key="frame" x="0.0" y="909" width="600" height="85"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="  " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nTu-Q8-eMm">
                                                         <rect key="frame" x="0.0" y="0.0" width="30" height="85"/>
@@ -578,7 +594,7 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qQx-VJ-L2p" userLabel="MapStack View">
-                                                <rect key="frame" x="0.0" y="996" width="600" height="425"/>
+                                                <rect key="frame" x="0.0" y="998" width="600" height="425"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b14-BR-fzs">
                                                         <rect key="frame" x="0.0" y="0.0" width="15" height="425"/>
@@ -602,7 +618,7 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="YD9-gg-p1A" userLabel="AttendeesStack View">
-                                                <rect key="frame" x="0.0" y="1425" width="600" height="116"/>
+                                                <rect key="frame" x="0.0" y="1427" width="600" height="116"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="    Attendees:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Qm-GD-xmI">
                                                         <rect key="frame" x="0.0" y="0.0" width="600" height="23"/>
@@ -638,15 +654,15 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="0jh-5L-wNE" userLabel="MessagesStack View">
-                                                <rect key="frame" x="0.0" y="1545" width="600" height="102"/>
+                                                <rect key="frame" x="0.0" y="1546" width="600" height="100"/>
                                                 <subviews>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Write message..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1pf-x8-dVe">
-                                                        <rect key="frame" x="0.0" y="0.0" width="600" height="70"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="600" height="68"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Daz-of-Wda">
-                                                        <rect key="frame" x="0.0" y="70" width="600" height="32"/>
+                                                        <rect key="frame" x="0.0" y="68" width="600" height="32"/>
                                                         <color key="backgroundColor" red="0.29593805396778383" green="0.54671148497228017" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                                         <state key="normal" title="Post Message">

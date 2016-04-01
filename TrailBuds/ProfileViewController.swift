@@ -9,12 +9,14 @@
 import UIKit
 import Firebase
 
-class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
+class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, FBSDKLoginButtonDelegate {
     
     let prefs = NSUserDefaults.standardUserDefaults()
     
-    var ref = Firebase(url:"https://trailbuds.firebaseio.com/")
-
+    var ref: Firebase!
+    var events = [FDataSnapshot]()
+    
+    
     //This is a test
     var delegate: logOutProtocol?
     
@@ -26,24 +28,39 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     
+    //Table Views
+    @IBOutlet weak var upcomingHikesTableView: UITableView!
+    
+    @IBOutlet weak var attendedHikesTableView: UITableView!
+    
     @IBOutlet weak var loginButton: FBSDKLoginButton!
+    
+    // MARK: ViewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
 
         loginButton.delegate = self
-        
         fetchProfile()
         
-        profileScrollView.contentSize.height = 1000
+        profileScrollView.contentSize.height = 750
         
-//        view.addSubview(loginButton)
         view.addSubview(profilePicture)
         view.addSubview(nameLabel)
         view.addSubview(locationLabel)
         
-//        self.navigationItem.loginButton
+        // Table view delgates and data sources
+        upcomingHikesTableView.delegate = self
+        upcomingHikesTableView.dataSource = self
+        
+        attendedHikesTableView.delegate = self
+        attendedHikesTableView.dataSource = self
+        
+        // initialize firebase ref
+        ref = Firebase(url:"https://trailbuds.firebaseio.com/users")
+        
+        
     }
     
 //    override func viewWillAppear(animated: Bool) {
@@ -54,13 +71,6 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
 //    }
 //
 
-
-//    let loginButton: FBSDKLoginButton = {
-//        let button = FBSDKLoginButton()
-//        button.readPermissions = ["email"]
-//        return button
-//    }()
-    
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         
@@ -162,6 +172,15 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         
     }
+    
+    
+    // MARK: Table Views
+    
+
+    
+    
+    
+    
     
 
     /*

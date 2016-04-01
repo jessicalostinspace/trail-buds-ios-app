@@ -19,6 +19,8 @@
 		E6B8D9011C9D0B0A00350228 /* allEventsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B8D9001C9D0B0A00350228 /* allEventsCell.swift */; };
 		FC474FBE1C9DC888003AB78D /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC474FBD1C9DC888003AB78D /* CreateEventViewController.swift */; };
 		FC92E0661CA236660044A12C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC92E0651CA236660044A12C /* MapViewController.swift */; };
+		FCF40F8B1CAEE6850093C417 /* UpcomingHikesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF40F8A1CAEE6850093C417 /* UpcomingHikesTableViewCell.swift */; };
+		FCF40F8D1CAEE6990093C417 /* HikesAttendedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF40F8C1CAEE6990093C417 /* HikesAttendedTableViewCell.swift */; };
 		FCFE960A1C9B9A4000728D13 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFE96091C9B9A4000728D13 /* ProfileViewController.swift */; };
 		FCFE960C1C9BA98200728D13 /* SingleEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFE960B1C9BA98200728D13 /* SingleEventViewController.swift */; };
 		FCFE960E1C9BA99400728D13 /* AllEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFE960D1C9BA99400728D13 /* AllEventsViewController.swift */; };
@@ -45,6 +47,8 @@
 		E6B8D9001C9D0B0A00350228 /* allEventsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = allEventsCell.swift; sourceTree = "<group>"; };
 		FC474FBD1C9DC888003AB78D /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		FC92E0651CA236660044A12C /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		FCF40F8A1CAEE6850093C417 /* UpcomingHikesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingHikesTableViewCell.swift; sourceTree = "<group>"; };
+		FCF40F8C1CAEE6990093C417 /* HikesAttendedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HikesAttendedTableViewCell.swift; sourceTree = "<group>"; };
 		FCFE96091C9B9A4000728D13 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		FCFE960B1C9BA98200728D13 /* SingleEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleEventViewController.swift; sourceTree = "<group>"; };
 		FCFE960D1C9BA99400728D13 /* AllEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllEventsViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +111,8 @@
 				E620BE371C9B8FA70036F587 /* AppDelegate.swift */,
 				E643BBD61C9CAC90003C9AA6 /* logOutProtocol.swift */,
 				E620BE3B1C9B8FA70036F587 /* Main.storyboard */,
+				FCF40F8A1CAEE6850093C417 /* UpcomingHikesTableViewCell.swift */,
+				FCF40F8C1CAEE6990093C417 /* HikesAttendedTableViewCell.swift */,
 				E620BE3E1C9B8FA70036F587 /* Assets.xcassets */,
 				E620BE401C9B8FA70036F587 /* LaunchScreen.storyboard */,
 				E620BE431C9B8FA70036F587 /* Info.plist */,
@@ -168,7 +174,7 @@
 				TargetAttributes = {
 					E620BE331C9B8FA70036F587 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 2T9963RWCF;
+						DevelopmentTeam = ZV2V2DEAFB;
 					};
 				};
 			};
@@ -258,8 +264,10 @@
 			files = (
 				FC92E0661CA236660044A12C /* MapViewController.swift in Sources */,
 				FCFE96101C9BA9DF00728D13 /* MessagesViewController.swift in Sources */,
+				FCF40F8D1CAEE6990093C417 /* HikesAttendedTableViewCell.swift in Sources */,
 				E643BBD71C9CAC90003C9AA6 /* logOutProtocol.swift in Sources */,
 				FCFE960A1C9B9A4000728D13 /* ProfileViewController.swift in Sources */,
+				FCF40F8B1CAEE6850093C417 /* UpcomingHikesTableViewCell.swift in Sources */,
 				E6A913301CA311BA001ED34D /* SearchResultsController.swift in Sources */,
 				FC474FBE1C9DC888003AB78D /* CreateEventViewController.swift in Sources */,
 				FCFE960E1C9BA99400728D13 /* AllEventsViewController.swift in Sources */,
