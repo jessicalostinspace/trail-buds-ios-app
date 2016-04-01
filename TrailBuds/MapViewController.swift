@@ -11,16 +11,26 @@ import Firebase
 import SwiftyJSON
 import Alamofire
 import MapKit
+import CoreLocation
 
-class MapViewController: UIViewController, MKMapViewDelegate {
+
+class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
     var latitude1: AnyObject?
     var longitude1: AnyObject?
+    var trailName1: AnyObject?
+    var description1: AnyObject?
+    let locationMgr = CLLocationManager()
     
     @IBOutlet weak var mapView: MKMapView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        locationMgr.delegate = self
+        locationMgr.requestWhenInUseAuthorization()
+        locationMgr.desiredAccuracy = kCLLocationAccuracyBest
+        locationMgr.startUpdatingLocation()
         
         print("-----------------------------")
         
@@ -32,14 +42,27 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 print(latitude)
                 self.latitude1 = latitude
             }
+            
             if let longitude = snapshot.value.objectForKey("longitude") {
                 print(longitude)
                 self.longitude1 = longitude
+            }
+            
+            if let trailName = snapshot.value.objectForKey("trailName") {
+                print(trailName)
+                self.trailName1 = trailName
+            }
+            
+            if let description = snapshot.value.objectForKey("description") {
+                print(description)
+                self.description1 = description
             }
             print("-----------")
             
             let latitude2 = self.latitude1 as! Double
             let longitude2 = self.longitude1 as! Double
+            let trailName2 = self.trailName1 as! String
+            let description2 = self.description1 as! String
             
             //pinpointing every location on a map
             
@@ -48,8 +71,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             let annotation = MKPointAnnotation()
             annotation.coordinate = coordinate
             
-            annotation.subtitle = "test subtitle"
-            annotation.title = "test title"
+            annotation.subtitle = description2
+            annotation.title = trailName2
             
             self.mapView.addAnnotation(annotation)
             //end pinpointing every location on a map
@@ -57,5 +80,23 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
         
     } //end of viewDidLoad
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        let userLocation = locations.last
+        let userCenter = CLLocationCoordinate2DMake(userLocation!.coordinate.latitude, userLocation!.coordinate.longitude)
+        
+        
+        
+        // what part of the map is going to show up in the view
+        // how zoomed in or zoomed out of our center do we want to be in
+        //smaller the delta number, the more zoomed in it will be (1.25 probably see entire city)
+        let mapSpan = MKCoordinateSpan(latitudeDelta: 2, longitudeDelta: 2)
+        let mapRegion = MKCoordinateRegion(center: userCenter, span: mapSpan)
+        
+        
+        mapView.setRegion(mapRegion, animated: true)
+        locationMgr.stopUpdatingHeading()
+    }
     
 }
