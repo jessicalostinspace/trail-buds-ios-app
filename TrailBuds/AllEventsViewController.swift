@@ -51,7 +51,7 @@ class AllEventsViewController: UIViewController, UITableViewDelegate, UITableVie
         allEventsTableView.delegate = self
         allEventsTableView.dataSource = self
         
-        // initialize firebase ref 
+        // initialize firebase ref
         ref = Firebase(url:"https://trailbuds.firebaseio.com/events")
     
     }

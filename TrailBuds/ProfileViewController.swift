@@ -178,7 +178,19 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     // MARK: Table Views
     
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        
+        return 1
+    }
+    
 
+
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("allEventsCell", forIndexPath: indexPath) as! allEventsCell
+        
+        return cell
+    }
     
     
     
