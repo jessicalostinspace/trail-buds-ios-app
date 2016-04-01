@@ -121,13 +121,13 @@ class AllEventsViewController: UIViewController, UITableViewDelegate, UITableVie
         
         let eventInfo = events[indexPath.row]
         
-        var latitude = eventInfo.value["latitude"] as! Double
-        print(latitude)
+        var hikeDistance = eventInfo.value["hikeDistance"] as! String
+        var eventDate = eventInfo.value["eventDate"] as! String
 
         cell.eventNameLabel!.text = eventInfo.value["trailName"] as! String
         cell.locationLabel!.text = eventInfo.value["hikeLocation"] as! String
-        cell.lengthOfHikeLabel!.text = String(latitude)
-        cell.eventDateTimeLabel!.text = String(eventInfo.value!["longitude"])
+        cell.lengthOfHikeLabel!.text = ("\(hikeDistance) miles")
+        cell.eventDateTimeLabel!.text = eventDate
       
         
         
