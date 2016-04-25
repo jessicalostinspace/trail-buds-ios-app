@@ -17,6 +17,10 @@
 		E643BBD71C9CAC90003C9AA6 /* logOutProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E643BBD61C9CAC90003C9AA6 /* logOutProtocol.swift */; };
 		E6A913301CA311BA001ED34D /* SearchResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A9132F1CA311BA001ED34D /* SearchResultsController.swift */; };
 		E6B8D9011C9D0B0A00350228 /* allEventsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B8D9001C9D0B0A00350228 /* allEventsCell.swift */; };
+		FC0D59811CCEB436008565B5 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC0D597F1CCEB436008565B5 /* Profile.storyboard */; };
+		FC0D59831CCEB44C008565B5 /* Messages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC0D59821CCEB44C008565B5 /* Messages.storyboard */; };
+		FC0D59861CCEB479008565B5 /* Events.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC0D59841CCEB479008565B5 /* Events.storyboard */; };
+		FC0D59881CCEB4B3008565B5 /* SingleEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC0D59871CCEB4B3008565B5 /* SingleEvent.storyboard */; };
 		FC474FBE1C9DC888003AB78D /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC474FBD1C9DC888003AB78D /* CreateEventViewController.swift */; };
 		FC92E0661CA236660044A12C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC92E0651CA236660044A12C /* MapViewController.swift */; };
 		FCF40F8B1CAEE6850093C417 /* UpcomingHikesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF40F8A1CAEE6850093C417 /* UpcomingHikesTableViewCell.swift */; };
@@ -45,6 +49,10 @@
 		E643BBD61C9CAC90003C9AA6 /* logOutProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = logOutProtocol.swift; sourceTree = "<group>"; };
 		E6A9132F1CA311BA001ED34D /* SearchResultsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsController.swift; sourceTree = "<group>"; };
 		E6B8D9001C9D0B0A00350228 /* allEventsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = allEventsCell.swift; sourceTree = "<group>"; };
+		FC0D59801CCEB436008565B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
+		FC0D59821CCEB44C008565B5 /* Messages.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Messages.storyboard; sourceTree = "<group>"; };
+		FC0D59851CCEB479008565B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Events.storyboard; sourceTree = "<group>"; };
+		FC0D59871CCEB4B3008565B5 /* SingleEvent.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SingleEvent.storyboard; sourceTree = "<group>"; };
 		FC474FBD1C9DC888003AB78D /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		FC92E0651CA236660044A12C /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		FCF40F8A1CAEE6850093C417 /* UpcomingHikesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingHikesTableViewCell.swift; sourceTree = "<group>"; };
@@ -107,10 +115,10 @@
 		E620BE361C9B8FA70036F587 /* TrailBuds */ = {
 			isa = PBXGroup;
 			children = (
+				FC0D59891CCEB4C3008565B5 /* Storyboards */,
 				FCFE96111C9BAA2900728D13 /* View Controllers */,
 				E620BE371C9B8FA70036F587 /* AppDelegate.swift */,
 				E643BBD61C9CAC90003C9AA6 /* logOutProtocol.swift */,
-				E620BE3B1C9B8FA70036F587 /* Main.storyboard */,
 				FCF40F8A1CAEE6850093C417 /* UpcomingHikesTableViewCell.swift */,
 				FCF40F8C1CAEE6990093C417 /* HikesAttendedTableViewCell.swift */,
 				E620BE3E1C9B8FA70036F587 /* Assets.xcassets */,
@@ -121,6 +129,18 @@
 				E620BE4D1C9B903F0036F587 /* TrailBuds-Bridging-Header.h */,
 			);
 			path = TrailBuds;
+			sourceTree = "<group>";
+		};
+		FC0D59891CCEB4C3008565B5 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				E620BE3B1C9B8FA70036F587 /* Main.storyboard */,
+				FC0D59841CCEB479008565B5 /* Events.storyboard */,
+				FC0D59871CCEB4B3008565B5 /* SingleEvent.storyboard */,
+				FC0D59821CCEB44C008565B5 /* Messages.storyboard */,
+				FC0D597F1CCEB436008565B5 /* Profile.storyboard */,
+			);
+			name = Storyboards;
 			sourceTree = "<group>";
 		};
 		FCFE96111C9BAA2900728D13 /* View Controllers */ = {
@@ -202,8 +222,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E620BE421C9B8FA70036F587 /* LaunchScreen.storyboard in Resources */,
+				FC0D59881CCEB4B3008565B5 /* SingleEvent.storyboard in Resources */,
 				E620BE3F1C9B8FA70036F587 /* Assets.xcassets in Resources */,
+				FC0D59811CCEB436008565B5 /* Profile.storyboard in Resources */,
+				FC0D59831CCEB44C008565B5 /* Messages.storyboard in Resources */,
 				E620BE3D1C9B8FA70036F587 /* Main.storyboard in Resources */,
+				FC0D59861CCEB479008565B5 /* Events.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +319,22 @@
 				E620BE411C9B8FA70036F587 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		FC0D597F1CCEB436008565B5 /* Profile.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FC0D59801CCEB436008565B5 /* Base */,
+			);
+			name = Profile.storyboard;
+			sourceTree = "<group>";
+		};
+		FC0D59841CCEB479008565B5 /* Events.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FC0D59851CCEB479008565B5 /* Base */,
+			);
+			name = Events.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
