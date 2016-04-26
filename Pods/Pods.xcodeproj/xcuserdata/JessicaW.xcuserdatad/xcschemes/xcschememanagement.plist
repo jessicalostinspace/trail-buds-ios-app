@@ -6,43 +6,43 @@
 	<dict>
 		<key>Alamofire.xcscheme</key>
 		<dict>
-			<key>isShown</key>
-			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
 		</dict>
 		<key>Firebase.xcscheme</key>
 		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>FirebaseUI.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
+			<key>orderHint</key>
+			<integer>2</integer>
 		</dict>
 		<key>IQKeyboardManagerSwift.xcscheme</key>
 		<dict>
-			<key>isShown</key>
-			<false/>
+			<key>orderHint</key>
+			<integer>3</integer>
 		</dict>
 		<key>Pods-TrailBuds.xcscheme</key>
 		<dict>
-			<key>isShown</key>
-			<false/>
+			<key>orderHint</key>
+			<integer>4</integer>
 		</dict>
 		<key>SwiftyJSON.xcscheme</key>
 		<dict>
-			<key>isShown</key>
-			<false/>
+			<key>orderHint</key>
+			<integer>5</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
+		<key>295C695A479BC8C619E4B288C66E1E76</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>897F1DEB3CD66DDDFDF2299C024F3F49</key>
+		<key>78788C399A32163DE08788CE56768472</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -53,16 +53,6 @@
 			<true/>
 		</dict>
 		<key>E9B5C577F89B2F2EBCB51E034A136673</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>EB80B0F535A4551E25D5023A505DA6FA</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F25A39724C1F236915EF8279D2B63339</key>
 		<dict>
 			<key>primary</key>
 			<true/>

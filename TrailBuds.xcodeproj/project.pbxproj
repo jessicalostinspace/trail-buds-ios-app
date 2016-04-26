@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		53F247B3788AB02D7C3D8972 /* Pods_TrailBuds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F468B89A1B1ECAC15E65E0D3 /* Pods_TrailBuds.framework */; };
 		E620BE381C9B8FA70036F587 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E620BE371C9B8FA70036F587 /* AppDelegate.swift */; };
 		E620BE3A1C9B8FA70036F587 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E620BE391C9B8FA70036F587 /* LoginViewController.swift */; };
 		E620BE3D1C9B8FA70036F587 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E620BE3B1C9B8FA70036F587 /* Main.storyboard */; };
@@ -29,13 +30,11 @@
 		FCFE960C1C9BA98200728D13 /* SingleEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFE960B1C9BA98200728D13 /* SingleEventViewController.swift */; };
 		FCFE960E1C9BA99400728D13 /* AllEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFE960D1C9BA99400728D13 /* AllEventsViewController.swift */; };
 		FCFE96101C9BA9DF00728D13 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFE960F1C9BA9DF00728D13 /* MessagesViewController.swift */; };
-		FD4EAD33C703EDD440E4E53E /* Pods_TrailBuds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 303E060B7D6E0419B0F482DD /* Pods_TrailBuds.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		303E060B7D6E0419B0F482DD /* Pods_TrailBuds.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrailBuds.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		54E2F88E3F7990E0230F8D0F /* Pods-TrailBuds.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrailBuds.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrailBuds/Pods-TrailBuds.release.xcconfig"; sourceTree = "<group>"; };
-		9280CDC401616C2D1F9CEAEA /* Pods-TrailBuds.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrailBuds.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrailBuds/Pods-TrailBuds.debug.xcconfig"; sourceTree = "<group>"; };
+		B9D6094C8281204D0A7CA3CD /* Pods-TrailBuds.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrailBuds.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrailBuds/Pods-TrailBuds.release.xcconfig"; sourceTree = "<group>"; };
+		CAF9BDF27FD24A116CF14E0A /* Pods-TrailBuds.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrailBuds.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrailBuds/Pods-TrailBuds.debug.xcconfig"; sourceTree = "<group>"; };
 		E620BE341C9B8FA70036F587 /* TrailBuds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrailBuds.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E620BE371C9B8FA70036F587 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E620BE391C9B8FA70036F587 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +48,7 @@
 		E643BBD61C9CAC90003C9AA6 /* logOutProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = logOutProtocol.swift; sourceTree = "<group>"; };
 		E6A9132F1CA311BA001ED34D /* SearchResultsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsController.swift; sourceTree = "<group>"; };
 		E6B8D9001C9D0B0A00350228 /* allEventsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = allEventsCell.swift; sourceTree = "<group>"; };
+		F468B89A1B1ECAC15E65E0D3 /* Pods_TrailBuds.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrailBuds.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC0D59801CCEB436008565B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
 		FC0D59821CCEB44C008565B5 /* Messages.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Messages.storyboard; sourceTree = "<group>"; };
 		FC0D59851CCEB479008565B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Events.storyboard; sourceTree = "<group>"; };
@@ -70,28 +70,28 @@
 			files = (
 				E620BE4C1C9B8FFC0036F587 /* FBSDKLoginKit.framework in Frameworks */,
 				E620BE4B1C9B8FFC0036F587 /* FBSDKCoreKit.framework in Frameworks */,
-				FD4EAD33C703EDD440E4E53E /* Pods_TrailBuds.framework in Frameworks */,
+				53F247B3788AB02D7C3D8972 /* Pods_TrailBuds.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B1A1F23726D0ECE2564F1C3E /* Frameworks */ = {
+		4D17BB5A19BB996C3720A09F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				303E060B7D6E0419B0F482DD /* Pods_TrailBuds.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		DDFD4A5C68B7C4EC3FF39A63 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				9280CDC401616C2D1F9CEAEA /* Pods-TrailBuds.debug.xcconfig */,
-				54E2F88E3F7990E0230F8D0F /* Pods-TrailBuds.release.xcconfig */,
+				CAF9BDF27FD24A116CF14E0A /* Pods-TrailBuds.debug.xcconfig */,
+				B9D6094C8281204D0A7CA3CD /* Pods-TrailBuds.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		B83FE12E2DE879176E1D5764 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F468B89A1B1ECAC15E65E0D3 /* Pods_TrailBuds.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		E620BE2B1C9B8FA70036F587 = {
@@ -99,8 +99,8 @@
 			children = (
 				E620BE361C9B8FA70036F587 /* TrailBuds */,
 				E620BE351C9B8FA70036F587 /* Products */,
-				DDFD4A5C68B7C4EC3FF39A63 /* Pods */,
-				B1A1F23726D0ECE2564F1C3E /* Frameworks */,
+				4D17BB5A19BB996C3720A09F /* Pods */,
+				B83FE12E2DE879176E1D5764 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -166,12 +166,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E620BE461C9B8FA70036F587 /* Build configuration list for PBXNativeTarget "TrailBuds" */;
 			buildPhases = (
-				2B350C9DE7C39B310070506A /* Check Pods Manifest.lock */,
+				B386D081DD55F6636C51FE10 /* 📦 Check Pods Manifest.lock */,
 				E620BE301C9B8FA70036F587 /* Sources */,
 				E620BE311C9B8FA70036F587 /* Frameworks */,
 				E620BE321C9B8FA70036F587 /* Resources */,
-				7232B207150FC901A84D8A61 /* Embed Pods Frameworks */,
-				691CD8CD2CA91ABD0807D43B /* Copy Pods Resources */,
+				2DEFCCA9B78683ED5CC6E795 /* 📦 Embed Pods Frameworks */,
+				D958CED107140D7812FD4B40 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -234,14 +234,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2B350C9DE7C39B310070506A /* Check Pods Manifest.lock */ = {
+		2DEFCCA9B78683ED5CC6E795 /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TrailBuds/Pods-TrailBuds-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B386D081DD55F6636C51FE10 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,34 +264,19 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		691CD8CD2CA91ABD0807D43B /* Copy Pods Resources */ = {
+		D958CED107140D7812FD4B40 /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "📦 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TrailBuds/Pods-TrailBuds-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7232B207150FC901A84D8A61 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TrailBuds/Pods-TrailBuds-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -427,7 +427,7 @@
 		};
 		E620BE471C9B8FA70036F587 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9280CDC401616C2D1F9CEAEA /* Pods-TrailBuds.debug.xcconfig */;
+			baseConfigurationReference = CAF9BDF27FD24A116CF14E0A /* Pods-TrailBuds.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -451,7 +451,7 @@
 		};
 		E620BE481C9B8FA70036F587 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 54E2F88E3F7990E0230F8D0F /* Pods-TrailBuds.release.xcconfig */;
+			baseConfigurationReference = B9D6094C8281204D0A7CA3CD /* Pods-TrailBuds.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

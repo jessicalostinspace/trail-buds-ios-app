@@ -8,8 +8,16 @@
 
 import UIKit
 import Firebase
+import Alamofire
 
 class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, FBSDKLoginButtonDelegate {
+    
+    let email: String = ""
+    let firstName: String = ""
+    let lastName: String = ""
+    let birthday: String = ""
+    let gender: String = ""
+    let id: String = ""
     
     let prefs = NSUserDefaults.standardUserDefaults()
     
@@ -39,8 +47,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
+        
+        
         loginButton.delegate = self
         fetchProfile()
         
@@ -63,14 +71,14 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
     }
     
-//    override func viewWillAppear(animated: Bool) {
-//        super.viewWillAppear(true)
-//        
-//
-//        
-//    }
-//
-
+    //    override func viewWillAppear(animated: Bool) {
+    //        super.viewWillAppear(true)
+    //
+    //
+    //
+    //    }
+    //
+    
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         
@@ -88,14 +96,14 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-     
+        
         print("profile logout button pressed")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let LoginVC = storyboard.instantiateViewControllerWithIdentifier("LoginVC") as! LoginViewController
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.window?.rootViewController = LoginVC
         
-//        delegate?.logOut()
+        //        delegate?.logOut()
     }
     
     func loginButtonWillLogin(loginButton: FBSDKLoginButton!) -> Bool {
@@ -116,37 +124,39 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             let email = result["email"] as? String
             let firstName = result["first_name"] as? String
             let lastName = result["last_name"] as? String
-//            let location = result["location"] as? String
-//            let birthday = result["birthday"] as? String
-//            let gender = result["gender"] as? String
+            //            let birthday = result["birthday"] as? String
+            //            let gender = result["gender"] as? String
             let id = result["id"] as? String
             self.nameLabel.text = "\(firstName!) \(lastName!)"
-//            self.locationLabel.text = "\(location)"
-//            
+            //            self.locationLabel.text = "\(location)"
+            //
             var pictureUrl = ""
             
             if let picture = result["picture"] as? NSDictionary, data = picture["data"] as? NSDictionary, url = data["url"] as? String {
                 pictureUrl = url
             }
             
+            self.createUser(firstName!, lastName: lastName!, email: email!, id: id!, pictureUrl: pictureUrl)
+            
+            //=========================================================
+            //SAVING TO FIREBASE
+            
             // setting user_id variable
             self.prefs.setValue(id, forKey: "user_id")
             self.prefs.setValue(firstName, forKey: "user_name")
-            //=========================================================
-            //SAVING TO FIREBASE
             
             let userRef = self.ref.childByAppendingPath("users")
             
             let user = [ "firstName" : firstName!, "lastName" : lastName!, "email" : email!]
-
-//            let usersRef = userRef.childByAutoId()
+            
+            //            let usersRef = userRef.childByAutoId()
             
             userRef.childByAppendingPath(id).setValue(user)
-//            userRef.setValue(users)
-          
+            //            userRef.setValue(users)
             
-
             //=========================================================
+            
+            //Saving to Rails
             
             
             
@@ -159,9 +169,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 }
                 
                 let image = UIImage(data: data!)
-
+                
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.profilePicture.image = image
+                    self.profilePicture.image = image
                 })
                 
             }).resume()
@@ -175,7 +185,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
     }
     
-    
     // MARK: Table Views
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
@@ -183,8 +192,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         return 1
     }
     
-
-
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         
         let cell = upcomingHikesTableView.dequeueReusableCellWithIdentifier("upcomingHikesCell", forIndexPath: indexPath) as! UpcomingHikesTableViewCell
@@ -192,19 +199,32 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell
     }
     
-    
-    
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func createUser(firstName: String, lastName: String, email: String, id: String, pictureUrl: String){
+        
+        let parameters = [
+            "first_name": firstName,
+            "last_name": lastName,
+            "email": email,
+            "facebook_id": id,
+            "picture_url": pictureUrl,
+            ]
+        
+        print("yooooooooo")
+        
+        Alamofire.request(.POST, "https://trailbuds.org/users", parameters: parameters, encoding: .JSON)
+        
+        
     }
-    */
-
+    
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

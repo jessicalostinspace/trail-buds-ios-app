@@ -8,7 +8,6 @@ target 'TrailBuds' do
 	pod 'Alamofire'
 	pod 'SwiftyJSON'
 	pod 'GoogleMaps'
-	pod 'FirebaseUI/Core', '~> 0.3'
-	pod 'IQKeyboardManagerSwift'
+	pod 'IQKeyboardManagerSwift', '4.0.0'
 end
 
