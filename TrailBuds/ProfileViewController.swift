@@ -211,7 +211,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         print("yooooooooo")
         
-        Alamofire.request(.POST, "https://trailbuds.org/users", parameters: parameters, encoding: .JSON)
+        Alamofire.request(.POST, "http://trailbuds.org/users", parameters: parameters, encoding: .JSON)
         
         
     }
