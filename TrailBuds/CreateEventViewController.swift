@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import GoogleMaps
+import Alamofire
 
 class CreateEventViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UISearchBarDelegate, LocateOnTheMap {
     
@@ -183,6 +184,39 @@ class CreateEventViewController: UIViewController, UIPickerViewDelegate, UIPicke
         
         let eventsRef = eventRef.childByAutoId()
         eventsRef.setValue(event)
+        
+        // *********************************************************************
+        // *********************************************************************
+        // *********************************************************************
+        // *********************************************************************
+        // *********************************************************************
+        
+        // Adding to Rails
+        
+        let endPoint: String = "https://trailbuds.herokuapp.com/events"
+        
+        
+        let parameters = [
+            "trailName": trailNameTextField.text!,
+            "meetingLocation" : meetingLocationTextField.text!,
+            "hikeDistance" : hikeDistanceTextField.text!,
+            "elevationGain" : elevationGainTextField.text!,
+            "description" : descriptionTextField.text!,
+            "hikeLocation" : String(location!),
+            "latitude" : String(latitude!),
+            "longitude": String(longitude!),
+            "maxAttendees": String(self.maxAttendeesPickerDataFinal!),
+            "eventDate": strDate!,
+            "facebook_id" : String(user_id2!),
+        ]
+        
+        Alamofire.request(.POST, endPoint, parameters: parameters, encoding: .JSON)
+        
+        // *********************************************************************
+        // *********************************************************************
+        // *********************************************************************
+        // *********************************************************************
+        // *********************************************************************
         
         delegate?.goBack()
     }
