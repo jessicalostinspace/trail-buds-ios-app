@@ -71,7 +71,7 @@
                                                                 <rect key="frame" x="0.0" y="28" width="265" height="170"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mPw-4g-IKO" id="XIg-st-4FU">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="265" height="170"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="265" height="169.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="ceD-JO-Sx9">
@@ -139,7 +139,7 @@
                                                                 <rect key="frame" x="0.0" y="28" width="267" height="142"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="akM-X4-W9U" id="xPr-sm-IOh">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="267" height="142"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="267" height="141.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Yrm-by-avF">
