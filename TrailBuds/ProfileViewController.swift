@@ -137,6 +137,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 pictureUrl = url
             }
             
+            // SAVING TO RAILS
+            
             self.createUser(firstName!, lastName: lastName!, email: email!, id: id!, pictureUrl: pictureUrl)
             
             //=========================================================
@@ -212,7 +214,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         print("yooooooooo")
         
-        Alamofire.request(.POST, "https://trailbuds.org/users", parameters: parameters, encoding: .JSON)
+        let endPoint:String = "http://localhost:3000/users"
+        
+        Alamofire.request(.POST, endPoint, parameters: parameters, encoding: .JSON)
             .responseString { response in
                 // print response as string for debugging, testing, etc.
                 print(response.result.value)
@@ -226,6 +230,12 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 //        Alamofire.request(.POST, "https://trailbuds.org/show/\(id)", parameters: userDescription, encoding: .JSON)
         userDescription = descriptionTextField.text!
         print(userDescription)
+        
+        let parameters2 = [
+            "description": descriptionTextField.text!
+        ]
+        
+        Alamofire.request(.PATCH, "http://localhost:3000/users/\(id)", parameters: parameters2, encoding: .JSON)
         
     }
     
