@@ -71,7 +71,7 @@
                                                                 <rect key="frame" x="0.0" y="28" width="265" height="170"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mPw-4g-IKO" id="XIg-st-4FU">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="265" height="169.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="265" height="170"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="ceD-JO-Sx9">
@@ -139,7 +139,7 @@
                                                                 <rect key="frame" x="0.0" y="28" width="267" height="142"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="akM-X4-W9U" id="xPr-sm-IOh">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="267" height="141.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="267" height="142"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Yrm-by-avF">
@@ -193,7 +193,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="ZoI-az-DXi" userLabel="BoutMeStack View">
-                                        <rect key="frame" x="35" y="381" width="154" height="175"/>
+                                        <rect key="frame" x="35" y="381" width="154" height="149"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="About Me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggF-UA-DHA">
                                                 <rect key="frame" x="0.0" y="0.0" width="79" height="21"/>
@@ -201,15 +201,9 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u9d-Ca-wb3">
-                                                <rect key="frame" x="0.0" y="21" width="30" height="26"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                <state key="normal" title="Edit"/>
-                                            </button>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mbj-0J-NS4">
-                                                <rect key="frame" x="0.0" y="47" width="154" height="128"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" text="Enter a description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mbj-0J-NS4">
+                                                <rect key="frame" x="0.0" y="21" width="154" height="128"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
@@ -223,7 +217,7 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="messageButtonPressed:" destination="Dr9-A2-2gX" eventType="touchUpInside" id="mCU-SB-npc"/>
+                                            <action selector="messageButtonPressed:" destination="Dr9-A2-2gX" eventType="touchUpInside" id="ZnU-VD-c1Y"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -252,6 +246,7 @@
                     <size key="freeformSize" width="600" height="750"/>
                     <connections>
                         <outlet property="attendedHikesTableView" destination="aS2-TC-90Q" id="mFj-Tx-5ag"/>
+                        <outlet property="descriptionTextField" destination="mbj-0J-NS4" id="Iej-8j-e6L"/>
                         <outlet property="locationLabel" destination="obk-OS-zB8" id="8Sl-K5-BBx"/>
                         <outlet property="loginButton" destination="VB9-RZ-URI" id="6Fy-mO-igb"/>
                         <outlet property="nameLabel" destination="gSd-aM-Gzy" id="Nna-Je-lW4"/>

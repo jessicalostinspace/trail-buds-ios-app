@@ -10,14 +10,15 @@ import UIKit
 import Firebase
 import Alamofire
 
-class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, FBSDKLoginButtonDelegate {
+class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, FBSDKLoginButtonDelegate {
     
-    let email: String = ""
-    let firstName: String = ""
-    let lastName: String = ""
-    let birthday: String = ""
-    let gender: String = ""
-    let id: String = ""
+    var email: String = ""
+    var firstName: String = ""
+    var lastName: String = ""
+    var birthday: String = ""
+    var gender: String = ""
+    var id: String = ""
+    var userDescription: String = ""
     
     let prefs = NSUserDefaults.standardUserDefaults()
     
@@ -31,6 +32,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     //MARK: Attributes
     
+    @IBOutlet weak var descriptionTextField: UITextView!
     @IBOutlet weak var profileScrollView: UIScrollView!
     @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -42,12 +44,11 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var attendedHikesTableView: UITableView!
     
     @IBOutlet weak var loginButton: FBSDKLoginButton!
-    
+
     // MARK: ViewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         loginButton.delegate = self
         fetchProfile()
@@ -65,6 +66,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         attendedHikesTableView.delegate = self
         attendedHikesTableView.dataSource = self
         
+        descriptionTextField.delegate = self
         // initialize firebase ref
         ref = Firebase(url:"https://trailbuds.firebaseio.com/users")
         
@@ -103,7 +105,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.window?.rootViewController = LoginVC
         
-        //        delegate?.logOut()
     }
     
     func loginButtonWillLogin(loginButton: FBSDKLoginButton!) -> Bool {
@@ -211,11 +212,26 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         print("yooooooooo")
         
-        Alamofire.request(.POST, "http://trailbuds.org/users", parameters: parameters, encoding: .JSON)
-        
+        Alamofire.request(.POST, "https://trailbuds.org/users", parameters: parameters, encoding: .JSON)
+            .responseString { response in
+                // print response as string for debugging, testing, etc.
+                print(response.result.value)
+                print(response.result.error)
+        }
+    }
+    
+    // MARK: Text View Delegate Methods
+    
+    func textViewDidEndEditing(textView: UITextView){
+//        Alamofire.request(.POST, "https://trailbuds.org/show/\(id)", parameters: userDescription, encoding: .JSON)
+        userDescription = descriptionTextField.text!
+        print(userDescription)
         
     }
     
+    func textViewDidChange(textView: UITextView){
+        
+    }
     
     /*
      // MARK: - Navigation
