@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import Alamofire
+import SwiftyJSON
 
 class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, FBSDKLoginButtonDelegate {
     
@@ -70,17 +71,27 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         // initialize firebase ref
         ref = Firebase(url:"https://trailbuds.firebaseio.com/users")
         
+        getUserDescription()
         
     }
     
-    //    override func viewWillAppear(animated: Bool) {
-    //        super.viewWillAppear(true)
-    //
-    //
-    //
-    //    }
-    //
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+
+
+    }
     
+    func getUserDescription() {
+        Alamofire.request(.GET, "http://localhost:3000/users/\(facebook_id)").responseJSON { (response) -> Void in
+            print(response)
+            if let value = response.result.value {
+                let json = JSON(value)
+                
+                self.descriptionTextField.text = json[0]["description"].string!
+                
+            }
+        }
+    }
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         
