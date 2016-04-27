@@ -17,7 +17,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     var lastName: String = ""
     var birthday: String = ""
     var gender: String = ""
-    var id: String = ""
+    var facebook_id: String = ""
     var userDescription: String = ""
     
     let prefs = NSUserDefaults.standardUserDefaults()
@@ -131,6 +131,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             self.nameLabel.text = "\(firstName!) \(lastName!)"
             //            self.locationLabel.text = "\(location)"
             //
+            
+            self.facebook_id = id!
+            
             var pictureUrl = ""
             
             if let picture = result["picture"] as? NSDictionary, data = picture["data"] as? NSDictionary, url = data["url"] as? String {
@@ -235,7 +238,10 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             "description": descriptionTextField.text!
         ]
         
-        Alamofire.request(.PATCH, "http://localhost:3000/users/\(id)", parameters: parameters2, encoding: .JSON)
+        print("Id is\(facebook_id)")
+        let updateLink = "http://localhost:3000/users/\(facebook_id)"
+        print(updateLink)
+        Alamofire.request(.PATCH, updateLink, parameters: parameters2, encoding: .JSON)
         
     }
     

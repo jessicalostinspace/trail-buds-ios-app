@@ -194,7 +194,7 @@ class CreateEventViewController: UIViewController, UIPickerViewDelegate, UIPicke
         // Adding to Rails
         
         let endPoint: String = "https://trailbuds.herokuapp.com/events"
-        let endPoint2: String = "http://www.trailbuds.org/events"
+        let endPoint2: String = "http://trailbuds.org/events"
         let endPoint3: String = "http://localhost:3000/events"
         
         
@@ -212,7 +212,7 @@ class CreateEventViewController: UIViewController, UIPickerViewDelegate, UIPicke
             "facebook_id" : String(user_id2!),
         ]
         
-        Alamofire.request(.POST, endPoint3, parameters: parameters, encoding: .JSON)
+        Alamofire.request(.POST, endPoint2, parameters: parameters, encoding: .JSON)
         
         // *********************************************************************
         // *********************************************************************
