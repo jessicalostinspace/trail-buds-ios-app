@@ -17,7 +17,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     var lastName: String = ""
     var birthday: String = ""
     var gender: String = ""
-    var id: String = ""
+    var facebook_id: String = ""
     var userDescription: String = ""
     
     let prefs = NSUserDefaults.standardUserDefaults()
@@ -131,11 +131,16 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             self.nameLabel.text = "\(firstName!) \(lastName!)"
             //            self.locationLabel.text = "\(location)"
             //
+            
+            self.facebook_id = id!
+            
             var pictureUrl = ""
             
             if let picture = result["picture"] as? NSDictionary, data = picture["data"] as? NSDictionary, url = data["url"] as? String {
                 pictureUrl = url
             }
+            
+            // SAVING TO RAILS
             
             self.createUser(firstName!, lastName: lastName!, email: email!, id: id!, pictureUrl: pictureUrl)
             
@@ -212,7 +217,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         print("yooooooooo")
         
-        Alamofire.request(.POST, "https://trailbuds.org/users", parameters: parameters, encoding: .JSON)
+        let endPoint:String = "http://localhost:3000/users"
+        
+        Alamofire.request(.POST, endPoint, parameters: parameters, encoding: .JSON)
             .responseString { response in
                 // print response as string for debugging, testing, etc.
                 print(response.result.value)
@@ -226,6 +233,15 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 //        Alamofire.request(.POST, "https://trailbuds.org/show/\(id)", parameters: userDescription, encoding: .JSON)
         userDescription = descriptionTextField.text!
         print(userDescription)
+        
+        let parameters2 = [
+            "description": descriptionTextField.text!
+        ]
+        
+        print("Id is\(facebook_id)")
+        let updateLink = "http://localhost:3000/users/\(facebook_id)"
+        print(updateLink)
+        Alamofire.request(.PATCH, updateLink, parameters: parameters2, encoding: .JSON)
         
     }
     
