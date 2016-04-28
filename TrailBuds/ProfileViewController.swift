@@ -20,6 +20,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     var userInfo = [NSManagedObject]()
     var doesExist = false
     
+    // VARIABLES FOR FETCHING PROFILE FROM FACEBOOK
     var email: String = ""
     var firstName: String = ""
     var lastName: String = ""
@@ -28,13 +29,17 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     var facebook_id: String = ""
     var userDescription: String = ""
     
+    
+    // SETTING UP NSUserDefaults
     let prefs = NSUserDefaults.standardUserDefaults()
     
-    var ref: Firebase!
-    var events = [FDataSnapshot]()
+    
+    // SETTING UP FIREBASE
+//    var ref: Firebase!
+//    var events = [FDataSnapshot]()
     
     
-    //This is a test
+    
     var delegate: logOutProtocol?
     
     
@@ -75,8 +80,11 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         attendedHikesTableView.dataSource = self
         
         descriptionTextField.delegate = self
+        
+        
         // initialize firebase ref
-        ref = Firebase(url:"https://trailbuds.firebaseio.com/users")
+//        ref = Firebase(url:"https://trailbuds.firebaseio.com/users")
+        
         
         getUserDescription()
         
@@ -87,6 +95,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 
 
     }
+    
+    // THIS FUNCTION GETS THE DESCRIPTION FROM THE DATABASE AND CHANGES THE DESCRIPTION TEXT FIELD
+    // THIS FUNCTION IS CALLED IN VIEWDIDLOAD
     
     func getUserDescription() {
         Alamofire.request(.GET, "http://localhost:3000/users/\(facebook_id)").responseJSON { (response) -> Void in
@@ -154,8 +165,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             let id = result["id"] as? String
             self.nameLabel.text = "\(firstName!) \(lastName!)"
             //            self.locationLabel.text = "\(location)"
-            //
             
+            // Setting variable facebook_id
             self.facebook_id = id!
             
             var pictureUrl = ""
@@ -182,15 +193,19 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             self.prefs.setValue(id, forKey: "user_id")
             self.prefs.setValue(firstName, forKey: "user_name")
             
+            //======================================================
+            //======================================================
+            //======================================================
+            
             //SAVING TO FIREBASE
             
-            let userRef = self.ref.childByAppendingPath("users")
-            
-            let user = [ "firstName" : firstName!, "lastName" : lastName!, "email" : email!]
-            
-            //            let usersRef = userRef.childByAutoId()
-            
-            userRef.childByAppendingPath(id).setValue(user)
+//            let userRef = self.ref.childByAppendingPath("users")
+//            
+//            let user = [ "firstName" : firstName!, "lastName" : lastName!, "email" : email!]
+//            
+//            //            let usersRef = userRef.childByAutoId()
+//            
+//            userRef.childByAppendingPath(id).setValue(user)
             //            userRef.setValue(users)
             
             //======================================================
@@ -243,7 +258,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             print("********")
             print("********")
-            print(self.userInfo[1].valueForKey("facebook_id")!)
+            print(self.userInfo[0].valueForKey("facebook_id")!)
             print(self.userInfo.count)
             print("********")
             print("********")
