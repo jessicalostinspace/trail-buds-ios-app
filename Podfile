@@ -9,5 +9,6 @@ target 'TrailBuds' do
 	pod 'SwiftyJSON'
 	pod 'GoogleMaps'
 	pod 'IQKeyboardManagerSwift', '4.0.0'
+	pod 'JSQMessagesViewController'
 end
 

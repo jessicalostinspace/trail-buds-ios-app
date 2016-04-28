@@ -17,28 +17,90 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="105" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CNc-fQ-jvy">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="112" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CNc-fQ-jvy">
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" rowHeight="105" id="SC5-X4-ZTq">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="105"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" rowHeight="112" id="SC5-X4-ZTq" customClass="MessagesTableViewCell" customModule="TrailBuds" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="600" height="112"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SC5-X4-ZTq" id="92R-ia-gsC">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="104.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="111.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zDW-dI-uIP">
+                                                    <rect key="frame" x="27" y="11" width="95" height="89"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sender First Name + Last Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XYf-yL-EpK">
+                                                    <rect key="frame" x="130" y="11" width="303" height="21"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date of last sent message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CRw-JN-zz7">
+                                                    <rect key="frame" x="130" y="40" width="199" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="# Unread Messages" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Zf-Cf-B2L">
+                                                    <rect key="frame" x="130" y="69" width="153" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="CRw-JN-zz7" id="JKg-na-mAV"/>
+                                            <outlet property="senderNameLabel" destination="XYf-yL-EpK" id="3qL-Vc-KcD"/>
+                                            <outlet property="unreadNumberLabel" destination="8Zf-Cf-B2L" id="wSu-fV-ZHc"/>
+                                            <outlet property="userImage" destination="zDW-dI-uIP" id="hU7-iI-3AC"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CNc-fQ-jvy" firstAttribute="leading" secondItem="fxw-ex-g5U" secondAttribute="leading" id="9rd-hG-9CT"/>
+                            <constraint firstItem="CNc-fQ-jvy" firstAttribute="top" secondItem="ThM-Sf-TVD" secondAttribute="bottom" id="JMn-wF-59j"/>
+                            <constraint firstAttribute="trailing" secondItem="CNc-fQ-jvy" secondAttribute="trailing" id="fI2-0Z-dC0"/>
+                            <constraint firstItem="CNc-fQ-jvy" firstAttribute="bottom" secondItem="gZH-xc-ue3" secondAttribute="top" id="jJy-ww-w6b"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Messages" id="hKr-5d-sXF"/>
+                    <connections>
+                        <outlet property="messagesTableView" destination="CNc-fQ-jvy" id="mef-2z-InW"/>
+                        <segue destination="O8Y-Nz-bLP" kind="presentation" identifier="ChatSegue" id="WBQ-aS-ero"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xjN-YJ-d5u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="62" y="2294"/>
+        </scene>
+        <!--Chat View Controller-->
+        <scene sceneID="UMJ-sm-m3w">
+            <objects>
+                <viewController id="Aad-SH-CrN" customClass="ChatViewController" customModule="TrailBuds" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2pX-gc-bxJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="62S-jF-R03"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Jvg-BC-HSF">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="YNh-N7-O4Z">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="Qbl-C2-GcR">
+                            <color key="tintColor" red="1" green="0.3219392137" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ybc-Ku-bTl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1420" y="2294"/>
         </scene>
         <!--Messages-->
         <scene sceneID="G8E-VY-uKc">
@@ -62,6 +124,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tag-P0-OPH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="62" y="1583"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="DaM-rz-lPd">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="O8Y-Nz-bLP" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uZb-CZ-xXT">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.00097009191401013653" green="0.34164430758974373" blue="0.0015051859318772078" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Aad-SH-CrN" kind="relationship" relationship="rootViewController" id="z5l-po-OFb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SPN-6a-FZ9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="746" y="2294"/>
         </scene>
     </scenes>
     <resources>

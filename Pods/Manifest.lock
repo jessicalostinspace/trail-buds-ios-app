@@ -3,6 +3,9 @@ PODS:
   - Firebase (2.5.1)
   - GoogleMaps (1.12.3)
   - IQKeyboardManagerSwift (4.0.0)
+  - JSQMessagesViewController (7.2.0):
+    - JSQSystemSoundPlayer (~> 2.0.1)
+  - JSQSystemSoundPlayer (2.0.1)
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
@@ -10,6 +13,7 @@ DEPENDENCIES:
   - Firebase
   - GoogleMaps
   - IQKeyboardManagerSwift (= 4.0.0)
+  - JSQMessagesViewController
   - SwiftyJSON
 
 SPEC CHECKSUMS:
@@ -17,6 +21,10 @@ SPEC CHECKSUMS:
   Firebase: 3565ea88b830f28f2c77ecc524622bc71a20d085
   GoogleMaps: a4ac67918d0b5ba5f6b9893ac80487e357779e6c
   IQKeyboardManagerSwift: ede2a27b4e1ce053d03073b9c7fa439322f5e405
+  JSQMessagesViewController: 73cab48aa92fc2d512f3b6724f3425cc47a19eb5
+  JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: f438755b42fc769342dc150a8c27fd729df938f5
+
+COCOAPODS: 1.0.0.beta.8

@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "295C695A479BC8C619E4B288C66E1E76"
+               BlueprintIdentifier = "0B74D61F0FBEBA066BFD2F4B936FEE7C"
                BuildableName = "Pods_TrailBuds.framework"
                BlueprintName = "Pods-TrailBuds"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "295C695A479BC8C619E4B288C66E1E76"
+            BlueprintIdentifier = "0B74D61F0FBEBA066BFD2F4B936FEE7C"
             BuildableName = "Pods_TrailBuds.framework"
             BlueprintName = "Pods-TrailBuds"
             ReferencedContainer = "container:Pods.xcodeproj">
@@ -63,7 +63,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "295C695A479BC8C619E4B288C66E1E76"
+            BlueprintIdentifier = "0B74D61F0FBEBA066BFD2F4B936FEE7C"
             BuildableName = "Pods_TrailBuds.framework"
             BlueprintName = "Pods-TrailBuds"
             ReferencedContainer = "container:Pods.xcodeproj">
