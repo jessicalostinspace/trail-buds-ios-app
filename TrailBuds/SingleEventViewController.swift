@@ -49,36 +49,54 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("---------------------------")
-        print("---------------------------")
-        print(eventInfoReceivedFromAllEventsViewController!)
-        print(eventInfoReceivedFromAllEventsViewController!.value["hikeLocation"] as! String)
-        print(eventInfoReceivedFromAllEventsViewController!.value["createdBy"] as! String)
-        print(eventInfoReceivedFromAllEventsViewController!.value["description"] as! String)
-        print(eventInfoReceivedFromAllEventsViewController!.value["elevationGain"] as! String)
-        print(eventInfoReceivedFromAllEventsViewController!.value["hikeDistance"] as! String)
-        print(eventInfoReceivedFromAllEventsViewController!.value["trailName"] as! String)
-        print("---------------------------")
-        print("---------------------------")
+//        print("---------------------------")
+//        print("---------------------------")
+//        print(eventInfoReceivedFromAllEventsViewController!)
+//        print(eventInfoReceivedFromAllEventsViewController!.value["hikeLocation"] as! String)
+//        print(eventInfoReceivedFromAllEventsViewController!.value["createdBy"] as! String)
+//        print(eventInfoReceivedFromAllEventsViewController!.value["description"] as! String)
+//        print(eventInfoReceivedFromAllEventsViewController!.value["elevationGain"] as! String)
+//        print(eventInfoReceivedFromAllEventsViewController!.value["hikeDistance"] as! String)
+//        print(eventInfoReceivedFromAllEventsViewController!.value["trailName"] as! String)
+//        print("---------------------------")
+//        print("---------------------------")
         
-        trailNameLabel.text = eventInfoReceivedFromAllEventsViewController!.value["trailName"] as! String
-        locationLabel.text = "Location: \(eventInfoReceivedFromAllEventsViewController!.value["hikeLocation"] as! String)"
-        distanceLabel.text = "Distance: \(eventInfoReceivedFromAllEventsViewController!.value["hikeDistance"] as! String) miles"
-        elevationGainLabel.text = "Elevation Gain: \(eventInfoReceivedFromAllEventsViewController!.value["elevationGain"] as! String) feet"
-        hostNameLabel.text = "Host: \(eventInfoReceivedFromAllEventsViewController!.value["createdByName"] as! String)"
-        descriptionLabel.text = "Description: \(eventInfoReceivedFromAllEventsViewController!.value["description"] as! String)"
+//        trailNameLabel.text = eventInfoReceivedFromAllEventsViewController!.value["trailName"] as! String
+//        locationLabel.text = "Location: \(eventInfoReceivedFromAllEventsViewController!.value["hikeLocation"] as! String)"
+//        distanceLabel.text = "Distance: \(eventInfoReceivedFromAllEventsViewController!.value["hikeDistance"] as! String) miles"
+//        elevationGainLabel.text = "Elevation Gain: \(eventInfoReceivedFromAllEventsViewController!.value["elevationGain"] as! String) feet"
+//        hostNameLabel.text = "Host: \(eventInfoReceivedFromAllEventsViewController!.value["createdByName"] as! String)"
+//        descriptionLabel.text = "Description: \(eventInfoReceivedFromAllEventsViewController!.value["description"] as! String)"
         
         
         singleEventScrollView.contentSize.height = 1500
         
+        //==========================================
+        //==========================================
+        //==========================================
+        //==========================================
         
-        let latitudeAsDouble = eventInfoReceivedFromAllEventsViewController!.value["latitude"] as! Double
-        let longitudeAsDouble = eventInfoReceivedFromAllEventsViewController!.value["longitude"] as! Double
+        
+        trailNameLabel.text =  String(eventInfoReceivedFromAllEventsViewController![2])
+        locationLabel.text = String("Location: \(eventInfoReceivedFromAllEventsViewController![6])")
+        distanceLabel.text = String("Distance: \(eventInfoReceivedFromAllEventsViewController![4]) miles")
+        elevationGainLabel.text = String("Elevation Gain: \(eventInfoReceivedFromAllEventsViewController![5]) feet")
+        hostNameLabel.text = String("Host: \(eventInfoReceivedFromAllEventsViewController![10])")
+        descriptionLabel.text = String("Description: \(eventInfoReceivedFromAllEventsViewController![9])")
+        
+        
+        // Longitude and latitude comes back NSCFString. Needed to change to NSString, then to Double
+        
+        let latitudeString = eventInfoReceivedFromAllEventsViewController![7] as! String
+        let longitudeString = eventInfoReceivedFromAllEventsViewController![8] as! String
+        
+        let latitudeAsDouble = Double(latitudeString)
+        let longitudeAsDouble = Double(longitudeString)
 
 
         
-        let longitude = CLLocationDegrees(longitudeAsDouble)
-        let latitude = CLLocationDegrees(latitudeAsDouble)
+        let longitude = CLLocationDegrees(longitudeAsDouble!)
+        let latitude = CLLocationDegrees(latitudeAsDouble!)
 //
         let coordinate = CLLocationCoordinate2DMake(latitude, longitude)
         let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)

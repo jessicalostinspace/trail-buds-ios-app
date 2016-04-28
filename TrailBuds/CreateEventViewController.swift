@@ -212,7 +212,13 @@ class CreateEventViewController: UIViewController, UIPickerViewDelegate, UIPicke
             "facebook_id" : String(user_id2!),
         ]
         
-        Alamofire.request(.POST, endPoint3, parameters: parameters, encoding: .JSON)
+        print("*************")
+        print("*************")
+        print(user_id2!)
+        print("*************")
+        print("*************")
+        
+        Alamofire.request(.POST, endPoint2, parameters: parameters, encoding: .JSON)
         
         // *********************************************************************
         // *********************************************************************

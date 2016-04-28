@@ -100,12 +100,22 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     // THIS FUNCTION IS CALLED IN VIEWDIDLOAD
     
     func getUserDescription() {
-        Alamofire.request(.GET, "http://localhost:3000/users/\(facebook_id)").responseJSON { (response) -> Void in
+        
+        let getUserURL: String = "http://trailbuds.org/users/\(facebook_id)"
+        let getUserURL2: String = "http://localhost:3000/users/\(facebook_id)"
+        
+        Alamofire.request(.GET, getUserURL).responseJSON { (response) -> Void in
             print(response)
             if let value = response.result.value {
                 let json = JSON(value)
                 
-                self.descriptionTextField.text = json[0]["description"].string!
+                let description = json[0]["description"]
+                
+                if description == nil {
+                    self.descriptionTextField.text = "No description given"
+                } else {
+                    self.descriptionTextField.text = json[0]["description"].string!
+                }
                 
             }
         }
@@ -327,8 +337,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         print("yooooooooo")
         
         let endPoint:String = "http://localhost:3000/users"
+        let endPoint2:String = "http://trailbuds.org/users"
         
-        Alamofire.request(.POST, endPoint, parameters: parameters, encoding: .JSON)
+        Alamofire.request(.POST, endPoint2, parameters: parameters, encoding: .JSON)
             .responseString { response in
                 // print response as string for debugging, testing, etc.
 //                print(response.result.value)
@@ -349,8 +360,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         print("Id is\(facebook_id)")
         let updateLink = "http://localhost:3000/users/\(facebook_id)"
+        let updateLink2 = "http://trailbuds.org/users/\(facebook_id)"
         print(updateLink)
-        Alamofire.request(.PATCH, updateLink, parameters: parameters2, encoding: .JSON)
+        Alamofire.request(.PATCH, updateLink2, parameters: parameters2, encoding: .JSON)
         
     }
     

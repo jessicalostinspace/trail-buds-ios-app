@@ -16,6 +16,7 @@ class AllEventsViewController: UIViewController, UITableViewDelegate, UITableVie
     
     // MARK: Properties
     
+    // This array shows all the events and is what the table view pulls data from
     var allEvents = [NSArray]()
     
     // your firebase reference as a property
@@ -51,7 +52,12 @@ class AllEventsViewController: UIViewController, UITableViewDelegate, UITableVie
     // Gets all Events and pushes the categories trailNmae, hikeLocation, hikeDistance, and eventDate into the array allEvents
     
     func getAllEvents() {
-        Alamofire.request(.GET, "http://localhost:3000/eventsJSON").responseJSON { (response) -> Void in
+        
+        let eventsJSON:String = "http://localhost:3000/eventsJSON"
+        let eventsJSON2:String = "http://trailbuds.org/eventsJSON"
+        
+        allEvents = []
+        Alamofire.request(.GET, eventsJSON2).responseJSON { (response) -> Void in
             print(response)
             if let value = response.result.value {
                 let json = JSON(value)
@@ -64,6 +70,7 @@ class AllEventsViewController: UIViewController, UITableViewDelegate, UITableVie
                     
 //                    temporaryArray.append(subJson["name"].string!)
                     temporaryArray.append("Default name")
+                    
                     temporaryArray.append(subJson["trailName"].string!)
                     temporaryArray.append(subJson["meetingLocation"].string!)
                     temporaryArray.append(subJson["hikeDistance"].string!)
@@ -74,15 +81,19 @@ class AllEventsViewController: UIViewController, UITableViewDelegate, UITableVie
                     temporaryArray.append(subJson["description"].string!)
                     temporaryArray.append(String(subJson["user_id"].number!))
                     temporaryArray.append(subJson["maxAttendees"].string!)
-                    temporaryArray.append(subJson["eventDate"].string!)
+//                    temporaryArray.append(subJson["eventDate"].string!)
+                    temporaryArray.append("Default date")
+                    
                     temporaryArray.append(subJson["created_at"].string!)
                     temporaryArray.append(subJson["updated_at"].string!)
                     print(temporaryArray)
                     
                     self.allEvents.append(temporaryArray)
                     
+                    
                 }
             }
+            self.allEventsTableView.reloadData()
         }
     }
     
@@ -95,15 +106,16 @@ class AllEventsViewController: UIViewController, UITableViewDelegate, UITableVie
         // initialize firebase ref
         ref = Firebase(url:"https://trailbuds.firebaseio.com/events")
         
-        // GETTING ALL EVENTS FROM RAILS
-        getAllEvents()
     
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         
+        
         eventInfoPassedToSingleEventViewController = nil
+        
+        getAllEvents()
 
 //        self.dataSource = FirebaseTableViewDataSource(ref: self.ref,
 //                                                      prototypeReuseIdentifier: "allEventsCell",
@@ -156,6 +168,11 @@ class AllEventsViewController: UIViewController, UITableViewDelegate, UITableVie
 //        return events.count
         
         //Pulling from rails
+        print("==================")
+        print("==================")
+        print(allEvents.count)
+        print("==================")
+        print("==================")
         return allEvents.count
     }
     
@@ -220,9 +237,9 @@ class AllEventsViewController: UIViewController, UITableViewDelegate, UITableVie
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        eventInfoPassedToSingleEventViewController = events[indexPath.row]
+//        eventInfoPassedToSingleEventViewController = events[indexPath.row]
         
-//        eventInfoPassedToSingleEventViewController = allEvents[indexPath.row]
+        eventInfoPassedToSingleEventViewController = allEvents[indexPath.row]
         
         performSegueWithIdentifier("SingleEventSegue", sender: indexPath)
         
