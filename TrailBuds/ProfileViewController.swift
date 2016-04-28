@@ -10,8 +10,15 @@ import UIKit
 import Firebase
 import Alamofire
 import SwiftyJSON
+import CoreData
 
 class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, FBSDKLoginButtonDelegate {
+    
+    // CORE DATA- Facebook id added to core data in fetch profile function
+    let managedContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    let app = UIApplication.sharedApplication().delegate as! AppDelegate
+    var userInfo = [NSManagedObject]()
+    var doesExist = false
     
     var email: String = ""
     var firstName: String = ""
@@ -124,6 +131,12 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func fetchProfile(){
         
+        //======================================================
+        //======================================================
+        //======================================================
+        
+        // FETCHING DATA FROM FACEBOOK
+        
         let parameters = ["fields": "email, first_name, last_name, picture.type(large), gender, location, birthday"]
         FBSDKGraphRequest(graphPath: "me", parameters: parameters).startWithCompletionHandler { (connection, result, error) -> Void in
             if error != nil{
@@ -151,16 +164,25 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 pictureUrl = url
             }
             
+            //======================================================
+            //======================================================
+            //======================================================
+            
             // SAVING TO RAILS
             
             self.createUser(firstName!, lastName: lastName!, email: email!, id: id!, pictureUrl: pictureUrl)
             
-            //=========================================================
-            //SAVING TO FIREBASE
+            //======================================================
+            //======================================================
+            //======================================================
+            
+            //SAVING TO NSUSERDEFAULTS
             
             // setting user_id variable
             self.prefs.setValue(id, forKey: "user_id")
             self.prefs.setValue(firstName, forKey: "user_name")
+            
+            //SAVING TO FIREBASE
             
             let userRef = self.ref.childByAppendingPath("users")
             
@@ -171,12 +193,72 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             userRef.childByAppendingPath(id).setValue(user)
             //            userRef.setValue(users)
             
-            //=========================================================
+            //======================================================
+            //======================================================
+            //======================================================
+            
+            //SAVING TO CORE DATA
+            
+            // FETCHING ALL ENTRIES
+            
+            let fetchRequest = NSFetchRequest(entityName: "User")
+            
+            do {
+                let fetchedEntities =
+                    try self.managedContext.executeFetchRequest(fetchRequest)
+                self.userInfo = fetchedEntities as! [NSManagedObject]
+            } catch {
+                let nserror = error as NSError
+                print(nserror.userInfo)
+            }
+            
+            // LOOPING THROUGH ENTRIES, IF ENTRY IS EQUAL TO FACEBOOK_ID, SET BOOLEAN TO TRUE.
+            // IF BOOLEAN IS TRUE, DO NOTHING, ELSE STORE IN CORE DATA
+
+            for element in self.userInfo {
+                if element.valueForKey("facebook_id") as! String == self.facebook_id {
+                    self.doesExist = true
+                }
+            }
+
+            // IF BOOLEAN IS TRUE, DO NOTHING, ELSE STORE IN CORE DATA
+            
+            if self.doesExist == true {
+                print("********")
+                print("Data already stored")
+                print("********")
+            } else {
+                let entity = NSEntityDescription.entityForName("User", inManagedObjectContext: self.managedContext)
+                let instance = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: self.managedContext)
+                instance.setValue(self.facebook_id, forKey: "facebook_id")
+                
+                do {
+                    try self.managedContext.save()
+                    self.userInfo.append(instance)
+                    
+                } catch let error as NSError {
+                    print("error")
+                }
+            }
+            
+            print("********")
+            print("********")
+            print(self.userInfo[1].valueForKey("facebook_id")!)
+            print(self.userInfo.count)
+            print("********")
+            print("********")
+            
+            //======================================================
+            //======================================================
+            //======================================================
+            
+            
+            
             
             //Saving to Rails
             
             
-            
+
             
             let url = NSURL(string: pictureUrl)
             NSURLSession.sharedSession().dataTaskWithURL(url!, completionHandler: { (data, response, error) -> Void in
@@ -194,6 +276,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             }).resume()
             
         }
+        
     }
     
     
@@ -233,8 +316,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         Alamofire.request(.POST, endPoint, parameters: parameters, encoding: .JSON)
             .responseString { response in
                 // print response as string for debugging, testing, etc.
-                print(response.result.value)
-                print(response.result.error)
+//                print(response.result.value)
+//                print(response.result.error)
         }
     }
     
