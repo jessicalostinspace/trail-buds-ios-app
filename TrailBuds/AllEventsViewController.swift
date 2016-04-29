@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-import FirebaseUI
 
 class AllEventsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, goBackProtocol {
     
@@ -16,7 +15,6 @@ class AllEventsViewController: UIViewController, UITableViewDelegate, UITableVie
     
     // your firebase reference as a property
     var ref: Firebase!
-    var dataSource: FirebaseTableViewDataSource!
     var events = [FDataSnapshot]()
     var eventInfoPassedToSingleEventViewController: AnyObject?
     

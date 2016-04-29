@@ -11,6 +11,11 @@ import JSQMessagesViewController
 
 class ChatViewController: JSQMessagesViewController{
 
+    
+    @IBAction func backButtonPressed(sender: UIBarButtonItem) {
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

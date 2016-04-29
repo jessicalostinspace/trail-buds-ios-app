@@ -48,7 +48,7 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
             
 //            as! MessagesTableViewCell
         
-//        let endPoint:String = "http://localhost:3000/users"
+//        let endPoint:String = "http://localhost:3000/messages"
 //        
 //        let parameters = [
 //            "first_name": firstName,
@@ -109,7 +109,7 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         let navController = segue.destinationViewController as! UINavigationController
         let chatVc = navController.viewControllers.first as! ChatViewController
         chatVc.senderId = String(1)
-        chatVc.senderDisplayName = "" 
+        chatVc.senderDisplayName = "Jessica" 
     }
 
 }

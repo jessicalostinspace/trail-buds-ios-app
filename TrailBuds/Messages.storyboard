@@ -95,6 +95,9 @@
                     <navigationItem key="navigationItem" id="YNh-N7-O4Z">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="Qbl-C2-GcR">
                             <color key="tintColor" red="1" green="0.3219392137" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="backButtonPressed:" destination="Aad-SH-CrN" id="Jk5-ZP-HhN"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
