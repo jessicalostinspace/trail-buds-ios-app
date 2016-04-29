@@ -25,7 +25,7 @@
                                         <rect key="frame" x="0.0" y="92" width="600" height="112"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SC5-X4-ZTq" id="92R-ia-gsC">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="111.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="112"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zDW-dI-uIP">
@@ -97,11 +97,13 @@
                             <color key="tintColor" red="1" green="0.3219392137" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="backButtonPressed:" destination="Aad-SH-CrN" id="Jk5-ZP-HhN"/>
+                                <segue destination="F6p-MU-4v3" kind="unwind" unwindAction="unwindToMessageTableSegue:" id="Rcq-DS-Bul"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ybc-Ku-bTl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="F6p-MU-4v3" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1420" y="2294"/>
         </scene>

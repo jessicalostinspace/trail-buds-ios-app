@@ -155,11 +155,11 @@
 				FCFE96091C9B9A4000728D13 /* ProfileViewController.swift */,
 				FCFE960B1C9BA98200728D13 /* SingleEventViewController.swift */,
 				FCFE960D1C9BA99400728D13 /* AllEventsViewController.swift */,
-				FCFE960F1C9BA9DF00728D13 /* MessagesViewController.swift */,
 				FC474FBD1C9DC888003AB78D /* CreateEventViewController.swift */,
 				FC92E0651CA236660044A12C /* MapViewController.swift */,
 				E6A9132F1CA311BA001ED34D /* SearchResultsController.swift */,
 				E6B8D9001C9D0B0A00350228 /* allEventsCell.swift */,
+				FCFE960F1C9BA9DF00728D13 /* MessagesViewController.swift */,
 				FC2E56861CD166F600AA67ED /* ChatViewController.swift */,
 			);
 			name = "View Controllers";

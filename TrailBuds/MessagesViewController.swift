@@ -10,12 +10,16 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class MessagesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MessagesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     var messages = [String]()
     var senderName: String?
     var lastReceivedMessageTime: NSDate?
     var pictureUrl: String?
+    
+    @IBAction func unwindToMessageTableSegue(segue: UIStoryboardSegue){
+        messagesTableView.reloadData()
+    }
 
     @IBOutlet weak var messagesTableView: UITableView!
     
@@ -109,7 +113,12 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         let navController = segue.destinationViewController as! UINavigationController
         let chatVc = navController.viewControllers.first as! ChatViewController
         chatVc.senderId = String(1)
-        chatVc.senderDisplayName = "Jessica" 
+        chatVc.senderDisplayName = "Jessica"
+        
+        //SENDER ID AND DISPLAY NAME ARE CURRENT LOGGED IN USER
+        
     }
+    
+
 
 }
