@@ -77,18 +77,38 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="M2l-Cl-jFC">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                             </mapView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="SbW-SQ-8Ca">
+                                <rect key="frame" x="0.0" y="64" width="600" height="29"/>
+                                <color key="backgroundColor" red="0.64175577276755236" green="1" blue="0.73886834943306745" alpha="0.5086476293103448" colorSpace="calibratedRGB"/>
+                                <segments>
+                                    <segment title="Meeting Location"/>
+                                    <segment title="Hike Location"/>
+                                </segments>
+                                <color key="tintColor" red="0.1144914553" green="0.5" blue="0.09739612584" alpha="1" colorSpace="calibratedRGB"/>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="M2l-Cl-jFC" secondAttribute="trailing" constant="-20" id="6U5-J0-qwh"/>
                             <constraint firstItem="DEZ-OE-mkv" firstAttribute="top" secondItem="M2l-Cl-jFC" secondAttribute="bottom" id="FoE-1a-2oh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="SbW-SQ-8Ca" secondAttribute="trailing" constant="-20" id="NKo-hO-yiT"/>
                             <constraint firstItem="M2l-Cl-jFC" firstAttribute="leading" secondItem="bZc-0r-dIc" secondAttribute="leadingMargin" constant="-20" id="YEY-1g-hrb"/>
+                            <constraint firstItem="SbW-SQ-8Ca" firstAttribute="leading" secondItem="bZc-0r-dIc" secondAttribute="leadingMargin" constant="-20" id="kel-Vh-pFe"/>
                             <constraint firstItem="M2l-Cl-jFC" firstAttribute="top" secondItem="dC4-b5-bUG" secondAttribute="bottom" id="mep-oP-2Dc"/>
+                            <constraint firstItem="SbW-SQ-8Ca" firstAttribute="top" secondItem="dC4-b5-bUG" secondAttribute="bottom" id="sel-by-2YH"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="pia-o7-Ty0"/>
+                    <navigationItem key="navigationItem" id="pia-o7-Ty0">
+                        <barButtonItem key="rightBarButtonItem" title="Satellite" id="LfI-tx-ync">
+                            <color key="tintColor" red="1" green="0.3219392137" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="satelliteButtonPressed:" destination="Vtm-as-vFC" id="N35-G2-x4r"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="M2l-Cl-jFC" id="mn9-28-eSl"/>
+                        <outlet property="satelliteButton" destination="LfI-tx-ync" id="8pH-du-6jm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yDb-ku-qEr" userLabel="First Responder" sceneMemberID="firstResponder"/>

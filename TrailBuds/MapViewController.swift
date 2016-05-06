@@ -22,11 +22,33 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     var description1: AnyObject?
     let locationMgr = CLLocationManager()
     var mapRegion: MKCoordinateRegion?
+    var satelliteBool: Bool?
     
     @IBOutlet weak var mapView: MKMapView!
+    
+    
+    @IBOutlet weak var satelliteButton: UIBarButtonItem!
+    @IBAction func satelliteButtonPressed(sender: UIBarButtonItem) {
+        
+        
+        if satelliteBool == false{
+            mapView.mapType = .Satellite
+            satelliteButton.title = "Standard"
+            satelliteBool = true
+        }
+        else{
+            mapView.mapType = .Standard
+            satelliteButton.title = "Satellite"
+            satelliteBool = false
+        }
+        
+    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        satelliteBool = false;
         
         locationMgr.delegate = self
         locationMgr.requestWhenInUseAuthorization()
