@@ -86,11 +86,7 @@
                             <constraint firstItem="M2l-Cl-jFC" firstAttribute="top" secondItem="dC4-b5-bUG" secondAttribute="bottom" id="mep-oP-2Dc"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="pia-o7-Ty0">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="abW-Du-xOI">
-                            <color key="tintColor" red="1" green="0.3219392137" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="pia-o7-Ty0"/>
                     <connections>
                         <outlet property="mapView" destination="M2l-Cl-jFC" id="mn9-28-eSl"/>
                     </connections>

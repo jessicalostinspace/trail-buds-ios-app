@@ -99,7 +99,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         mapRegion = MKCoordinateRegion(center: userCenter, span: mapSpan)
         
         
-//        mapView.setRegion(mapRegion, animated: true)
+//        mapView.setRegion(mapRegion!, animated: true)
 //        locationMgr.stopUpdatingHeading()
     }
     

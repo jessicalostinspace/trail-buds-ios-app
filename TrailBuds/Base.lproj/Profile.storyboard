@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -18,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="750"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CJf-62-aBN">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CJf-62-aBN">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="750"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="mistyTrees" translatesAutoresizingMaskIntoConstraints="NO" id="uf2-hN-DLg">
@@ -71,7 +72,7 @@
                                                                 <rect key="frame" x="0.0" y="28" width="265" height="170"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mPw-4g-IKO" id="XIg-st-4FU">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="265" height="170"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="265" height="169.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="ceD-JO-Sx9">
@@ -139,7 +140,7 @@
                                                                 <rect key="frame" x="0.0" y="28" width="267" height="142"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="akM-X4-W9U" id="xPr-sm-IOh">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="267" height="142"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="267" height="141.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Yrm-by-avF">
@@ -221,11 +222,19 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="uf2-hN-DLg" firstAttribute="height" secondItem="CJf-62-aBN" secondAttribute="height" multiplier="0.25" id="X7W-py-Obz"/>
+                                </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="uf2-hN-DLg" firstAttribute="height" secondItem="RE6-C9-pXh" secondAttribute="height" multiplier="0.25" id="1SC-WE-xsn"/>
+                            <constraint firstItem="CJf-62-aBN" firstAttribute="leading" secondItem="RE6-C9-pXh" secondAttribute="leadingMargin" id="835-bB-Hko"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="CJf-62-aBN" secondAttribute="trailing" id="GmN-Zy-bUM"/>
+                            <constraint firstItem="CJf-62-aBN" firstAttribute="width" secondItem="RE6-C9-pXh" secondAttribute="width" id="Zbh-z0-tyz"/>
+                            <constraint firstItem="CJf-62-aBN" firstAttribute="height" secondItem="RE6-C9-pXh" secondAttribute="height" id="aU5-Qh-DQl"/>
+                            <constraint firstItem="CJf-62-aBN" firstAttribute="bottom" secondItem="RE6-C9-pXh" secondAttribute="bottomMargin" id="f9d-v3-15F"/>
+                            <constraint firstItem="CJf-62-aBN" firstAttribute="top" secondItem="RE6-C9-pXh" secondAttribute="topMargin" id="kzN-0U-WAd"/>
                             <constraint firstItem="uf2-hN-DLg" firstAttribute="width" secondItem="RE6-C9-pXh" secondAttribute="width" id="ohi-Pu-YKS"/>
                         </constraints>
                     </view>

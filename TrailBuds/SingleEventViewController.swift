@@ -8,6 +8,8 @@
 
 import UIKit
 import MapKit
+import SwiftyJSON
+import Alamofire
 
 class SingleEventViewController: UIViewController, MKMapViewDelegate{
     
@@ -69,7 +71,7 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate{
         descriptionLabel.text = "Description: \(eventInfoReceivedFromAllEventsViewController!.value["description"] as! String)"
         
         
-        singleEventScrollView.contentSize.height = 1500
+        singleEventScrollView.contentSize.height = 2000
         
         
         let latitudeAsDouble = eventInfoReceivedFromAllEventsViewController!.value["latitude"] as! Double
