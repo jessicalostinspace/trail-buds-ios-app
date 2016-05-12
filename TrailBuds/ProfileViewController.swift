@@ -9,9 +9,18 @@
 import UIKit
 import Firebase
 import Alamofire
+import SwiftyJSON
+import CoreData
 
 class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, FBSDKLoginButtonDelegate {
     
+    // CORE DATA- Facebook id added to core data in fetch profile function
+    let managedContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    let app = UIApplication.sharedApplication().delegate as! AppDelegate
+    var userInfo = [NSManagedObject]()
+    var doesExist = false
+    
+    // VARIABLES FOR FETCHING PROFILE FROM FACEBOOK
     var email: String = ""
     var firstName: String = ""
     var lastName: String = ""
@@ -20,8 +29,10 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     var facebook_id: String = ""
     var userDescription: String = ""
     
+    // SETTING UP NSUserDefaults
     let prefs = NSUserDefaults.standardUserDefaults()
     
+    // SETTING UP FIREBASE
     var ref: Firebase!
     var events = [FDataSnapshot]()
     
@@ -71,6 +82,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         ref = Firebase(url:"https://trailbuds.firebaseio.com/users")
         
         
+        // GETTING USER DESCRIPTION FROM RAILS
+        getUserDescription()
+        
     }
     
     //    override func viewWillAppear(animated: Bool) {
@@ -81,6 +95,31 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     //    }
     //
     
+    
+    // THIS FUNCTION GETS THE DESCRIPTION FROM THE DATABASE AND CHANGES THE DESCRIPTION TEXT FIELD
+    // THIS FUNCTION IS CALLED IN VIEWDIDLOAD
+    
+    func getUserDescription() {
+        
+        let getUserURL: String = "http://trailbuds.org/users/\(facebook_id)"
+        let getUserURL2: String = "http://localhost:3000/users/\(facebook_id)"
+        
+        Alamofire.request(.GET, getUserURL).responseJSON { (response) -> Void in
+            print(response)
+            if let value = response.result.value {
+                let json = JSON(value)
+                
+                let description = json[0]["description"]
+                
+                if description == nil {
+                    self.descriptionTextField.text = "No description given"
+                } else {
+                    self.descriptionTextField.text = json[0]["description"].string!
+                }
+                
+            }
+        }
+    }
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         
@@ -162,6 +201,66 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             //=========================================================
             
+            
+            //======================================================
+            //======================================================
+            //======================================================
+            
+            //SAVING TO CORE DATA
+            
+            // FETCHING ALL ENTRIES
+            
+            let fetchRequest = NSFetchRequest(entityName: "User")
+            
+            do {
+                let fetchedEntities =
+                    try self.managedContext.executeFetchRequest(fetchRequest)
+                self.userInfo = fetchedEntities as! [NSManagedObject]
+            } catch {
+                let nserror = error as NSError
+                print(nserror.userInfo)
+            }
+            
+            // LOOPING THROUGH ENTRIES, IF ENTRY IS EQUAL TO FACEBOOK_ID, SET BOOLEAN TO TRUE.
+            // IF BOOLEAN IS TRUE, DO NOTHING, ELSE STORE IN CORE DATA
+            
+            for element in self.userInfo {
+                if element.valueForKey("facebook_id") as! String == self.facebook_id {
+                    self.doesExist = true
+                }
+            }
+            
+            // IF BOOLEAN IS TRUE, DO NOTHING, ELSE STORE IN CORE DATA
+            
+            if self.doesExist == true {
+                print("********")
+                print("Data already stored")
+                print("********")
+            } else {
+                let entity = NSEntityDescription.entityForName("User", inManagedObjectContext: self.managedContext)
+                let instance = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: self.managedContext)
+                instance.setValue(self.facebook_id, forKey: "facebook_id")
+                
+                do {
+                    try self.managedContext.save()
+                    self.userInfo.append(instance)
+                    
+                } catch let error as NSError {
+                    print("error")
+                }
+            }
+            
+            print("********")
+            print("********")
+            print(self.userInfo[0].valueForKey("facebook_id")!)
+            print(self.userInfo.count)
+            print("********")
+            print("********")
+            
+            //======================================================
+            //======================================================
+            //======================================================
+            
             //Saving to Rails
             
             
@@ -218,8 +317,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         print("yooooooooo")
         
         let endPoint:String = "http://localhost:3000/users"
+        let endPoint2:String = "http://trailbuds.org/users"
         
-        Alamofire.request(.POST, endPoint, parameters: parameters, encoding: .JSON)
+        Alamofire.request(.POST, endPoint2, parameters: parameters, encoding: .JSON)
             .responseString { response in
                 // print response as string for debugging, testing, etc.
                 print(response.result.value)
@@ -240,8 +340,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         print("Id is\(facebook_id)")
         let updateLink = "http://localhost:3000/users/\(facebook_id)"
+        let updateLink2 = "http://trailbuds.org/users/\(facebook_id)"
         print(updateLink)
-        Alamofire.request(.PATCH, updateLink, parameters: parameters2, encoding: .JSON)
+        Alamofire.request(.PATCH, updateLink2, parameters: parameters2, encoding: .JSON)
         
     }
     
