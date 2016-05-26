@@ -101,6 +101,7 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate{
             forecastDescriptionLabel.text = "Forecast not available"
         }
 
+        getForecastIcon()
         
         trailNameLabel.text = eventInfo!.value["trailName"] as! String
         locationLabel.text = "Location: \(eventInfo!.value["hikeLocation"] as! String)"
@@ -156,7 +157,7 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate{
             case 4:
                 jsonDate = day5
             default:
-                jsonDate = day1
+//                jsonDate = day1
                 print("defaulted")
         }
         
@@ -178,7 +179,7 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate{
             if let value = response.result.value {
  
                 let json = JSON(value)
-                print(json)
+
                 // use SwiftyJSON
                 for (key,subJson):(String, JSON) in json {
                     
@@ -186,8 +187,6 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate{
 //                        let date = subJson[jsonDate]["dt_txt"].stringValue
                         jsonTemp = String(subJson[jsonDate]["main"]["temp"])
                         jsonWeather = subJson[jsonDate]["weather"][0]["description"].stringValue
-                        print(jsonTemp)
-                        print(jsonWeather)
                     }
                 }// End for loop
                 
@@ -195,12 +194,36 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate{
             
             let temp = Double(jsonTemp)
             self.temperature = temp! * (9/5) - 459.67
-            print(self.temperature)
             
             self.weather = jsonWeather
-            print(self.weather)
             
             self.forecastDescriptionLabel.text = "\(self.temperature!.format(".2"))°F  \(self.weather)"
+            
+            
+            switch self.weather {
+                
+                case "light rain":
+                    self.forecastIconImage.image = UIImage(named: "lightRain")
+                    print("got here")
+                case "clear sky":
+                    self.forecastIconImage.image = UIImage(named: "sunIcon")
+                case "scattered clouds":
+                    self.forecastIconImage.image = UIImage(named: "partlyCloudyIcon")
+                case "broken clouds":
+                    self.forecastIconImage.image = UIImage(named: "partlyCloudyIcon")
+                case "few clouds":
+                    self.forecastIconImage.image = UIImage(named: "partlyCloudyIcon")
+                case "overcast clouds":
+                    self.forecastIconImage.image = UIImage(named: "downpourIcon")
+                case "moderate rain":
+                    self.forecastIconImage.image = UIImage(named: "moderateRain")
+                case "light snow":
+                    self.forecastIconImage.image = UIImage(named: "snowflakeIcon")
+                default:
+                    print("defaulted icon image")
+                    self.forecastIconImage.image = UIImage(named: "partlyCloudyIcon")
+            }
+
             
         }// End API HTTP request
 
@@ -220,23 +243,7 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate{
     }
     
     func getForecastIcon(){
-        
-        switch weather {
-            case "light rain":
-                forecastIconImage.image = UIImage(named: "downpourIcon")
-            case "clear sky":
-                forecastIconImage.image = UIImage(named: "downpourIcon")
-            case "scattered clouds":
-                forecastIconImage.image = UIImage(named: "downpourIcon")
-            case "broken clouds":
-                forecastIconImage.image = UIImage(named: "downpourIcon")
-            case "few clouds":
-                forecastIconImage.image = UIImage(named: "downpourIcon")
-            case "overcast clouds":
-                forecastIconImage.image = UIImage(named: "downpourIcon")
-            default:
-                print("defaulted")
-       }
+        print(self.weather)
     }
 
     /*
