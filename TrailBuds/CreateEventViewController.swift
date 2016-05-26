@@ -122,44 +122,22 @@ class CreateEventViewController: UIViewController, UIPickerViewDelegate, UIPicke
         }
     }
     
-    //----------------------------
-    //----------------------------
-    
-    
-    
-    
     override func viewWillAppear(animated: Bool) {
-        
         // creating max attendees array
         for  i in 1...10{
             maxAttendeesPickerData += [i]
             print(maxAttendeesPickerData)
         }
-        
-
-        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         
         self.maxAttendeesPicker.delegate = self
         self.maxAttendeesPicker.dataSource = self
 
        createEventScrollView.contentSize.height = 669
         
-        
-//        trailNameTextField.delegate = self
-//        cityHikeLocationTextField.delegate = self
-//        stateHikeLocationTextField.delegate = self
-//        meetingLocationTextField.delegate = self
-//        hikeDistanceTextField.delegate = self
-//        elevationGainTextField.delegate = self
-//        maxAttendeesTextField.delegate = self
-//        descriptionTextField.delegate = self
-        //Looks for single or multiple taps.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
     }

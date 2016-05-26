@@ -32,7 +32,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         
         if satelliteBool == false{
-            mapView.mapType = .Satellite
+            mapView.mapType = .Hybrid
             satelliteButton.title = "Standard"
             satelliteBool = true
         }
