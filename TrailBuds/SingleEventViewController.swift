@@ -199,7 +199,6 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate{
             
             self.forecastDescriptionLabel.text = "\(self.temperature!.format(".2"))°F  \(self.weather)"
             
-            
             switch self.weather {
                 
                 case "light rain":
@@ -214,7 +213,7 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate{
                 case "few clouds":
                     self.forecastIconImage.image = UIImage(named: "partlyCloudyIcon")
                 case "overcast clouds":
-                    self.forecastIconImage.image = UIImage(named: "downpourIcon")
+                    self.forecastIconImage.image = UIImage(named: "overcast")
                 case "moderate rain":
                     self.forecastIconImage.image = UIImage(named: "moderateRain")
                 case "light snow":
