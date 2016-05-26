@@ -22,7 +22,7 @@ class AllEventsViewController: UIViewController, UITableViewDelegate, UITableVie
     // your firebase reference as a property
     var ref: Firebase!
     var events = [FDataSnapshot]()
-    var eventInfoPassedToSingleEventViewController: AnyObject?
+    var eventInfo: AnyObject?
     
     var hikeLocation: String?
     
@@ -57,7 +57,7 @@ class AllEventsViewController: UIViewController, UITableViewDelegate, UITableVie
         let eventsJSON2:String = "http://trailbuds.org/eventsJSON"
         
         allEvents = []
-        Alamofire.request(.GET, eventsJSON2).responseJSON { (response) -> Void in
+        Alamofire.request(.GET, eventsJSON).responseJSON { (response) -> Void in
             print(response)
             if let value = response.result.value {
                 let json = JSON(value)
@@ -81,8 +81,8 @@ class AllEventsViewController: UIViewController, UITableViewDelegate, UITableVie
                     temporaryArray.append(subJson["description"].string!)
                     temporaryArray.append(String(subJson["user_id"].number!))
                     temporaryArray.append(subJson["maxAttendees"].string!)
-                    //                    temporaryArray.append(subJson["eventDate"].string!)
-                    temporaryArray.append("Default date")
+                    temporaryArray.append(subJson["eventDate"].string!)
+//                    temporaryArray.append("Default date")
                     
                     temporaryArray.append(subJson["created_at"].string!)
                     temporaryArray.append(subJson["updated_at"].string!)
@@ -104,6 +104,8 @@ class AllEventsViewController: UIViewController, UITableViewDelegate, UITableVie
         allEventsTableView.delegate = self
         allEventsTableView.dataSource = self
         
+        getAllEvents()
+        
         // initialize firebase ref
         ref = Firebase(url:"https://trailbuds.firebaseio.com/events")
     
@@ -112,29 +114,8 @@ class AllEventsViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         
-        eventInfoPassedToSingleEventViewController = nil
+        eventInfo = nil
 
-//        self.dataSource = FirebaseTableViewDataSource(ref: self.ref,
-//                                                      prototypeReuseIdentifier: "allEventsCell",
-//                                                      view: self.allEventsTableView)
-//        
-//        
-//        self.dataSource.populateCellWithBlock { (cell: UITableViewCell, obj: NSObject) -> Void in
-//            
-//            let snap = obj as! FDataSnapshot
-//            
-//            print(cell)
-//            
-//            
-//            let eventCell =  cell as! allEventsCell
-//            
-////            print(snap.value.objectForKey("hikeLocation"))
-//            eventCell.eventNameLabel.text = "hey"
-////            eventCell.eventNameLabel?.text = String(snap.value.objectForKey("hikeLocation")!)
-//
-//        }
-//        
-//        self.allEventsTableView.dataSource = self.dataSource
         
          //listen for update with the .Value event
         ref.observeEventType(.Value) { (snapshot: FDataSnapshot!) in
@@ -163,7 +144,13 @@ class AllEventsViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         //change this to .count
 //        return events.count
-        
+        print("=============")
+        print("=============")
+        print("=============")
+        print(allEvents.count)
+        print("=============")
+        print("=============")
+        print("=============")
         return allEvents.count
     }
     
@@ -218,17 +205,19 @@ class AllEventsViewController: UIViewController, UITableViewDelegate, UITableVie
         if segue.identifier == "SingleEventSegue"{
             let navController = segue.destinationViewController as! UINavigationController
             let controller = navController.topViewController as! SingleEventViewController
-            controller.delegate = self
-            controller.eventInfoReceivedFromAllEventsViewController
-                = eventInfoPassedToSingleEventViewController!
+            controller.delegate? = self
+            controller.eventInfo
+                = eventInfo!
         }
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-//        eventInfoPassedToSingleEventViewController = events[indexPath.row]
-        
-        eventInfoPassedToSingleEventViewController = allEvents[indexPath.row]
+
+
+
+        eventInfo = allEvents[indexPath.row]
+
         
         performSegueWithIdentifier("SingleEventSegue", sender: indexPath)
         
