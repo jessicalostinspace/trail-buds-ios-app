@@ -98,7 +98,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             annotation.title = trailName2
             
             self.mapView.addAnnotation(annotation)
-            self.mapView.setRegion(self.mapRegion!, animated: true)
+//            self.mapView.setRegion(self.mapRegion!, animated: true)
             //end pinpointing every location on a map
         })
     
@@ -121,7 +121,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         mapRegion = MKCoordinateRegion(center: userCenter, span: mapSpan)
         
         
-//        mapView.setRegion(mapRegion!, animated: true)
+        mapView.setRegion(mapRegion!, animated: true)
 //        locationMgr.stopUpdatingHeading()
     }
     
