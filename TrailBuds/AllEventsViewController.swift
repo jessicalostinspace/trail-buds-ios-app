@@ -8,10 +8,16 @@
 
 import UIKit
 import Firebase
+import Alamofire
+import SwiftyJSON
 
 class AllEventsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, goBackProtocol {
     
     // MARK: Properties
+    
+    // This array shows all the events and is what the table view pulls data from
+    var allEvents = [NSArray]()
+    
     
     // your firebase reference as a property
     var ref: Firebase!
@@ -43,11 +49,62 @@ class AllEventsViewController: UIViewController, UITableViewDelegate, UITableVie
     
     
     
+    // Gets all Events and pushes the categories trailNmae, hikeLocation, hikeDistance, and eventDate into the array allEvents
+    
+    func getAllEvents() {
+        
+        let eventsJSON:String = "http://localhost:3000/eventsJSON"
+        let eventsJSON2:String = "http://trailbuds.org/eventsJSON"
+        
+        allEvents = []
+        Alamofire.request(.GET, eventsJSON).responseJSON { (response) -> Void in
+            print(response)
+            if let value = response.result.value {
+                let json = JSON(value)
+                
+                for (index,subJson):(String, JSON) in json {
+                    
+                    var temporaryArray = [String]()
+                    
+                    temporaryArray.append(String(subJson["id"].number!))
+                    
+                    //                    temporaryArray.append(subJson["name"].string!)
+                    temporaryArray.append("Default name")
+                    
+                    temporaryArray.append(subJson["trailName"].string!)
+                    temporaryArray.append(subJson["meetingLocation"].string!)
+                    temporaryArray.append(subJson["hikeDistance"].string!)
+                    temporaryArray.append(subJson["elevationGain"].string!)
+                    temporaryArray.append(subJson["hikeLocation"].string!)
+                    temporaryArray.append(subJson["latitude"].string!)
+                    temporaryArray.append(subJson["longitude"].string!)
+                    temporaryArray.append(subJson["description"].string!)
+                    temporaryArray.append(String(subJson["user_id"].number!))
+                    temporaryArray.append(subJson["maxAttendees"].string!)
+                    temporaryArray.append(subJson["eventDate"].string!)
+//                    temporaryArray.append("Default date")
+                    
+                    temporaryArray.append(subJson["created_at"].string!)
+                    temporaryArray.append(subJson["updated_at"].string!)
+                    print(temporaryArray)
+                    
+                    self.allEvents.append(temporaryArray)
+                    
+                    
+                }
+            }
+            self.allEventsTableView.reloadData()
+        }
+    }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         allEventsTableView.delegate = self
         allEventsTableView.dataSource = self
+        
+        getAllEvents()
         
         // initialize firebase ref
         ref = Firebase(url:"https://trailbuds.firebaseio.com/events")
@@ -86,7 +143,15 @@ class AllEventsViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         //change this to .count
-        return events.count
+//        return events.count
+        print("=============")
+        print("=============")
+        print("=============")
+        print(allEvents.count)
+        print("=============")
+        print("=============")
+        print("=============")
+        return allEvents.count
     }
     
     
@@ -96,17 +161,29 @@ class AllEventsViewController: UIViewController, UITableViewDelegate, UITableVie
         let cell = tableView.dequeueReusableCellWithIdentifier("allEventsCell", forIndexPath: indexPath) as! allEventsCell
 //        cell.allEventsImage.image =//something
         
-        let eventInfo = events[indexPath.row]
-        
-        var hikeDistance = eventInfo.value["hikeDistance"] as! String
-        var eventDate = eventInfo.value["eventDate"] as! String
-
-        cell.eventNameLabel!.text = eventInfo.value["trailName"] as! String
-        cell.locationLabel!.text = eventInfo.value["hikeLocation"] as! String
-        cell.lengthOfHikeLabel!.text = ("\(hikeDistance) miles")
-        cell.eventDateTimeLabel!.text = eventDate
+//        let eventInfo = events[indexPath.row]
+//        
+//        var hikeDistance = eventInfo.value["hikeDistance"] as! String
+//        var eventDate = eventInfo.value["eventDate"] as! String
+//
+//        cell.eventNameLabel!.text = eventInfo.value["trailName"] as! String
+//        cell.locationLabel!.text = eventInfo.value["hikeLocation"] as! String
+//        cell.lengthOfHikeLabel!.text = ("\(hikeDistance) miles")
+//        cell.eventDateTimeLabel!.text = eventDate
       
+        // Pulling from Rails
+        let eventInfo = allEvents[indexPath.row]
         
+        print("=================")
+        print("=================")
+        print(eventInfo)
+        print("=================")
+        print("=================")
+        
+        cell.eventNameLabel!.text = String(eventInfo[2])
+        cell.locationLabel!.text = String(eventInfo[6])
+        cell.lengthOfHikeLabel!.text = String("Length: \(eventInfo[4]) miles")
+        cell.eventDateTimeLabel!.text = String(eventInfo[12])
         
         return cell
     }
@@ -136,7 +213,11 @@ class AllEventsViewController: UIViewController, UITableViewDelegate, UITableVie
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        eventInfo = events[indexPath.row]
+
+
+
+        eventInfo = allEvents[indexPath.row]
+
         
         performSegueWithIdentifier("SingleEventSegue", sender: indexPath)
         

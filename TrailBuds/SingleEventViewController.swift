@@ -74,50 +74,36 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate{
         
         singleEventScrollView.contentSize.height = 2000
         
-        print("---------------------------")
-        print("---------------------------")
-        print(eventInfo!)
-        print("Event date: \(eventInfo!.value["eventDate"])")
-        print(eventInfo!.value["eventDate"] as! String)
-        print(eventInfo!.value["hikeLocation"] as! String)
-        print(eventInfo!.value["createdBy"] as! String)
-        print(eventInfo!.value["description"] as! String)
-        print(eventInfo!.value["elevationGain"] as! String)
-        print(eventInfo!.value["hikeDistance"] as! String)
-        print(eventInfo!.value["trailName"] as! String)
-        print("---------------------------")
-        print("---------------------------")
-        
-        
-        getDateDifference()
-        
-        if numberOfDaysUntilEvent <= 5 {
-            getForecast(numberOfDaysUntilEvent)
-            print("finished Getting Forecast")
-            print(self.temperature)
-            print(self.weather)
-        }
-        else {
-            forecastDescriptionLabel.text = "Forecast not available"
-        }
-
-        getForecastIcon()
-        
-        trailNameLabel.text = eventInfo!.value["trailName"] as! String
-        locationLabel.text = "Location: \(eventInfo!.value["hikeLocation"] as! String)"
-        distanceLabel.text = "Distance: \(eventInfo!.value["hikeDistance"] as! String) miles"
-        elevationGainLabel.text = "Elevation Gain: \(eventInfo!.value["elevationGain"] as! String) feet"
-        hostNameLabel.text = "Host: \(eventInfo!.value["createdByName"] as! String)"
-        descriptionLabel.text = "Description: \(eventInfo!.value["description"] as! String)"
-        
-        
-        let latitudeAsDouble = eventInfo!.value["latitude"] as! Double
-        let longitudeAsDouble = eventInfo!.value["longitude"] as! Double
+//        getDateDifference()
+//        
+//        if numberOfDaysUntilEvent <= 5 {
+//            getForecast(numberOfDaysUntilEvent)
+//            print("finished Getting Forecast")
+//            print(self.temperature)
+//            print(self.weather)
+//        }
+//        else {
+//            forecastDescriptionLabel.text = "Forecast not available"
+//        }
+//
+//        getForecastIcon()
+    
+        trailNameLabel.text =  String(eventInfo![2])
+        locationLabel.text = String("Location: \(eventInfo![6])")
+        distanceLabel.text = String("Distance: \(eventInfo![4]) miles")
+        elevationGainLabel.text = String("Elevation Gain: \(eventInfo![5]) feet")
+        hostNameLabel.text = String("Host: \(eventInfo![10])")
+        descriptionLabel.text = String("Description: \(eventInfo![9])")
 
 
+        let latitudeString = eventInfo![7] as! String
+        let longitudeString = eventInfo![8] as! String
         
-        let longitude = CLLocationDegrees(longitudeAsDouble)
-        let latitude = CLLocationDegrees(latitudeAsDouble)
+        let latitudeAsDouble = Double(latitudeString)
+        let longitudeAsDouble = Double(longitudeString)
+
+        let longitude = CLLocationDegrees(longitudeAsDouble!)
+        let latitude = CLLocationDegrees(latitudeAsDouble!)
 
         let coordinate = CLLocationCoordinate2DMake(latitude, longitude)
         let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
@@ -232,6 +218,7 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate{
     func getDateDifference(){
         
         convertedEventDate = eventInfo!.value["eventDate"] as! String
+        
         dateFormatter.dateFormat = "MM-dd-yyyy HH:mm"
         eventDate = dateFormatter.dateFromString(convertedEventDate)
         
