@@ -13,15 +13,10 @@ class HikesAttendedTableViewCell: UITableViewCell {
     //MARK: Attributes
     
     @IBOutlet weak var hikesAttendedTrailNameButton: UIButton!
-
     @IBOutlet weak var hikesAttendedDateLabel: UILabel!
-    
     @IBOutlet weak var hikesAttendedLocationLabel: UILabel!
-    
     @IBOutlet weak var hikesAttendedDistanceLabel: UILabel!
-    
     @IBOutlet weak var hikesAttendedElevationGainLabel: UILabel!
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()

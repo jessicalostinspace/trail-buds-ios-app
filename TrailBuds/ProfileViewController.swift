@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 import Alamofire
 import SwiftyJSON
 import CoreData
@@ -32,17 +31,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     // SETTING UP NSUserDefaults
     let prefs = NSUserDefaults.standardUserDefaults()
     
-    // SETTING UP FIREBASE
-    var ref: Firebase!
-    var events = [FDataSnapshot]()
-    
-    
-    //This is a test
-    var delegate: logOutProtocol?
-    
-    
     //MARK: Attributes
-    
     @IBOutlet weak var descriptionTextField: UITextView!
     @IBOutlet weak var profileScrollView: UIScrollView!
     @IBOutlet weak var profilePicture: UIImageView!
@@ -78,34 +67,20 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         attendedHikesTableView.dataSource = self
         
         descriptionTextField.delegate = self
-        // initialize firebase ref
-        ref = Firebase(url:"https://trailbuds.firebaseio.com/users")
-        
-        
+
         // GETTING USER DESCRIPTION FROM RAILS
         getUserDescription()
         
     }
     
-    //    override func viewWillAppear(animated: Bool) {
-    //        super.viewWillAppear(true)
-    //
-    //
-    //
-    //    }
-    //
-    
-    
     // THIS FUNCTION GETS THE DESCRIPTION FROM THE DATABASE AND CHANGES THE DESCRIPTION TEXT FIELD
     // THIS FUNCTION IS CALLED IN VIEWDIDLOAD
-    
     func getUserDescription() {
         
         let getUserURL: String = "http://trailbuds.org/users/\(facebook_id)"
         let getUserURL2: String = "http://localhost:3000/users/\(facebook_id)"
         
         Alamofire.request(.GET, getUserURL).responseJSON { (response) -> Void in
-            print(response)
             if let value = response.result.value {
                 let json = JSON(value)
                 
@@ -125,6 +100,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         if ((error) != nil) {
             // Process error
+            print(error)
         }
         else if result.isCancelled {
             // Handle cancellations
@@ -179,33 +155,17 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 pictureUrl = url
             }
             
+            //=========================================================
             // SAVING TO RAILS
             
             self.createUser(firstName!, lastName: lastName!, email: email!, id: id!, pictureUrl: pictureUrl)
             
             //=========================================================
-            //SAVING TO FIREBASE
-            
-            // setting user_id variable
+            // Saving facebook id and username to NSUserDefaults
             self.prefs.setValue(id, forKey: "user_id")
             self.prefs.setValue(firstName, forKey: "user_name")
-            
-            let userRef = self.ref.childByAppendingPath("users")
-            
-            let user = [ "firstName" : firstName!, "lastName" : lastName!, "email" : email!]
-            
-            //            let usersRef = userRef.childByAutoId()
-            
-            userRef.childByAppendingPath(id).setValue(user)
-            //            userRef.setValue(users)
-            
+
             //=========================================================
-            
-            
-            //======================================================
-            //======================================================
-            //======================================================
-            
             //SAVING TO CORE DATA
             
             // FETCHING ALL ENTRIES
@@ -223,7 +183,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             // LOOPING THROUGH ENTRIES, IF ENTRY IS EQUAL TO FACEBOOK_ID, SET BOOLEAN TO TRUE.
             // IF BOOLEAN IS TRUE, DO NOTHING, ELSE STORE IN CORE DATA
-            
             for element in self.userInfo {
                 if element.valueForKey("facebook_id") as! String == self.facebook_id {
                     self.doesExist = true
@@ -231,7 +190,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
             
             // IF BOOLEAN IS TRUE, DO NOTHING, ELSE STORE IN CORE DATA
-            
             if self.doesExist == true {
                 print("********")
                 print("Data already stored")
@@ -249,22 +207,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                     print("error")
                 }
             }
-            
-            print("********")
-            print("********")
-            print(self.userInfo[0].valueForKey("facebook_id")!)
-            print(self.userInfo.count)
-            print("********")
-            print("********")
-            
-            //======================================================
-            //======================================================
-            //======================================================
-            
-            //Saving to Rails
-            
-            
-            
             
             let url = NSURL(string: pictureUrl)
             NSURLSession.sharedSession().dataTaskWithURL(url!, completionHandler: { (data, response, error) -> Void in
@@ -286,7 +228,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     @IBAction func messageButtonPressed(sender: UIButton) {
-        
         
     }
     
@@ -314,12 +255,10 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             "picture_url": pictureUrl,
             ]
         
-        print("yooooooooo")
-        
         let endPoint:String = "http://localhost:3000/users"
-        let endPoint2:String = "http://trailbuds.org/users"
+//        let endPoint2:String = "http://trailbuds.org/users"
         
-        Alamofire.request(.POST, endPoint2, parameters: parameters, encoding: .JSON)
+        Alamofire.request(.POST, endPoint, parameters: parameters, encoding: .JSON)
             .responseString { response in
                 // print response as string for debugging, testing, etc.
                 print(response.result.value)
@@ -330,20 +269,21 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     // MARK: Text View Delegate Methods
     
     func textViewDidEndEditing(textView: UITextView){
-//        Alamofire.request(.POST, "https://trailbuds.org/show/\(id)", parameters: userDescription, encoding: .JSON)
-        userDescription = descriptionTextField.text!
-        print(userDescription)
         
-        let parameters2 = [
+        userDescription = descriptionTextField.text!
+        
+        let updateParameters = [
             "description": descriptionTextField.text!
         ]
         
-        print("Id is\(facebook_id)")
         let updateLink = "http://localhost:3000/users/\(facebook_id)"
-        let updateLink2 = "http://trailbuds.org/users/\(facebook_id)"
-        print(updateLink)
-        Alamofire.request(.PATCH, updateLink2, parameters: parameters2, encoding: .JSON)
-        
+        //        let updateLink2 = "http://trailbuds.org/users/\(facebook_id)"
+        Alamofire.request(.PATCH, updateLink, parameters: updateParameters, encoding: .JSON)
+            .responseString { response in
+                // print response as string for debugging, testing, etc.
+                print(response.result.error)
+                
+        }
     }
     
     func textViewDidChange(textView: UITextView){

@@ -8,10 +8,6 @@
 
 import Foundation
 
-protocol logOutProtocol: class{
-    func logOut()
-}
-
 protocol goBackProtocol: class{
     func goBack()
 }

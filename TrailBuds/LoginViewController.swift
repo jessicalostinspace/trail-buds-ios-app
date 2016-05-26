@@ -7,29 +7,15 @@
 //
 
 import UIKit
-import Firebase
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
-    
-//    let loginButton: FBSDKLoginButton = {
-//        let button = FBSDKLoginButton()
-//        button.readPermissions = ["email"]
-//        return button
-//    }()
-    
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         
-//        view.addSubview(loginButton)
-//        
-//        loginButton.center = view.center
-//        loginButton.delegate = self
-        
         if let token = FBSDKAccessToken.currentAccessToken() {
  
-//            self.loginButton.hidden = true
-//            self.performSegueWithIdentifier("loginSegue", sender: nil)
+
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let tabBarController = storyboard.instantiateViewControllerWithIdentifier("profileTabBarController") as! UITabBarController
             let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -38,23 +24,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         
     }
     
-    //Prepare for segue
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        print("preparing for segue")
-//        if segue.identifier == "loginSegue"{
-//            let tabbarController = segue.destinationViewController as! UITabBarController
-//            let navController = tabbarController.viewControllers?[0] as! UINavigationController
-//            let controller = navController.topViewController as! ProfileViewController
-//            controller.delegate = self
-//        }
-//        
-//    }
-    
-//    func logOut() {
-//        dismissViewControllerAnimated(true, completion: nil)
-//    }
-
-    
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         print("This function will hit after loginButtonWillLogin function")
         
@@ -62,9 +31,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         let tabBarController = storyboard.instantiateViewControllerWithIdentifier("profileTabBarController") as! UITabBarController
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.window?.rootViewController = tabBarController
-        
-//        performSegueWithIdentifier("loginSegue", sender: nil)
-//        
         
     }
     

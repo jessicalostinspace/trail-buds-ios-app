@@ -22,8 +22,8 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate{
     var day4 = 27
     var day5 = 36
     
-    var latitude = ""
-    var longitude = ""
+    var latitudeString = ""
+    var longitudeString = ""
     var temperature: Double?
     var weather = ""
     
@@ -67,37 +67,33 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate{
     @IBOutlet weak var singleEventScrollView: UIScrollView!
     @IBOutlet weak var mapView: MKMapView!
     
-   
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         singleEventScrollView.contentSize.height = 2000
         
-//        getDateDifference()
-//        
-//        if numberOfDaysUntilEvent <= 5 {
-//            getForecast(numberOfDaysUntilEvent)
-//            print("finished Getting Forecast")
-//            print(self.temperature)
-//            print(self.weather)
-//        }
-//        else {
-//            forecastDescriptionLabel.text = "Forecast not available"
-//        }
-//
-//        getForecastIcon()
-    
+        // NEED TO CHANGE HARD CODED VALUES TO KEY VALUE PAIRS
         trailNameLabel.text =  String(eventInfo![2])
         locationLabel.text = String("Location: \(eventInfo![6])")
         distanceLabel.text = String("Distance: \(eventInfo![4]) miles")
         elevationGainLabel.text = String("Elevation Gain: \(eventInfo![5]) feet")
         hostNameLabel.text = String("Host: \(eventInfo![10])")
         descriptionLabel.text = String("Description: \(eventInfo![9])")
-
-
-        let latitudeString = eventInfo![7] as! String
-        let longitudeString = eventInfo![8] as! String
+        
+        latitudeString = eventInfo![7] as! String
+        longitudeString = eventInfo![8] as! String
+        
+        getDateDifference()
+        
+        if numberOfDaysUntilEvent <= 4 {
+            getForecast(numberOfDaysUntilEvent)
+            print("finished Getting Forecast")
+            print(self.temperature)
+            print(self.weather)
+        }
+        else {
+            forecastDescriptionLabel.text = "Forecast not available"
+        }
         
         let latitudeAsDouble = Double(latitudeString)
         let longitudeAsDouble = Double(longitudeString)
@@ -143,24 +139,13 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate{
             case 4:
                 jsonDate = day5
             default:
-//                jsonDate = day1
                 print("defaulted")
         }
-        
-        
-        let latitude1 = eventInfo!.value["latitude"] as! Double
-        
-        latitude = String(latitude1)
-        print(latitude)
-        
-        let longitude1 = eventInfo!.value["longitude"] as! Double
-        longitude = String(longitude1)
-
      
         var jsonTemp: String = ""
         var jsonWeather: String = ""
         
-        Alamofire.request(.GET, "http://api.openweathermap.org/data/2.5/forecast?lat=\(latitude)&lon=\(longitude)&&APPID=76d4052376f230c0876c8022a090ecde").responseJSON { (response) -> Void in
+        Alamofire.request(.GET, "http://api.openweathermap.org/data/2.5/forecast?lat=\(latitudeString)&lon=\(longitudeString)&&APPID=76d4052376f230c0876c8022a090ecde").responseJSON { (response) -> Void in
             
             if let value = response.result.value {
  
@@ -179,8 +164,8 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate{
             }//End if response
             
             let temp = Double(jsonTemp)
-            self.temperature = temp! * (9/5) - 459.67
             
+            self.temperature = temp! * (9/5) - 459.67
             self.weather = jsonWeather
             
             self.forecastDescriptionLabel.text = "\(self.temperature!.format(".2"))°F  \(self.weather)"
@@ -208,7 +193,6 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate{
                     print("defaulted icon image")
                     self.forecastIconImage.image = UIImage(named: "partlyCloudyIcon")
             }
-
             
         }// End API HTTP request
 
@@ -216,8 +200,7 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate{
     
     func getDateDifference(){
         
-        convertedEventDate = eventInfo!.value["eventDate"] as! String
-        
+        convertedEventDate = eventInfo![12] as! String
         dateFormatter.dateFormat = "MM-dd-yyyy HH:mm"
         eventDate = dateFormatter.dateFromString(convertedEventDate)
         
@@ -226,10 +209,6 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate{
 //        print("The difference between dates is: \(diffDateComponents.year) years, \(diffDateComponents.month) months, \(diffDateComponents.day) days, \(diffDateComponents.hour) hours, \(diffDateComponents.minute) minutes, \(diffDateComponents.second) seconds")
         
         numberOfDaysUntilEvent = diffDateComponents.day
-    }
-    
-    func getForecastIcon(){
-        print(self.weather)
     }
 
     /*
