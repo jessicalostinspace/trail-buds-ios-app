@@ -29,8 +29,6 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         messagesTableView.delegate = self
         messagesTableView.dataSource = self
 
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,25 +66,6 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
 //                print(response.result.value)
 //                print(response.result.error)
 //        }
-//        
-//        
-//        
-//        
-//        let url = NSURL(string: pictureUrl)
-//        NSURLSession.sharedSession().dataTaskWithURL(url!, completionHandler: { (data, response, error) -> Void in
-//            if error != nil {
-//                print(error)
-//                return
-//            }
-//            
-//            let image = UIImage(data: data!)
-//            
-//            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                cell.imageView.image = image
-//            })
-//            
-//        }).resume()
-//        
         
 //        cell.imageView.image =
         cell.senderNameLabel!.text = "Jessica Wilson"
