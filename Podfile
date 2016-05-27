@@ -4,7 +4,6 @@
 use_frameworks!
 
 target 'TrailBuds' do
-	pod 'Firebase'
 	pod 'Alamofire'
 	pod 'SwiftyJSON'
 	pod 'GoogleMaps'
