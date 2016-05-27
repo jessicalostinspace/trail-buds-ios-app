@@ -49,6 +49,36 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         locationMgr.desiredAccuracy = kCLLocationAccuracyBest
         locationMgr.startUpdatingLocation()
         
+        let eventsJSON:String = "http://localhost:3000/eventsJSON"
+        
+        Alamofire.request(.GET, eventsJSON).responseJSON { (response) -> Void in
+            print(response)
+            if let value = response.result.value {
+                let json = JSON(value)
+                
+                for (index,subJson):(String, JSON) in json {
+
+                    let latitudeString = subJson["latitude"].string!
+                    let longitudeString = subJson["longitude"].string!
+                    
+                    let latitudeDouble = Double(latitudeString)
+                    let longitudeDouble = Double(longitudeString)
+
+                    let coordinate = CLLocationCoordinate2DMake(latitudeDouble!, longitudeDouble!)
+                    
+                    let annotation = MKPointAnnotation()
+                    annotation.coordinate = coordinate
+                    
+                    annotation.subtitle = subJson["eventDate"].string!
+                    annotation.title = subJson["trailName"].string!
+                    
+                    self.mapView.addAnnotation(annotation)
+                    
+                }
+            }
+        }
+
+        
 //            let latitude2 = self.latitude1 as! Double
 //            let longitude2 = self.longitude1 as! Double
 //            let trailName2 = self.trailName1 as! String
