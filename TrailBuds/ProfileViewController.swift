@@ -163,7 +163,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             //=========================================================
             // Saving facebook id and username to NSUserDefaults
             self.prefs.setValue(id, forKey: "user_id")
-            self.prefs.setValue(firstName, forKey: "user_name")
+            self.prefs.setValue(firstName, forKey: "first_name")
+            self.prefs.setValue(lastName, forKey: "last_name")
 
             //=========================================================
             //SAVING TO CORE DATA

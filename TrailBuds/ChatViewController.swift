@@ -63,7 +63,7 @@ class ChatViewController: JSQMessagesViewController{
         outgoingBubbleImageView = factory.outgoingMessagesBubbleImageWithColor(
             UIColor.jsq_messageBubbleBlueColor())
         incomingBubbleImageView = factory.incomingMessagesBubbleImageWithColor(
-            UIColor.jsq_messageBubbleGreenColor())
+            UIColor.jsq_messageBubbleLightGrayColor())
     }
     
     override func collectionView(collectionView: JSQMessagesCollectionView!,
@@ -101,11 +101,29 @@ class ChatViewController: JSQMessagesViewController{
 
     
     func addMessage(id: String, text: String) {
-        let message = JSQMessage(senderId: id, displayName: "", text: text)
+        let message = JSQMessage(senderId: id, displayName: senderDisplayName, text: text)
         messages.append(message)
+        // animates the receiving of a new message on the view
+        finishReceivingMessage()
     }
 
 
+    override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!,
+                                     senderDisplayName: String!, date: NSDate!) {
+        
+//        let itemRef = messageRef.childByAutoId() // 1
+        let messageItem = [ // 2
+            "text": text,
+            "senderId": senderId
+        ]
+//        itemRef.setValue(messageItem) // 3
+        
+        // 4
+        JSQSystemSoundPlayer.jsq_playMessageSentSound()
+        
+        // 5
+        finishSendingMessage()
+    }
     /*
     // MARK: - Navigation
 

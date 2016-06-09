@@ -73,16 +73,16 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate{
         singleEventScrollView.contentSize.height = 2000
         
         // NEED TO CHANGE HARD CODED VALUES TO KEY VALUE PAIRS
-        trailNameLabel.text =  String(eventInfo![2])
-        locationLabel.text = String("Location: \(eventInfo![6])")
-        distanceLabel.text = String("Distance: \(eventInfo![4]) miles")
-        elevationGainLabel.text = String("Elevation Gain: \(eventInfo![5]) feet")
-        hostNameLabel.text = String("Host: \(eventInfo![10])")
-        descriptionLabel.text = String("Description: \(eventInfo![9])")
-        
-        latitudeString = eventInfo![7] as! String
-        longitudeString = eventInfo![8] as! String
-        
+//        trailNameLabel.text =  String(eventInfo![2])
+//        locationLabel.text = String("Location: \(eventInfo![6])")
+//        distanceLabel.text = String("Distance: \(eventInfo![4]) miles")
+//        elevationGainLabel.text = String("Elevation Gain: \(eventInfo![5]) feet")
+//        hostNameLabel.text = String("Host: \(eventInfo![10])")
+//        descriptionLabel.text = String("Description: \(eventInfo![9])")
+//        
+//        latitudeString = eventInfo![7] as! String
+//        longitudeString = eventInfo![8] as! String
+//        
         getDateDifference()
         
         if numberOfDaysUntilEvent <= 4 {
@@ -200,7 +200,7 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate{
     
     func getDateDifference(){
         
-        convertedEventDate = eventInfo![12] as! String
+//        convertedEventDate = eventInfo![12] as! String
         dateFormatter.dateFormat = "MM-dd-yyyy HH:mm"
         eventDate = dateFormatter.dateFromString(convertedEventDate)
         
