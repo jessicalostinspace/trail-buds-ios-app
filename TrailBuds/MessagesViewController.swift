@@ -12,13 +12,14 @@ import SwiftyJSON
 
 class MessagesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
-    var messages = [String]()
+    var messages = [JSON]()
     var senderName: String?
     var lastReceivedMessageTime: NSDate?
     var pictureUrl: String?
     var firstName: String?
     var lastName: String?
     var userID: String?
+    var senderID: String?
     
     @IBAction func unwindToMessageTableSegue(segue: UIStoryboardSegue){
         messagesTableView.reloadData()
@@ -54,25 +55,10 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("MessageCell", forIndexPath: indexPath) as! MessagesTableViewCell
-        
-        //            as! MessagesTableViewCell
-        
-        //        let endPoint:String = "http://localhost:3000/messages"
-        //
-        //        let parameters = [
-        //            "first_name": firstName,
-        //            "last_name": lastName,
-        //            "email": email,
-        //            "facebook_id": id,
-        //            "picture_url": pictureUrl,
-        //            ]
-        //
-        //        Alamofire.request(.GET, endPoint, parameters: parameters, encoding: .JSON)
-        //            .responseString { response in
-        //                // print response as string for debugging, testing, etc.
-        //                print(response.result.value)
-        //                print(response.result.error)
-        //        }
+//        
+//        let messagesArray = messages[0][indexPath.row]
+//        
+//        print(messagesArray)
         
         //        cell.imageView.image =
         cell.senderNameLabel!.text = "Jessica Wilson"
@@ -131,34 +117,21 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     
     func getMessages() {
         
-        // Setting API key once for whole session
-        let manager = Alamofire.Manager.sharedInstance
-        let headers = ["Accept": "text/plain"]
+        var msgArray = []
+        
         let urlString = "http://localhost:3000/messages/\(userID!)"
         
-        manager.request(.GET, urlString, headers: headers).responseJSON{ response in
-            print("got here")
+        Alamofire.request(.GET, urlString).responseJSON { (response) -> Void in
+            print(response)
             if let value = response.result.value {
                 
                 let json = JSON(value)
-                print(json)
                 print("---------------------------------")
-                
-                // use SwiftyJSON
-                //                for (index,subJson):(String, JSON) in json {
-                //
-                //                    if let latitude = subJson["latitude"].double{
-                //
-                //                        let latitude = subJson["latitude"].double
-                //                        print(latitude)
+                self.messages.append(json)
+
             }
+            
         }
         
     }
-    
-    
-    
 }
-
-
-
