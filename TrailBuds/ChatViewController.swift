@@ -8,6 +8,8 @@
 
 import UIKit
 import JSQMessagesViewController
+import Alamofire
+import SwiftyJSON
 
 class ChatViewController: JSQMessagesViewController{
     
@@ -15,6 +17,10 @@ class ChatViewController: JSQMessagesViewController{
     var messages = [JSQMessage]()
     var outgoingBubbleImageView: JSQMessagesBubbleImage!
     var incomingBubbleImageView: JSQMessagesBubbleImage!
+    //receiver id is fbID of senderName below
+    var receiverID: String?
+    //Sender here is not logged in user
+    var senderName: String?
     
     @IBAction func backButtonPressed(sender: UIBarButtonItem) {
         performSegueWithIdentifier("unwindToMessageTableSegue", sender: nil)
@@ -23,7 +29,7 @@ class ChatViewController: JSQMessagesViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Chat with Jessica"
+        title = "Chat with \(senderName!)"
         setupBubbles()
         
         // Add avatars
@@ -34,13 +40,9 @@ class ChatViewController: JSQMessagesViewController{
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        // messages from someone else
-        addMessage("foo", text: "Hey person!")
-        // messages sent from local sender
-        addMessage(senderId, text: "Yo!")
-        addMessage(senderId, text: "I like turtles!")
-        // animates the receiving of a new message on the view
-        finishReceivingMessage()
+        
+        getMessages()
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -111,18 +113,53 @@ class ChatViewController: JSQMessagesViewController{
     override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!,
                                      senderDisplayName: String!, date: NSDate!) {
         
-//        let itemRef = messageRef.childByAutoId() // 1
-        let messageItem = [ // 2
-            "text": text,
-            "senderId": senderId
-        ]
-//        itemRef.setValue(messageItem) // 3
+        //SAVING message to rails database
+        let parameters = [
+            "content": text,
+            "sender_id": String(senderId),
+            "receiver_id": receiverID!,
+            "event_id": " ",
+            ]
         
-        // 4
+        let urlString = "http://localhost:3000/messages"
+        
+        Alamofire.request(.POST, urlString, parameters: parameters, encoding: .JSON)
+            .responseString { response in
+                // print response as string for debugging, testing, etc.
+                print(response.result.error)
+        }
+
         JSQSystemSoundPlayer.jsq_playMessageSentSound()
         
-        // 5
+        //Reset input to empty
         finishSendingMessage()
+
+    }
+    
+    private func getMessages() {
+        
+        //ReceiverID here is the person not logged in but the person that user clicked on message table view
+        let urlString = "http://localhost:3000/chat/\(senderId)/\(receiverID!)"
+      
+        Alamofire.request(.GET, urlString).responseJSON { (response) -> Void in
+            
+            if let value = response.result.value {
+                
+                let json = JSON(value)
+                
+                // use SwiftyJSON
+                for (index,subJson):(String, JSON) in json {
+                    
+                    print(subJson)
+                    
+                    //sender_id here needs to be sender_fb id not sender_id
+                    self.addMessage(String(subJson["sender_id"]), text: String(subJson["content"]))
+                    
+                }
+            }
+
+            self.finishReceivingMessage()
+        }
     }
     /*
     // MARK: - Navigation
