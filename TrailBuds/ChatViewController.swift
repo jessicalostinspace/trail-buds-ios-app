@@ -42,9 +42,9 @@ class ChatViewController: JSQMessagesViewController{
         super.viewDidAppear(animated)
         
         getMessages()
-
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -59,7 +59,7 @@ class ChatViewController: JSQMessagesViewController{
                                  numberOfItemsInSection section: Int) -> Int {
         return messages.count
     }
-
+    
     private func setupBubbles() {
         let factory = JSQMessagesBubbleImageFactory()
         outgoingBubbleImageView = factory.outgoingMessagesBubbleImageWithColor(
@@ -100,7 +100,7 @@ class ChatViewController: JSQMessagesViewController{
         
         return cell
     }
-
+    
     
     func addMessage(id: String, text: String) {
         let message = JSQMessage(senderId: id, displayName: senderDisplayName, text: text)
@@ -108,17 +108,19 @@ class ChatViewController: JSQMessagesViewController{
         // animates the receiving of a new message on the view
         finishReceivingMessage()
     }
-
-
+    
+    
     override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!,
                                      senderDisplayName: String!, date: NSDate!) {
         
         //SAVING message to rails database
+        //receiver_id is logged in user
         let parameters = [
             "content": text,
             "sender_id": String(senderId),
             "receiver_id": receiverID!,
             "event_id": " ",
+            "sender_facebook_id": String(senderId),
             ]
         
         let urlString = "http://localhost:3000/messages"
@@ -126,49 +128,53 @@ class ChatViewController: JSQMessagesViewController{
         Alamofire.request(.POST, urlString, parameters: parameters, encoding: .JSON)
             .responseString { response in
                 // print response as string for debugging, testing, etc.
+                
                 print(response.result.error)
         }
-
+        
         JSQSystemSoundPlayer.jsq_playMessageSentSound()
         
+        messages = []
+        getMessages()
         //Reset input to empty
         finishSendingMessage()
-
+        
     }
     
     private func getMessages() {
         
         //ReceiverID here is the person not logged in but the person that user clicked on message table view
         let urlString = "http://localhost:3000/chat/\(senderId)/\(receiverID!)"
-      
+        
         Alamofire.request(.GET, urlString).responseJSON { (response) -> Void in
-            
-            if let value = response.result.value {
-                
-                let json = JSON(value)
-                
-                // use SwiftyJSON
-                for (index,subJson):(String, JSON) in json {
+            switch response.result {
+            case .Success:
+                if let value = response.result.value {
+                    let json = JSON(value)
                     
-                    print(subJson)
-                    
-                    //sender_id here needs to be sender_fb id not sender_id
-                    self.addMessage(String(subJson["sender_id"]), text: String(subJson["content"]))
-                    
+                    // use SwiftyJSON
+                    for (index,subJson):(String, JSON) in json {
+                        
+                        print(subJson)
+                        //sender_id here needs to be sender_fb id not sender_id
+                        self.addMessage(String(subJson["sender_facebook_id"]), text: String(subJson["content"]))
+                    }
+                    self.finishReceivingMessage()
                 }
+            case .Failure(let error):
+                print(error)
             }
-
-            self.finishReceivingMessage()
         }
+
     }
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
