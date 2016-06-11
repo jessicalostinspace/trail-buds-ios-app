@@ -15,6 +15,7 @@ class allEventsCell: UITableViewCell {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var lengthOfHikeLabel: UILabel!
     @IBOutlet weak var eventDateTimeLabel: UILabel!
+    @IBOutlet weak var elevationGainLabel: UILabel!
     
 //    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
 //        super.init(style: style, reuseIdentifier: reuseIdentifier)

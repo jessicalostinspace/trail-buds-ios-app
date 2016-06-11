@@ -76,7 +76,7 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let message = messages[indexPath.row]
-        var delimiter = ","
+        let delimiter = ","
         var token = message.componentsSeparatedByString(delimiter)
         
         //Saving receiverID to let chatViewController who user is about to chat with
@@ -122,7 +122,7 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         return self.userID!
     }
     
-    func getMessages() {
+    private func getMessages() {
         
         let urlString = "http://localhost:3000/messages/\(userID!)"
         
@@ -135,15 +135,15 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
                 
                 // use SwiftyJSON
                 for (index,subJson):(String, JSON) in json {
-//                    print(subJson)
 
-                    self.messages.append(subJson[0]["first_name"].stringValue + " " + subJson[0]["last_name"].stringValue + "," + subJson[0]["picture_url"].stringValue + "," + subJson[0]["facebook_id"].stringValue)
-
+                    self.messages.append(
+                        subJson[0]["first_name"].stringValue + " " +
+                        subJson[0]["last_name"].stringValue + "," +
+                        subJson[0]["picture_url"].stringValue + "," +
+                        subJson[0]["facebook_id"].stringValue)
                 }
             }
-            
             self.messagesTableView.reloadData()
         }
     }
-
 }

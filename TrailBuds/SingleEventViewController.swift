@@ -36,7 +36,7 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate{
     var dateAsString: String = ""
     
     var delegate: goBackProtocol?
-    var eventInfo: AnyObject?
+    var event: AnyObject?
     
     @IBOutlet weak var eventMainImage: UIImageView!
     @IBOutlet weak var trailNameLabel: UILabel!
@@ -60,7 +60,7 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate{
 
     @IBAction func cancelButtonPressed(sender: UIBarButtonItem) {
     dismissViewControllerAnimated(true, completion: nil)
-        eventInfo = nil
+        event = nil
         delegate?.goBack()
     }
 
@@ -70,6 +70,7 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print(event)
         singleEventScrollView.contentSize.height = 2000
         
         // NEED TO CHANGE HARD CODED VALUES TO KEY VALUE PAIRS
@@ -83,7 +84,7 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate{
 //        latitudeString = eventInfo![7] as! String
 //        longitudeString = eventInfo![8] as! String
 //        
-        getDateDifference()
+//        getDateDifference()
         
         if numberOfDaysUntilEvent <= 4 {
             getForecast(numberOfDaysUntilEvent)
@@ -104,23 +105,14 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate{
         let coordinate = CLLocationCoordinate2DMake(latitude, longitude)
         let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         let region = MKCoordinateRegion(center: coordinate, span: span)
-
         
         let annotation = MKPointAnnotation()
         annotation.coordinate = coordinate
         
-        
         self.mapView.addAnnotation(annotation)
         self.mapView.setRegion(region, animated: true)
 
-
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     
     func getForecast(daysUntilEvent: Int){
         
@@ -219,8 +211,15 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate{
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
 
 }
+
+
 
 extension Double {
     func format(f: String) -> String {

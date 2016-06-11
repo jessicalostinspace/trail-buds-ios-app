@@ -15,10 +15,18 @@ class AllEventsViewController: UIViewController, UITableViewDelegate, UITableVie
     // MARK: Properties
     
     // This array shows all the events and is what the table view pulls data from
-    var allEvents = [NSArray]()
+    var events = [String]()
     
-    //Event info from All events page
-    var eventInfo: AnyObject?
+    var trailName: String?
+    var hikeLocation: String?
+    var hikeDistance: String?
+    var elevationGain: String?
+    var eventDate: String?
+    var eventID: String?
+    var image_url: String?
+    
+    //Event
+    var event: AnyObject?
     
     @IBOutlet weak var allEventsTableView: UITableView!
     
@@ -52,8 +60,8 @@ class AllEventsViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         
-        eventInfo = nil
-        getAllEvents()
+        event = nil
+        getEvents()
     }
     
     override func didReceiveMemoryWarning() {
@@ -63,20 +71,37 @@ class AllEventsViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
 
-        return allEvents.count
+        return events.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("allEventsCell", forIndexPath: indexPath) as! allEventsCell
       
-        // Pulling from Rails
-        let eventInfo = allEvents[indexPath.row]
+        //separating data from getMessages()
+        self.event = events[indexPath.row]
+        let delimiter = "*"
+        var token = event!.componentsSeparatedByString(delimiter)
         
-        cell.eventNameLabel!.text = String(eventInfo[2])
-        cell.locationLabel!.text = String(eventInfo[6])
-        cell.lengthOfHikeLabel!.text = String("Length: \(eventInfo[4]) miles")
-        cell.eventDateTimeLabel!.text = String(eventInfo[12])
+        self.trailName = token[0]
+        self.hikeLocation = token[1]
+        self.hikeDistance = token[2]
+        self.elevationGain = token[3]
+        self.eventDate = token[4]
+        self.eventID = token[5]
+//        self.image_url = token[6]
+        
+        //setting event images in table view
+//        let url = NSURL(string: image_url)
+//        let data = NSData(contentsOfURL: url!)
+//        cell.allEventsImage!.contentMode = .ScaleAspectFit
+//        cell.allEventsImage!.image = UIImage(data: data!)
+        
+        cell.eventNameLabel!.text = trailName
+        cell.locationLabel!.text = hikeLocation
+        cell.lengthOfHikeLabel!.text = String("Length: \(hikeDistance!) miles")
+        cell.elevationGainLabel!.text = String("Elevation Gain: \(elevationGain!) feet")
+        cell.eventDateTimeLabel!.text = eventDate
         
         return cell
     }
@@ -99,55 +124,43 @@ class AllEventsViewController: UIViewController, UITableViewDelegate, UITableVie
             let navController = segue.destinationViewController as! UINavigationController
             let controller = navController.topViewController as! SingleEventViewController
             controller.delegate? = self
-            controller.eventInfo
-                = eventInfo!
+            controller.event
+                = event!
         }
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
  
-        eventInfo = allEvents[indexPath.row]
+        event = events[indexPath.row]
 
         performSegueWithIdentifier("SingleEventSegue", sender: indexPath)
         
     }
     
-    // Gets all Events and pushes the categories trailNmae, hikeLocation, hikeDistance, and eventDate into the array allEvents
-    func getAllEvents() {
+    // Gets all Events and pushes the categories trailNmae, hikeLocation, hikeDistance, and eventDate into the array events
+    func getEvents() {
         
-        let eventsJSON:String = "http://localhost:3000/eventsJSON"
-        //        let eventsJSON2:String = "http://trailbuds.org/eventsJSON"
+        let urlString = "http://localhost:3000/events"
+        //        let urlString = "http://trailbuds.org/events"
         
-        allEvents = []
-        Alamofire.request(.GET, eventsJSON).responseJSON { (response) -> Void in
-            print(response)
+        events = []
+        Alamofire.request(.GET, urlString).responseJSON { (response) -> Void in
+            
             if let value = response.result.value {
+                
                 let json = JSON(value)
                 
+                // use SwiftyJSON
                 for (index,subJson):(String, JSON) in json {
-                    
-                    var temporaryArray = [String]()
-                    
-                    temporaryArray.append(String(subJson["id"].number!))
-                    // temporaryArray.append(subJson["name"].string!)
-                    temporaryArray.append("Default name")
-                    temporaryArray.append(subJson["trailName"].string!)
-                    temporaryArray.append(subJson["meetingLocation"].string!)
-                    temporaryArray.append(subJson["hikeDistance"].string!)
-                    temporaryArray.append(subJson["elevationGain"].string!)
-                    temporaryArray.append(subJson["hikeLocation"].string!)
-                    temporaryArray.append(subJson["latitude"].string!)
-                    temporaryArray.append(subJson["longitude"].string!)
-                    temporaryArray.append(subJson["description"].string!)
-                    temporaryArray.append(String(subJson["user_id"].number!))
-                    temporaryArray.append(subJson["maxAttendees"].string!)
-                    temporaryArray.append(subJson["eventDate"].string!)
-                    temporaryArray.append(subJson["created_at"].string!)
-                    temporaryArray.append(subJson["updated_at"].string!)
-                    print(temporaryArray)
-                    
-                    self.allEvents.append(temporaryArray)
-                    
+                    print(subJson)
+                    self.events.append(
+                        subJson["trailName"].stringValue + "*" +
+                        subJson["hikeLocation"].stringValue + "*" +
+                        subJson["hikeDistance"].stringValue + "*" +
+                        subJson["elevationGain"].stringValue + "*" +
+                        subJson["eventDate"].stringValue + "*" +
+                        subJson["id"].stringValue + "*" +
+                        subJson["image_url"].stringValue)
                 }
             }
             self.allEventsTableView.reloadData()
