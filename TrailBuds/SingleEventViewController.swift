@@ -11,7 +11,7 @@ import MapKit
 import SwiftyJSON
 import Alamofire
 
-class SingleEventViewController: UIViewController, MKMapViewDelegate{
+class SingleEventViewController: UIViewController, MKMapViewDelegate, UITextViewDelegate {
     
     //MARK: Attributes
     var eventID: String?
@@ -55,7 +55,7 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate{
     @IBOutlet weak var hostPicture: UIImageView!
     @IBOutlet weak var forecastIconImage: UIImageView!
     @IBOutlet weak var forecastDescriptionLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var descriptionTextView: UITextView!
     
     @IBAction func interestedButtonPressed(sender: UIButton) {
     }
@@ -78,6 +78,8 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        descriptionTextView.delegate = self
+        
         singleEventScrollView.contentSize.height = 2000
         
         // NEED TO CHANGE HARD CODED VALUES TO KEY VALUE PAIRS
@@ -86,7 +88,7 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate{
         distanceLabel.text = String("Distance: \(hikeDistance) miles")
         elevationGainLabel.text = String("Elevation Gain: \(elevationGain) feet")
         hostNameLabel.text = String("Host: \(hostName)")
-        descriptionLabel.text = String("Description: \(eventDescription)")
+//        descriptionLabel.text = String("Description: \(eventDescription)")
 
         getDateDifference()
         print(numberOfDaysUntilEvent)
@@ -235,6 +237,31 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate{
             }
         }
     }
+    
+    // MARK: Text View Delegate Methods
+    
+    func textViewDidEndEditing(textView: UITextView){
+        
+        eventDescription = descriptionTextView.text!
+        
+        let updateParameters = [
+            "description": descriptionTextView.text!
+        ]
+        
+        let updateLink = "http://localhost:3000/events/\(eventID!)"
+        //        let updateLink2 = "http://trailbuds.org/users/\(facebook_id)"
+        Alamofire.request(.PATCH, updateLink, parameters: updateParameters, encoding: .JSON)
+            .responseString { response in
+                // print response as string for debugging, testing, etc.
+                print(response.result.error)
+                
+        }
+    }
+    
+    func textViewDidChange(textView: UITextView){
+        
+    }
+
 
     /*
     // MARK: - Navigation

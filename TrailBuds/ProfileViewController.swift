@@ -77,10 +77,10 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     // THIS FUNCTION IS CALLED IN VIEWDIDLOAD
     func getUserDescription() {
         
-        let getUserURL: String = "http://trailbuds.org/users/\(facebook_id)"
+//        let getUserURL: String = "http://trailbuds.org/users/\(facebook_id)"
         let getUserURL2: String = "http://localhost:3000/users/\(facebook_id)"
         
-        Alamofire.request(.GET, getUserURL).responseJSON { (response) -> Void in
+        Alamofire.request(.GET, getUserURL2).responseJSON { (response) -> Void in
             if let value = response.result.value {
                 let json = JSON(value)
                 
