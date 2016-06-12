@@ -154,9 +154,6 @@ class ChatViewController: JSQMessagesViewController{
                     
                     // use SwiftyJSON
                     for (index,subJson):(String, JSON) in json {
-                        
-                        print(subJson)
-                        //sender_id here needs to be sender_fb id not sender_id
                         self.addMessage(String(subJson["sender_facebook_id"]), text: String(subJson["content"]))
                     }
                     self.finishReceivingMessage()
@@ -165,7 +162,5 @@ class ChatViewController: JSQMessagesViewController{
                 print(error)
             }
         }
-
     }
-    
 }

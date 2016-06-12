@@ -14,6 +14,14 @@ import Alamofire
 class SingleEventViewController: UIViewController, MKMapViewDelegate{
     
     //MARK: Attributes
+    var eventID: String?
+    var trailName: String = ""
+    var hikeLocation: String = ""
+    var hikeDistance: String = ""
+    var elevationGain: String = ""
+    var event_image_url: String = ""
+    var eventDescription: String = ""
+    var hostName: String = ""
     
     //day variable for weather
     var day1 = 3
@@ -70,23 +78,20 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(event)
         singleEventScrollView.contentSize.height = 2000
         
         // NEED TO CHANGE HARD CODED VALUES TO KEY VALUE PAIRS
-//        trailNameLabel.text =  String(eventInfo![2])
-//        locationLabel.text = String("Location: \(eventInfo![6])")
-//        distanceLabel.text = String("Distance: \(eventInfo![4]) miles")
-//        elevationGainLabel.text = String("Elevation Gain: \(eventInfo![5]) feet")
-//        hostNameLabel.text = String("Host: \(eventInfo![10])")
-//        descriptionLabel.text = String("Description: \(eventInfo![9])")
-//        
-//        latitudeString = eventInfo![7] as! String
-//        longitudeString = eventInfo![8] as! String
-//        
-//        getDateDifference()
+        trailNameLabel.text =  trailName
+        locationLabel.text = String("Location: \(hikeLocation)")
+        distanceLabel.text = String("Distance: \(hikeDistance) miles")
+        elevationGainLabel.text = String("Elevation Gain: \(elevationGain) feet")
+        hostNameLabel.text = String("Host: \(hostName)")
+        descriptionLabel.text = String("Description: \(eventDescription)")
+
+        getDateDifference()
+        print(numberOfDaysUntilEvent)
         
-        if numberOfDaysUntilEvent <= 4 {
+        if numberOfDaysUntilEvent <= 4 && numberOfDaysUntilEvent >= 0 {
             getForecast(numberOfDaysUntilEvent)
             print("finished Getting Forecast")
             print(self.temperature)
@@ -138,7 +143,7 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate{
         var jsonWeather: String = ""
         
         Alamofire.request(.GET, "http://api.openweathermap.org/data/2.5/forecast?lat=\(latitudeString)&lon=\(longitudeString)&&APPID=76d4052376f230c0876c8022a090ecde").responseJSON { (response) -> Void in
-            
+
             if let value = response.result.value {
  
                 let json = JSON(value)
@@ -192,7 +197,6 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate{
     
     func getDateDifference(){
         
-//        convertedEventDate = eventInfo![12] as! String
         dateFormatter.dateFormat = "MM-dd-yyyy HH:mm"
         eventDate = dateFormatter.dateFromString(convertedEventDate)
         
@@ -201,6 +205,35 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate{
 //        print("The difference between dates is: \(diffDateComponents.year) years, \(diffDateComponents.month) months, \(diffDateComponents.day) days, \(diffDateComponents.hour) hours, \(diffDateComponents.minute) minutes, \(diffDateComponents.second) seconds")
         
         numberOfDaysUntilEvent = diffDateComponents.day
+    }
+    
+    //function gets event info from rails
+    func getEvent() {
+        
+        let urlString = "http://localhost:3000/events/\(eventID!)/"
+        
+        Alamofire.request(.GET, urlString).responseJSON { (response) -> Void in
+            switch response.result {
+            case .Success:
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    
+                    self.trailName = String(json["trailName"])
+                    self.hikeLocation = String(json["hikeLocation"])
+                    self.hikeDistance = String(json["hikeDistance"])
+                    self.elevationGain = String(json["elevationGain"])
+                    self.event_image_url = String(json["image_url"])
+                    self.latitudeString = String(json["latitude"])
+                    self.longitudeString = String(json["longitude"])
+                    self.eventDescription = String(json["description"])
+                    self.convertedEventDate = String(json["eventDate"])
+                    self.hostName = String(json["host_name"])
+                    
+                }
+            case .Failure(let error):
+                print(error)
+            }
+        }
     }
 
     /*
@@ -218,8 +251,6 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate{
     }
 
 }
-
-
 
 extension Double {
     func format(f: String) -> String {

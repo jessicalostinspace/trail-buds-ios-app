@@ -23,7 +23,11 @@ class AllEventsViewController: UIViewController, UITableViewDelegate, UITableVie
     var elevationGain: String?
     var eventDate: String?
     var eventID: String?
-    var image_url: String?
+    var event_image_url: String?
+    var longitude: String?
+    var latitude: String?
+    var hostName: String?
+    var eventDescription: String?
     
     //Event
     var event: AnyObject?
@@ -80,7 +84,7 @@ class AllEventsViewController: UIViewController, UITableViewDelegate, UITableVie
       
         //separating data from getMessages()
         self.event = events[indexPath.row]
-        let delimiter = "*"
+        let delimiter = "*%&*"
         var token = event!.componentsSeparatedByString(delimiter)
         
         self.trailName = token[0]
@@ -89,7 +93,11 @@ class AllEventsViewController: UIViewController, UITableViewDelegate, UITableVie
         self.elevationGain = token[3]
         self.eventDate = token[4]
         self.eventID = token[5]
-//        self.image_url = token[6]
+        self.event_image_url = token[6]
+        self.latitude = token[7]
+        self.longitude = token[8]
+        self.eventDescription = token[9]
+        self.hostName = token[10]
         
         //setting event images in table view
 //        let url = NSURL(string: image_url)
@@ -124,8 +132,17 @@ class AllEventsViewController: UIViewController, UITableViewDelegate, UITableVie
             let navController = segue.destinationViewController as! UINavigationController
             let controller = navController.topViewController as! SingleEventViewController
             controller.delegate? = self
-            controller.event
-                = event!
+            controller.eventID = eventID!
+            controller.trailName = trailName!
+            controller.hikeLocation = hikeLocation!
+            controller.hikeDistance = hikeDistance!
+            controller.elevationGain = elevationGain!
+            controller.event_image_url = event_image_url!
+            controller.eventDescription = eventDescription!
+            controller.hostName = hostName!
+            controller.latitudeString = latitude!
+            controller.longitudeString = longitude!
+            controller.convertedEventDate = eventDate!
         }
     }
 
@@ -154,13 +171,17 @@ class AllEventsViewController: UIViewController, UITableViewDelegate, UITableVie
                 for (index,subJson):(String, JSON) in json {
                     print(subJson)
                     self.events.append(
-                        subJson["trailName"].stringValue + "*" +
-                        subJson["hikeLocation"].stringValue + "*" +
-                        subJson["hikeDistance"].stringValue + "*" +
-                        subJson["elevationGain"].stringValue + "*" +
-                        subJson["eventDate"].stringValue + "*" +
-                        subJson["id"].stringValue + "*" +
-                        subJson["image_url"].stringValue)
+                        subJson["trailName"].stringValue + "*%&*" +
+                        subJson["hikeLocation"].stringValue + "*%&*" +
+                        subJson["hikeDistance"].stringValue + "*%&*" +
+                        subJson["elevationGain"].stringValue + "*%&*" +
+                        subJson["eventDate"].stringValue + "*%&*" +
+                        subJson["id"].stringValue + "*%&*" +
+                        subJson["image_url"].stringValue + "*%&*" +
+                        subJson["latitude"].stringValue + "*%&*" +
+                        subJson["longitude"].stringValue + "*%&*" +
+                        subJson["description"].stringValue + "*%&*" +
+                        subJson["host_name"].stringValue)
                 }
             }
             self.allEventsTableView.reloadData()
