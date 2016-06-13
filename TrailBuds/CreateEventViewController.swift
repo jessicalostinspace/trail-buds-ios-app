@@ -43,6 +43,7 @@ class CreateEventViewController: UIViewController, UIPickerViewDelegate, UIPicke
     @IBOutlet weak var elevationGainTextField: UITextField!
     @IBOutlet weak var maxAttendeesTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
+    @IBOutlet weak var locationButton: UIButton!
     
     @IBAction func datePickerSelected(sender: AnyObject) {
 
@@ -165,7 +166,7 @@ class CreateEventViewController: UIViewController, UIPickerViewDelegate, UIPicke
             self.longitude = lon
             self.latitude = lat
             self.location = title
-            self.locationLabel.text = title
+            self.locationButton.setTitle(title, forState: .Normal)
         }
     }
     
