@@ -11,7 +11,7 @@ import MapKit
 import SwiftyJSON
 import Alamofire
 
-class SingleEventViewController: UIViewController, MKMapViewDelegate, UITextViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
+class SingleEventViewController: UIViewController, MKMapViewDelegate, UITextViewDelegate{
     
     //MARK: Attributes
     var eventID: String?
@@ -22,6 +22,9 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate, UITextView
     var event_image_url: String = ""
     var eventDescription: String = ""
     var hostName: String = ""
+    //currently logged in user
+    var userID: String = ""
+    var attendeesArray = [String]()
     
     //day variable for weather
     var day1 = 3
@@ -117,6 +120,8 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate, UITextView
     }
     
     @IBAction func joinButtonPressed(sender: UIButton) {
+        addUserToAttendees()
+//        collectionView.
     }
     
     func getForecast(daysUntilEvent: Int){
@@ -236,6 +241,30 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate, UITextView
         }
     }
     
+    func addUserToAttendees(){
+        let prefs = NSUserDefaults.standardUserDefaults()
+        
+        if let id = prefs.stringForKey("user_id"){
+            self.userID = id
+        }
+        
+        //SAVING message to rails database
+        let parameters = [
+            "facebook_id": self.userID,
+            "event_id": eventID!,
+            ]
+        
+        let urlString = "http://localhost:3000/attendees"
+        
+        Alamofire.request(.POST, urlString, parameters: parameters, encoding: .JSON)
+            .responseString { response in
+                // print response as string for debugging, testing, etc.
+                print(response.result.error)
+                print("added attendee to database!")
+        }
+
+    }
+    
     // MARK: Text View Delegate Methods
     
     func textViewDidEndEditing(textView: UITextView){
@@ -264,7 +293,7 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate, UITextView
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         
-//        return colorData.count - 1
+//        return attendeesArray.count - 1
         return 1
     }
     
@@ -273,7 +302,7 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate, UITextView
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("AttendeesCell", forIndexPath: indexPath) as! AttendeesCollectionViewCell
         
-        //        cell.backgroundColor = UIColor.blackColor()
+        cell.backgroundColor = UIColor.blackColor()
         
 //        let currImage = self.colorData[indexPath.row]
 //        
@@ -285,7 +314,7 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate, UITextView
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
 //        color = colorData[indexPath.row]
-        performSegueWithIdentifier("ColorToWildlifeSegue", sender: indexPath)
+//        performSegueWithIdentifier("ColorToWildlifeSegue", sender: indexPath)
         
     }
     

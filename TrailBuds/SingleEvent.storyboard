@@ -148,7 +148,7 @@
                                                                     <action selector="interestedButtonPressed:" destination="TLN-hE-0eJ" eventType="touchUpInside" id="TaF-5Z-c16"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ZN-Li-2S0">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ZN-Li-2S0">
                                                                 <rect key="frame" x="288" y="0.0" width="272" height="36"/>
                                                                 <color key="backgroundColor" red="0.1144914553" green="0.5" blue="0.09739612584" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
@@ -327,7 +327,6 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="2000"/>
                     <connections>
-                        <outlet property="collectionView" destination="lwK-OZ-2qS" id="Aqg-Sb-rtX"/>
                         <outlet property="descriptionTextView" destination="ujA-aA-Py4" id="e1Z-YJ-IWW"/>
                         <outlet property="distanceLabel" destination="VFF-oc-uPe" id="udj-45-HIv"/>
                         <outlet property="elevationGainLabel" destination="il8-hl-lvq" id="u9B-eV-3d8"/>
@@ -340,7 +339,7 @@
                         <outlet property="mapView" destination="4rT-jb-5bm" id="6Tg-hh-T9Q"/>
                         <outlet property="singleEventScrollView" destination="a6b-le-Hxa" id="M11-6r-Raf"/>
                         <outlet property="trailNameLabel" destination="aEg-Bv-Agj" id="eDN-mG-JpS"/>
-                        <outletCollection property="collectionView" destination="lwK-OZ-2qS" collectionClass="NSMutableArray" id="qGE-tf-Oqh"/>
+                        <outletCollection property="collectionView" destination="lwK-OZ-2qS" collectionClass="NSMutableArray" id="Olp-m9-esj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U5m-mi-XGF" userLabel="First Responder" sceneMemberID="firstResponder"/>
