@@ -3,6 +3,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Profile View Controller-->
@@ -18,22 +20,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vps-Zh-F2w">
-                                <rect key="frame" x="0.0" y="64" width="600" height="637"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="750"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CJf-62-aBN">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="637"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="750"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PUU-wX-oH5" userLabel="ContentView">
-                                                <rect key="frame" x="0.0" y="0.0" width="600" height="637"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="600" height="750"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mistyTrees" translatesAutoresizingMaskIntoConstraints="NO" id="uf2-hN-DLg">
-                                                        <rect key="frame" x="0.0" y="0.0" width="600" height="159"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mistyTrees" translatesAutoresizingMaskIntoConstraints="NO" id="uf2-hN-DLg">
+                                                        <rect key="frame" x="0.0" y="0.0" width="600" height="244"/>
                                                         <gestureRecognizers/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="uf2-hN-DLg" secondAttribute="height" multiplier="150:61" id="THS-Sv-GnB"/>
+                                                        </constraints>
                                                     </imageView>
-                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Um8-4n-dFe">
-                                                        <rect key="frame" x="40" y="274" width="95" height="30"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="betty" translatesAutoresizingMaskIntoConstraints="NO" id="qoT-Zc-7oM">
+                                                        <rect key="frame" x="20" y="138" width="147" height="184"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="qoT-Zc-7oM" secondAttribute="height" multiplier="159:199" id="h0I-rP-O1b"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Um8-4n-dFe">
+                                                        <rect key="frame" x="43" y="330" width="101" height="32"/>
                                                         <color key="backgroundColor" red="0.29685299052218878" green="0.66874999999999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="Um8-4n-dFe" secondAttribute="height" multiplier="19:6" id="cRJ-Fr-pIl"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                                         <state key="normal" title="Message">
                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
@@ -41,91 +55,125 @@
                                                             <action selector="messageButtonPressed:" destination="Dr9-A2-2gX" eventType="touchUpInside" id="ZnU-VD-c1Y"/>
                                                         </connections>
                                                     </button>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="betty" translatesAutoresizingMaskIntoConstraints="NO" id="qoT-Zc-7oM">
-                                                        <rect key="frame" x="8" y="67" width="159" height="199"/>
-                                                    </imageView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="8v9-ob-fHK">
-                                                        <rect key="frame" x="175" y="167" width="267" height="430"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="ZoI-az-DXi" userLabel="BoutMeStack View">
+                                                        <rect key="frame" x="20" y="370" width="147" height="360"/>
                                                         <subviews>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4av-6t-hFD" userLabel="ProfileInfoStack View">
-                                                                <rect key="frame" x="0.0" y="0.0" width="154" height="62"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="About Me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggF-UA-DHA">
+                                                                <rect key="frame" x="0.0" y="0.0" width="147" height="22"/>
+                                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" text="Enter a description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mbj-0J-NS4">
+                                                                <rect key="frame" x="0.0" y="22" width="147" height="338"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                            </textView>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="ggF-UA-DHA" secondAttribute="trailing" id="7OM-RT-4CW"/>
+                                                            <constraint firstItem="mbj-0J-NS4" firstAttribute="top" secondItem="ggF-UA-DHA" secondAttribute="bottom" id="BU1-jH-894"/>
+                                                            <constraint firstAttribute="trailing" secondItem="mbj-0J-NS4" secondAttribute="trailing" id="LkC-UM-szw"/>
+                                                            <constraint firstItem="mbj-0J-NS4" firstAttribute="leading" secondItem="ZoI-az-DXi" secondAttribute="leading" id="Mtl-aQ-sXs"/>
+                                                            <constraint firstItem="ggF-UA-DHA" firstAttribute="leading" secondItem="ZoI-az-DXi" secondAttribute="leading" id="kDw-q1-Sb3"/>
+                                                            <constraint firstItem="mbj-0J-NS4" firstAttribute="top" secondItem="ggF-UA-DHA" secondAttribute="bottom" id="scl-9d-jRs"/>
+                                                            <constraint firstItem="ggF-UA-DHA" firstAttribute="top" secondItem="ZoI-az-DXi" secondAttribute="top" id="uka-9C-vRZ"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="8v9-ob-fHK">
+                                                        <rect key="frame" x="175" y="252" width="405" height="419"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4av-6t-hFD" userLabel="ProfileInfoStack View">
+                                                                <rect key="frame" x="0.0" y="0.0" width="405" height="70"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gSd-aM-Gzy">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="154" height="21"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gSd-aM-Gzy">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="405" height="25"/>
+                                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="19"/>
                                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Seattle, WA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="obk-OS-zB8">
-                                                                        <rect key="frame" x="0.0" y="21" width="154" height="21"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Seattle, WA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="obk-OS-zB8">
+                                                                        <rect key="frame" x="0.0" y="25" width="405" height="23"/>
+                                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Completed Hikes:  7" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="60b-5F-gge">
-                                                                        <rect key="frame" x="0.0" y="41" width="154" height="21"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Completed Hikes:  7" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="60b-5F-gge">
+                                                                        <rect key="frame" x="0.0" y="48" width="405" height="23"/>
+                                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
                                                             </stackView>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="4t4-BE-5aQ" userLabel="upcomingHikesStack View">
-                                                                <rect key="frame" x="0.0" y="77" width="267" height="168"/>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="top" spacing="1" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4t4-BE-5aQ" userLabel="upcomingHikesStack View">
+                                                                <rect key="frame" x="0.0" y="80" width="405" height="166"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Upcoming Hikes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZOq-dJ-kIG">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="134" height="21"/>
-                                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Upcoming Hikes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZOq-dJ-kIG">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="405" height="23"/>
+                                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="170" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9Ml-HN-Gjo">
-                                                                        <rect key="frame" x="0.0" y="21" width="267" height="147"/>
+                                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="144" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9Ml-HN-Gjo">
+                                                                        <rect key="frame" x="0.0" y="19" width="405" height="147"/>
                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" secondItem="9Ml-HN-Gjo" secondAttribute="height" multiplier="135:49" id="Mgv-fz-uTd"/>
+                                                                        </constraints>
                                                                         <prototypes>
-                                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="upcomingHikesCell" rowHeight="170" id="mPw-4g-IKO" customClass="UpcomingHikesTableViewCell" customModule="TrailBuds" customModuleProvider="target">
-                                                                                <rect key="frame" x="0.0" y="28" width="267" height="170"/>
+                                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="upcomingHikesCell" rowHeight="144" id="mPw-4g-IKO" customClass="UpcomingHikesTableViewCell" customModule="TrailBuds" customModuleProvider="target">
+                                                                                <rect key="frame" x="0.0" y="28" width="405" height="144"/>
                                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mPw-4g-IKO" id="XIg-st-4FU">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="267" height="169.5"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="405" height="143.5"/>
                                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                                     <subviews>
-                                                                                        <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="ceD-JO-Sx9">
-                                                                                            <rect key="frame" x="8" y="8" width="145" height="93"/>
+                                                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="ceD-JO-Sx9">
+                                                                                            <rect key="frame" x="0.0" y="0.0" width="405" height="101"/>
                                                                                             <subviews>
-                                                                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="twI-b8-fF8">
-                                                                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="30"/>
-                                                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="twI-b8-fF8">
+                                                                                                    <rect key="frame" x="0.0" y="0.0" width="405" height="33"/>
+                                                                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                                                                                     <state key="normal" title="Jaunt at Paradise"/>
                                                                                                 </button>
-                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Sat, Apr 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RfP-H8-3PD">
-                                                                                                    <rect key="frame" x="0.0" y="30" width="47" height="12"/>
-                                                                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Sat, Apr 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RfP-H8-3PD">
+                                                                                                    <rect key="frame" x="0.0" y="33" width="48" height="13"/>
+                                                                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="10"/>
                                                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                                                     <nil key="highlightedColor"/>
                                                                                                 </label>
                                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Location: Mt. Rainier" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qWi-wV-PAp">
-                                                                                                    <rect key="frame" x="0.0" y="42" width="133" height="17"/>
-                                                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                                                    <rect key="frame" x="0.0" y="46" width="132" height="19"/>
+                                                                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
                                                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                                                     <nil key="highlightedColor"/>
                                                                                                 </label>
-                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Distance: 5.6 mi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="daj-ku-ZwB">
-                                                                                                    <rect key="frame" x="0.0" y="59" width="104" height="17"/>
-                                                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Distance: 5.6 mi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="daj-ku-ZwB">
+                                                                                                    <rect key="frame" x="0.0" y="64" width="103" height="19"/>
+                                                                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
                                                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                                                     <nil key="highlightedColor"/>
                                                                                                 </label>
-                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Elevation Gain: 1200 ft" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ES-bm-2EJ">
-                                                                                                    <rect key="frame" x="0.0" y="76" width="145" height="17"/>
-                                                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Elevation Gain: 1200 ft" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ES-bm-2EJ">
+                                                                                                    <rect key="frame" x="0.0" y="83" width="149" height="19"/>
+                                                                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
                                                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                                                     <nil key="highlightedColor"/>
                                                                                                 </label>
                                                                                             </subviews>
                                                                                         </stackView>
                                                                                     </subviews>
+                                                                                    <constraints>
+                                                                                        <constraint firstItem="ceD-JO-Sx9" firstAttribute="top" secondItem="XIg-st-4FU" secondAttribute="top" id="6cX-bL-QP0"/>
+                                                                                        <constraint firstAttribute="bottomMargin" secondItem="ceD-JO-Sx9" secondAttribute="bottom" constant="34.5" id="etc-Fi-1Y7"/>
+                                                                                        <constraint firstItem="ceD-JO-Sx9" firstAttribute="leading" secondItem="XIg-st-4FU" secondAttribute="leading" id="o5Q-ge-dx7"/>
+                                                                                    </constraints>
                                                                                 </tableViewCellContentView>
+                                                                                <constraints>
+                                                                                    <constraint firstItem="twI-b8-fF8" firstAttribute="width" secondItem="mPw-4g-IKO" secondAttribute="width" id="lXO-Tp-b81"/>
+                                                                                </constraints>
                                                                                 <connections>
                                                                                     <outlet property="TrailNameButton" destination="twI-b8-fF8" id="Tcs-dY-PMM"/>
                                                                                     <outlet property="upcomingHikeDateLabel" destination="RfP-H8-3PD" id="4qp-dF-rLw"/>
@@ -137,56 +185,69 @@
                                                                         </prototypes>
                                                                     </tableView>
                                                                 </subviews>
+                                                                <constraints>
+                                                                    <constraint firstItem="ZOq-dJ-kIG" firstAttribute="width" secondItem="4t4-BE-5aQ" secondAttribute="width" id="76a-am-87A"/>
+                                                                    <constraint firstItem="9Ml-HN-Gjo" firstAttribute="leading" secondItem="4t4-BE-5aQ" secondAttribute="leading" id="95k-Gj-sOO"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="9Ml-HN-Gjo" secondAttribute="bottom" id="AbX-dj-i6y"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="9Ml-HN-Gjo" secondAttribute="trailing" id="LcU-ZE-rSW"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="9Ml-HN-Gjo" secondAttribute="trailing" id="TKH-Q4-oIZ"/>
+                                                                    <constraint firstItem="9Ml-HN-Gjo" firstAttribute="width" secondItem="4t4-BE-5aQ" secondAttribute="width" id="VOQ-3e-S1U"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="9Ml-HN-Gjo" secondAttribute="bottom" id="b6g-Fr-48s"/>
+                                                                    <constraint firstItem="9Ml-HN-Gjo" firstAttribute="leading" secondItem="4t4-BE-5aQ" secondAttribute="leading" id="obK-21-RdD"/>
+                                                                </constraints>
                                                             </stackView>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="jTh-yV-n75" userLabel="hikesAttendedStack View">
-                                                                <rect key="frame" x="0.0" y="259" width="267" height="171"/>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="top" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jTh-yV-n75" userLabel="hikesAttendedStack View">
+                                                                <rect key="frame" x="0.0" y="256" width="405" height="164"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Hikes Attended" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rDD-C0-LFz">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="126" height="21"/>
-                                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Hikes Attended" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rDD-C0-LFz">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="405" height="23"/>
+                                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="142" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aS2-TC-90Q" userLabel="AttendedHikesTable View">
-                                                                        <rect key="frame" x="0.0" y="21" width="267" height="150"/>
+                                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="155" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aS2-TC-90Q" userLabel="AttendedHikesTable View">
+                                                                        <rect key="frame" x="0.0" y="18" width="405" height="146"/>
                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" secondItem="aS2-TC-90Q" secondAttribute="height" multiplier="405:146" id="rqb-Hk-gbW"/>
+                                                                        </constraints>
                                                                         <prototypes>
-                                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="hikesAttendedCell" rowHeight="142" id="akM-X4-W9U" customClass="HikesAttendedTableViewCell" customModule="TrailBuds" customModuleProvider="target">
-                                                                                <rect key="frame" x="0.0" y="28" width="267" height="142"/>
+                                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="hikesAttendedCell" rowHeight="155" id="akM-X4-W9U" customClass="HikesAttendedTableViewCell" customModule="TrailBuds" customModuleProvider="target">
+                                                                                <rect key="frame" x="0.0" y="28" width="405" height="155"/>
                                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="akM-X4-W9U" id="xPr-sm-IOh">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="267" height="141.5"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="405" height="154.5"/>
                                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                                     <subviews>
-                                                                                        <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Yrm-by-avF">
-                                                                                            <rect key="frame" x="8" y="8" width="145" height="93"/>
+                                                                                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Yrm-by-avF">
+                                                                                            <rect key="frame" x="0.0" y="0.0" width="405" height="101"/>
                                                                                             <subviews>
-                                                                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k2V-0Q-F70">
-                                                                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="30"/>
-                                                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k2V-0Q-F70">
+                                                                                                    <rect key="frame" x="0.0" y="0.0" width="405" height="32"/>
+                                                                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                                                                                     <state key="normal" title="Jaunt at Paradise"/>
                                                                                                 </button>
-                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Sat, Apr 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jSQ-jk-34B">
-                                                                                                    <rect key="frame" x="0.0" y="30" width="47" height="12"/>
-                                                                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Sat, Apr 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jSQ-jk-34B">
+                                                                                                    <rect key="frame" x="0.0" y="32" width="48" height="13"/>
+                                                                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="10"/>
                                                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                                                     <nil key="highlightedColor"/>
                                                                                                 </label>
                                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Location: Mt. Rainier" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Imu-oP-6ct">
-                                                                                                    <rect key="frame" x="0.0" y="42" width="133" height="17"/>
-                                                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                                                    <rect key="frame" x="0.0" y="45" width="132" height="19"/>
+                                                                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
                                                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                                                     <nil key="highlightedColor"/>
                                                                                                 </label>
-                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Distance: 5.6 mi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Av9-jn-hfT">
-                                                                                                    <rect key="frame" x="0.0" y="59" width="104" height="17"/>
-                                                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Distance: 5.6 mi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Av9-jn-hfT">
+                                                                                                    <rect key="frame" x="0.0" y="64" width="103" height="19"/>
+                                                                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
                                                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                                                     <nil key="highlightedColor"/>
                                                                                                 </label>
-                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Elevation Gain: 1200 ft" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hks-Ct-H4x">
-                                                                                                    <rect key="frame" x="0.0" y="76" width="145" height="17"/>
-                                                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Elevation Gain: 1200 ft" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hks-Ct-H4x">
+                                                                                                    <rect key="frame" x="0.0" y="82" width="149" height="19"/>
+                                                                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
                                                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                                                     <nil key="highlightedColor"/>
                                                                                                 </label>
@@ -194,6 +255,10 @@
                                                                                         </stackView>
                                                                                     </subviews>
                                                                                 </tableViewCellContentView>
+                                                                                <constraints>
+                                                                                    <constraint firstItem="k2V-0Q-F70" firstAttribute="width" secondItem="akM-X4-W9U" secondAttribute="width" id="h2g-7H-psY"/>
+                                                                                    <constraint firstItem="Yrm-by-avF" firstAttribute="width" secondItem="akM-X4-W9U" secondAttribute="width" id="w6T-BW-5cU"/>
+                                                                                </constraints>
                                                                                 <connections>
                                                                                     <outlet property="hikesAttendedDateLabel" destination="jSQ-jk-34B" id="qrX-6o-mOI"/>
                                                                                     <outlet property="hikesAttendedDistanceLabel" destination="Av9-jn-hfT" id="b0h-El-8yS"/>
@@ -205,34 +270,54 @@
                                                                         </prototypes>
                                                                     </tableView>
                                                                 </subviews>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="bottom" secondItem="aS2-TC-90Q" secondAttribute="bottom" id="6zy-Bt-m7S"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="aS2-TC-90Q" secondAttribute="bottom" id="eu1-XF-7xL"/>
+                                                                    <constraint firstItem="aS2-TC-90Q" firstAttribute="leading" secondItem="jTh-yV-n75" secondAttribute="leading" id="f6v-Nw-dOI"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="aS2-TC-90Q" secondAttribute="trailing" id="hDv-NR-9uT"/>
+                                                                    <constraint firstItem="rDD-C0-LFz" firstAttribute="width" secondItem="jTh-yV-n75" secondAttribute="width" id="has-aG-zFh"/>
+                                                                    <constraint firstItem="aS2-TC-90Q" firstAttribute="leading" secondItem="jTh-yV-n75" secondAttribute="leading" id="mBm-O4-PHe"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="aS2-TC-90Q" secondAttribute="trailing" id="pxn-Qn-TOn"/>
+                                                                </constraints>
                                                             </stackView>
                                                         </subviews>
-                                                    </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="ZoI-az-DXi" userLabel="BoutMeStack View">
-                                                        <rect key="frame" x="10" y="312" width="154" height="149"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="About Me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggF-UA-DHA">
-                                                                <rect key="frame" x="0.0" y="0.0" width="79" height="21"/>
-                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" text="Enter a description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mbj-0J-NS4">
-                                                                <rect key="frame" x="0.0" y="21" width="154" height="128"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                            </textView>
-                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="4av-6t-hFD" firstAttribute="width" secondItem="8v9-ob-fHK" secondAttribute="width" id="MEv-hG-cpC"/>
+                                                            <constraint firstItem="jTh-yV-n75" firstAttribute="top" secondItem="4t4-BE-5aQ" secondAttribute="bottom" constant="10" id="RFt-CG-WRP"/>
+                                                            <constraint firstItem="jTh-yV-n75" firstAttribute="width" secondItem="8v9-ob-fHK" secondAttribute="width" id="TE5-WK-Zky"/>
+                                                            <constraint firstItem="4t4-BE-5aQ" firstAttribute="width" secondItem="8v9-ob-fHK" secondAttribute="width" id="Uq9-Dg-VCZ"/>
+                                                        </constraints>
                                                     </stackView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstItem="8v9-ob-fHK" firstAttribute="leading" secondItem="ZoI-az-DXi" secondAttribute="trailing" constant="8" symbolic="YES" id="6ZY-d4-urg"/>
+                                                    <constraint firstItem="8v9-ob-fHK" firstAttribute="leading" secondItem="ZoI-az-DXi" secondAttribute="trailing" constant="8" symbolic="YES" id="6yM-Nb-aSH"/>
+                                                    <constraint firstAttribute="trailing" secondItem="uf2-hN-DLg" secondAttribute="trailing" id="9Rb-Er-PgI"/>
+                                                    <constraint firstItem="uf2-hN-DLg" firstAttribute="leading" secondItem="qoT-Zc-7oM" secondAttribute="trailing" constant="-167" id="Eei-mf-R7q"/>
+                                                    <constraint firstItem="uf2-hN-DLg" firstAttribute="top" secondItem="PUU-wX-oH5" secondAttribute="top" id="JH8-X6-JA1"/>
+                                                    <constraint firstItem="qoT-Zc-7oM" firstAttribute="leading" secondItem="PUU-wX-oH5" secondAttribute="leading" constant="20" symbolic="YES" id="WhX-qH-05D"/>
+                                                    <constraint firstItem="ZoI-az-DXi" firstAttribute="leading" secondItem="PUU-wX-oH5" secondAttribute="leading" constant="20" symbolic="YES" id="a84-Rg-Eeb"/>
+                                                    <constraint firstItem="uf2-hN-DLg" firstAttribute="centerX" secondItem="PUU-wX-oH5" secondAttribute="centerX" id="dXu-RZ-dwm"/>
+                                                    <constraint firstItem="8v9-ob-fHK" firstAttribute="top" secondItem="uf2-hN-DLg" secondAttribute="bottom" constant="8" symbolic="YES" id="dhf-R6-tCW"/>
+                                                    <constraint firstItem="Um8-4n-dFe" firstAttribute="top" secondItem="qoT-Zc-7oM" secondAttribute="bottom" constant="8" symbolic="YES" id="ehO-IY-edU"/>
+                                                    <constraint firstItem="qoT-Zc-7oM" firstAttribute="leading" secondItem="PUU-wX-oH5" secondAttribute="leading" constant="20" symbolic="YES" id="gtE-02-pj8"/>
+                                                    <constraint firstAttribute="bottom" secondItem="ZoI-az-DXi" secondAttribute="bottom" constant="20" symbolic="YES" id="ias-G2-mDE"/>
+                                                    <constraint firstAttribute="trailing" secondItem="qoT-Zc-7oM" secondAttribute="trailing" constant="433" id="kKj-1P-qgZ"/>
+                                                    <constraint firstItem="8v9-ob-fHK" firstAttribute="leading" secondItem="qoT-Zc-7oM" secondAttribute="trailing" constant="8" symbolic="YES" id="lMI-bR-as8"/>
+                                                    <constraint firstItem="uf2-hN-DLg" firstAttribute="leading" secondItem="PUU-wX-oH5" secondAttribute="leading" id="mgV-2r-WqR"/>
+                                                    <constraint firstItem="qoT-Zc-7oM" firstAttribute="top" secondItem="uf2-hN-DLg" secondAttribute="bottom" constant="-106" id="pyY-MN-VJB"/>
+                                                    <constraint firstItem="Um8-4n-dFe" firstAttribute="centerX" secondItem="qoT-Zc-7oM" secondAttribute="centerX" id="qvo-C8-gt4"/>
+                                                    <constraint firstItem="ZoI-az-DXi" firstAttribute="top" secondItem="Um8-4n-dFe" secondAttribute="bottom" constant="8" symbolic="YES" id="vCG-2r-ee9"/>
+                                                    <constraint firstAttribute="trailing" secondItem="uf2-hN-DLg" secondAttribute="trailing" id="vTZ-d8-Zdb"/>
+                                                    <constraint firstAttribute="trailing" secondItem="8v9-ob-fHK" secondAttribute="trailing" constant="20" symbolic="YES" id="vvb-4Q-hhA"/>
+                                                </constraints>
                                             </view>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="PUU-wX-oH5" secondAttribute="bottom" id="5G4-fI-NWM"/>
                                             <constraint firstItem="PUU-wX-oH5" firstAttribute="centerY" secondItem="CJf-62-aBN" secondAttribute="centerY" id="D0T-jC-qyJ"/>
-                                            <constraint firstItem="PUU-wX-oH5" firstAttribute="top" secondItem="CJf-62-aBN" secondAttribute="top" id="Hvp-5z-sZT"/>
-                                            <constraint firstAttribute="bottom" secondItem="PUU-wX-oH5" secondAttribute="bottom" id="LXH-2n-Cj4"/>
+                                            <constraint firstItem="PUU-wX-oH5" firstAttribute="top" secondItem="CJf-62-aBN" secondAttribute="top" id="Y5r-Us-XXa"/>
                                             <constraint firstItem="PUU-wX-oH5" firstAttribute="centerX" secondItem="CJf-62-aBN" secondAttribute="centerX" id="YUm-DH-tDc"/>
                                             <constraint firstAttribute="trailing" secondItem="PUU-wX-oH5" secondAttribute="trailing" id="p9K-zg-LUh"/>
                                             <constraint firstItem="PUU-wX-oH5" firstAttribute="leading" secondItem="CJf-62-aBN" secondAttribute="leading" id="u7t-rT-ntx"/>
@@ -251,10 +336,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="hvL-xp-Efh" firstAttribute="top" secondItem="vps-Zh-F2w" secondAttribute="bottom" id="0nc-tL-Ezq"/>
-                            <constraint firstItem="vps-Zh-F2w" firstAttribute="top" secondItem="Yh1-WU-ixd" secondAttribute="bottom" id="BAY-Zi-gkS"/>
+                            <constraint firstItem="vps-Zh-F2w" firstAttribute="bottom" secondItem="RE6-C9-pXh" secondAttribute="bottomMargin" id="M8D-Gg-wQj"/>
                             <constraint firstAttribute="trailing" secondItem="vps-Zh-F2w" secondAttribute="trailing" id="cFP-9w-asg"/>
                             <constraint firstItem="vps-Zh-F2w" firstAttribute="leading" secondItem="RE6-C9-pXh" secondAttribute="leading" id="hNL-QQ-CKn"/>
+                            <constraint firstItem="vps-Zh-F2w" firstAttribute="top" secondItem="RE6-C9-pXh" secondAttribute="topMargin" id="uBK-87-JjX"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="m11-I0-5ey">

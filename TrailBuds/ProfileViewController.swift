@@ -27,6 +27,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     var gender: String = ""
     var facebook_id: String = ""
     var userDescription: String = ""
+    var pictureUrl = ""
     
     // SETTING UP NSUserDefaults
     let prefs = NSUserDefaults.standardUserDefaults()
@@ -55,9 +56,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         profileScrollView.contentSize.height = 750
         
-        view.addSubview(profilePicture)
-        view.addSubview(nameLabel)
-        view.addSubview(locationLabel)
+//        view.addSubview(profilePicture)
+//        view.addSubview(nameLabel)
+//        view.addSubview(locationLabel)
         
         // Table view delgates and data sources
         upcomingHikesTableView.delegate = self
@@ -70,6 +71,15 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 
         // GETTING USER DESCRIPTION FROM RAILS
         getUserDescription()
+        
+        nameLabel.text = "\(firstName) \(lastName)"
+        locationLabel.text = "Seattle, WA"
+        
+        //setting user image
+//        let url = NSURL(string: pictureUrl)
+//        let data = NSData(contentsOfURL: url!)
+//        profilePicture!.contentMode = .ScaleAspectFit
+//        profilePicture!.image = UIImage(data: data!)
         
     }
     
@@ -149,16 +159,14 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             self.facebook_id = id!
             
-            var pictureUrl = ""
-            
             if let picture = result["picture"] as? NSDictionary, data = picture["data"] as? NSDictionary, url = data["url"] as? String {
-                pictureUrl = url
+                self.pictureUrl = url
             }
             
             //=========================================================
             // SAVING TO RAILS
             
-            self.createUser(firstName!, lastName: lastName!, email: email!, id: id!, pictureUrl: pictureUrl)
+            self.createUser(firstName!, lastName: lastName!, email: email!, id: id!, pictureUrl: self.pictureUrl)
             
             //=========================================================
             // Saving facebook id and username to NSUserDefaults
@@ -209,7 +217,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 }
             }
             
-            let url = NSURL(string: pictureUrl)
+            let url = NSURL(string: self.pictureUrl)
             NSURLSession.sharedSession().dataTaskWithURL(url!, completionHandler: { (data, response, error) -> Void in
                 if error != nil {
                     print(error)
