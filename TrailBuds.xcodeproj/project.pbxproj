@@ -27,6 +27,7 @@
 		FC2E56891CD1761D00AA67ED /* MessagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E56881CD1761D00AA67ED /* MessagesTableViewCell.swift */; };
 		FC474FBE1C9DC888003AB78D /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC474FBD1C9DC888003AB78D /* CreateEventViewController.swift */; };
 		FC92E0661CA236660044A12C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC92E0651CA236660044A12C /* MapViewController.swift */; };
+		FC9974F71D0E949E00B40F3D /* AttendeesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9974F61D0E949E00B40F3D /* AttendeesCollectionViewCell.swift */; };
 		FCF40F8B1CAEE6850093C417 /* UpcomingHikesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF40F8A1CAEE6850093C417 /* UpcomingHikesTableViewCell.swift */; };
 		FCF40F8D1CAEE6990093C417 /* HikesAttendedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF40F8C1CAEE6990093C417 /* HikesAttendedTableViewCell.swift */; };
 		FCFE960A1C9B9A4000728D13 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFE96091C9B9A4000728D13 /* ProfileViewController.swift */; };
@@ -61,6 +62,7 @@
 		FC2E56881CD1761D00AA67ED /* MessagesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesTableViewCell.swift; sourceTree = "<group>"; };
 		FC474FBD1C9DC888003AB78D /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		FC92E0651CA236660044A12C /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		FC9974F61D0E949E00B40F3D /* AttendeesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendeesCollectionViewCell.swift; sourceTree = "<group>"; };
 		FCF40F8A1CAEE6850093C417 /* UpcomingHikesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingHikesTableViewCell.swift; sourceTree = "<group>"; };
 		FCF40F8C1CAEE6990093C417 /* HikesAttendedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HikesAttendedTableViewCell.swift; sourceTree = "<group>"; };
 		FCFE96091C9B9A4000728D13 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				FCFE96111C9BAA2900728D13 /* View Controllers */,
 				E620BE371C9B8FA70036F587 /* AppDelegate.swift */,
 				E6B8D9001C9D0B0A00350228 /* allEventsCell.swift */,
+				FC9974F61D0E949E00B40F3D /* AttendeesCollectionViewCell.swift */,
 				E643BBD61C9CAC90003C9AA6 /* logOutProtocol.swift */,
 				FCF40F8A1CAEE6850093C417 /* UpcomingHikesTableViewCell.swift */,
 				FCF40F8C1CAEE6990093C417 /* HikesAttendedTableViewCell.swift */,
@@ -308,6 +311,7 @@
 				FC474FBE1C9DC888003AB78D /* CreateEventViewController.swift in Sources */,
 				FCFE960E1C9BA99400728D13 /* AllEventsViewController.swift in Sources */,
 				E6B8D9011C9D0B0A00350228 /* allEventsCell.swift in Sources */,
+				FC9974F71D0E949E00B40F3D /* AttendeesCollectionViewCell.swift in Sources */,
 				FCFE960C1C9BA98200728D13 /* SingleEventViewController.swift in Sources */,
 				E620BE3A1C9B8FA70036F587 /* LoginViewController.swift in Sources */,
 				E620BE381C9B8FA70036F587 /* AppDelegate.swift in Sources */,

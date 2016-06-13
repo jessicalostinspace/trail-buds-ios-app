@@ -11,7 +11,7 @@ import MapKit
 import SwiftyJSON
 import Alamofire
 
-class SingleEventViewController: UIViewController, MKMapViewDelegate, UITextViewDelegate {
+class SingleEventViewController: UIViewController, MKMapViewDelegate, UITextViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     
     //MARK: Attributes
     var eventID: String?
@@ -56,33 +56,19 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate, UITextView
     @IBOutlet weak var forecastIconImage: UIImageView!
     @IBOutlet weak var forecastDescriptionLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
-    
-    @IBAction func interestedButtonPressed(sender: UIButton) {
-    }
-    
-    @IBAction func joinButtonPressed(sender: UIButton) {
-    }
-    
     @IBOutlet var collectionView: [UICollectionView]!
-    
-
-    @IBAction func cancelButtonPressed(sender: UIBarButtonItem) {
-    dismissViewControllerAnimated(true, completion: nil)
-        event = nil
-        delegate?.goBack()
-    }
-
     @IBOutlet weak var singleEventScrollView: UIScrollView!
     @IBOutlet weak var mapView: MKMapView!
+    
+    override func viewDidLayoutSubviews() {
+        singleEventScrollView.contentSize.height = 2000
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         descriptionTextView.delegate = self
         
-        singleEventScrollView.contentSize.height = 2000
-        
-        // NEED TO CHANGE HARD CODED VALUES TO KEY VALUE PAIRS
         trailNameLabel.text =  trailName
         locationLabel.text = String("Location: \(hikeLocation)")
         distanceLabel.text = String("Distance: \(hikeDistance) miles")
@@ -119,6 +105,18 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate, UITextView
         self.mapView.addAnnotation(annotation)
         self.mapView.setRegion(region, animated: true)
 
+    }
+    
+    @IBAction func cancelButtonPressed(sender: UIBarButtonItem) {
+        dismissViewControllerAnimated(true, completion: nil)
+        event = nil
+        delegate?.goBack()
+    }
+    
+    @IBAction func interestedButtonPressed(sender: UIButton) {
+    }
+    
+    @IBAction func joinButtonPressed(sender: UIButton) {
     }
     
     func getForecast(daysUntilEvent: Int){
@@ -260,6 +258,39 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate, UITextView
     
     func textViewDidChange(textView: UITextView){
         
+    }
+    
+    // MARK: Collection View Delegate Methods
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
+        
+//        return colorData.count - 1
+        return 1
+    }
+    
+    // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell{
+        
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("AttendeesCell", forIndexPath: indexPath) as! AttendeesCollectionViewCell
+        
+        //        cell.backgroundColor = UIColor.blackColor()
+        
+//        let currImage = self.colorData[indexPath.row]
+//        
+//        cell.imageView.image = UIImage(named: currImage)
+//        
+        return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+//        color = colorData[indexPath.row]
+        performSegueWithIdentifier("ColorToWildlifeSegue", sender: indexPath)
+        
+    }
+    
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
     }
 
 
