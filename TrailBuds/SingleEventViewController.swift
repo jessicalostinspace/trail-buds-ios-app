@@ -11,7 +11,7 @@ import MapKit
 import SwiftyJSON
 import Alamofire
 
-class SingleEventViewController: UIViewController, MKMapViewDelegate, UITextViewDelegate{
+class SingleEventViewController: UIViewController, MKMapViewDelegate, UITextViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate{
     
     //MARK: Attributes
     var eventID: String?
@@ -24,7 +24,10 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate, UITextView
     var hostName: String = ""
     //currently logged in user
     var userID: String = ""
-    var attendeesArray = [String]()
+    var attendees = [String]()
+    var attendeeName: String?
+    var attendeePictureUrl: String?
+    var attendeeFbID: String?
     
     //day variable for weather
     var day1 = 3
@@ -59,9 +62,9 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate, UITextView
     @IBOutlet weak var forecastIconImage: UIImageView!
     @IBOutlet weak var forecastDescriptionLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
-    @IBOutlet var collectionView: [UICollectionView]!
     @IBOutlet weak var singleEventScrollView: UIScrollView!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLayoutSubviews() {
         singleEventScrollView.contentSize.height = 2000
@@ -71,6 +74,10 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate, UITextView
         super.viewDidLoad()
         
         descriptionTextView.delegate = self
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        getAttendees()
         
         trailNameLabel.text =  trailName
         locationLabel.text = String("Location: \(hikeLocation)")
@@ -78,6 +85,8 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate, UITextView
         elevationGainLabel.text = String("Elevation Gain: \(elevationGain) feet")
         hostNameLabel.text = String("Host: \(hostName)")
 //        descriptionLabel.text = String("Description: \(eventDescription)")
+        
+        
 
         getDateDifference()
         print(numberOfDaysUntilEvent)
@@ -265,6 +274,35 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate, UITextView
 
     }
     
+    func getAttendees(){
+        let urlString = "http://localhost:3000/attendees/\(eventID!)"
+        
+        attendees = []
+        Alamofire.request(.GET, urlString).responseJSON { (response) -> Void in
+            switch response.result {
+            case .Success:
+                if let value = response.result.value {
+                    let json = JSON(value)
+
+                    // use SwiftyJSON
+                    for (index,subJson):(String, JSON) in json {
+                        
+                        self.attendees.append(
+                            subJson[0]["first_name"].stringValue + "," +
+                            subJson[0]["picture_url"].stringValue + "," +
+                            subJson[0]["facebook_id"].stringValue)
+                    }
+                    
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.collectionView.reloadData()
+                    })
+                }
+            case .Failure(let error):
+                print(error)
+            }
+        }
+    }
+    
     // MARK: Text View Delegate Methods
     
     func textViewDidEndEditing(textView: UITextView){
@@ -293,21 +331,32 @@ class SingleEventViewController: UIViewController, MKMapViewDelegate, UITextView
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         
-//        return attendeesArray.count - 1
-        return 1
+        return attendees.count
     }
     
     // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell{
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("AttendeesCell", forIndexPath: indexPath) as! AttendeesCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("AttendeesCollectionViewCell", forIndexPath: indexPath) as! AttendeesCollectionViewCell
         
-        cell.backgroundColor = UIColor.blackColor()
+        print("got here")
+        let attendee = attendees[indexPath.row]
+        let delimiter = ","
+        var token = attendee.componentsSeparatedByString(delimiter)
         
-//        let currImage = self.colorData[indexPath.row]
-//        
-//        cell.imageView.image = UIImage(named: currImage)
-//        
+        attendeeName = token[0]
+        attendeeFbID = token[2]
+        attendeePictureUrl = token[1]
+        
+        //setting user images in table view
+        let url = NSURL(string: attendeePictureUrl!)
+        let data = NSData(contentsOfURL: url!)
+        cell.imageView!.contentMode = .ScaleAspectFit
+        cell.imageView!.image = UIImage(data: data!)
+        
+        cell.backgroundColor = UIColor.whiteColor()
+        cell.attendeeNameLabel.text = attendeeName
+        
         return cell
     }
     

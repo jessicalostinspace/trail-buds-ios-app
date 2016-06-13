@@ -11,11 +11,12 @@ import UIKit
 class AttendeesCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var attendeeNameLabel: UILabel!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        layer.cornerRadius = 0.0
+        layer.cornerRadius = 1.0
     }
     
 }

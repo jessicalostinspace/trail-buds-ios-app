@@ -178,36 +178,47 @@
                                                     </label>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lwK-OZ-2qS">
                                                         <rect key="frame" x="20" y="1291" width="560" height="261"/>
+                                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="lwK-OZ-2qS" secondAttribute="height" multiplier="560:261" id="rbc-xH-hBS"/>
                                                         </constraints>
                                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="PIU-0Y-Tgn">
-                                                            <size key="itemSize" width="118" height="116"/>
+                                                            <size key="itemSize" width="105" height="122"/>
                                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         </collectionViewFlowLayout>
                                                         <cells>
-                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AttendeesCell" id="AXt-nB-Hjr" customClass="AttendeesCollectionViewCell" customModule="TrailBuds" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="118" height="116"/>
+                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AttendeesCollectionViewCell" id="AXt-nB-Hjr" customClass="AttendeesCollectionViewCell" customModule="TrailBuds" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="105" height="122"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="118" height="116"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="105" height="122"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="crk-mB-GMb">
-                                                                            <rect key="frame" x="8" y="8" width="102" height="100"/>
+                                                                            <rect key="frame" x="8" y="8" width="89" height="86.5"/>
                                                                         </imageView>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Teb-ik-wh7">
+                                                                            <rect key="frame" x="8" y="94.5" width="89" height="19.5"/>
+                                                                            <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
                                                                     </subviews>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 </view>
                                                                 <constraints>
-                                                                    <constraint firstItem="crk-mB-GMb" firstAttribute="trailing" secondItem="AXt-nB-Hjr" secondAttribute="trailingMargin" id="Iur-M7-T6v"/>
-                                                                    <constraint firstItem="crk-mB-GMb" firstAttribute="bottom" secondItem="AXt-nB-Hjr" secondAttribute="bottomMargin" id="l72-gQ-weY"/>
-                                                                    <constraint firstItem="crk-mB-GMb" firstAttribute="leading" secondItem="AXt-nB-Hjr" secondAttribute="leadingMargin" id="lLv-Vc-Nys"/>
-                                                                    <constraint firstItem="crk-mB-GMb" firstAttribute="top" secondItem="AXt-nB-Hjr" secondAttribute="topMargin" id="srf-Kz-LJI"/>
+                                                                    <constraint firstItem="Teb-ik-wh7" firstAttribute="top" secondItem="crk-mB-GMb" secondAttribute="bottom" id="B50-ue-Q8t"/>
+                                                                    <constraint firstItem="Teb-ik-wh7" firstAttribute="trailing" secondItem="AXt-nB-Hjr" secondAttribute="trailingMargin" id="MtR-x7-PHi"/>
+                                                                    <constraint firstItem="Teb-ik-wh7" firstAttribute="leading" secondItem="AXt-nB-Hjr" secondAttribute="leadingMargin" id="PcK-kB-vsu"/>
+                                                                    <constraint firstItem="crk-mB-GMb" firstAttribute="top" secondItem="AXt-nB-Hjr" secondAttribute="topMargin" id="TQS-ts-Paq"/>
+                                                                    <constraint firstAttribute="bottomMargin" secondItem="Teb-ik-wh7" secondAttribute="bottom" id="hOB-ZA-q5h"/>
+                                                                    <constraint firstItem="crk-mB-GMb" firstAttribute="trailing" secondItem="AXt-nB-Hjr" secondAttribute="trailingMargin" id="mbY-Ms-0tJ"/>
+                                                                    <constraint firstItem="crk-mB-GMb" firstAttribute="leading" secondItem="AXt-nB-Hjr" secondAttribute="leadingMargin" id="u35-u3-InC"/>
                                                                 </constraints>
                                                                 <connections>
+                                                                    <outlet property="attendeeNameLabel" destination="Teb-ik-wh7" id="Tdo-1B-xIZ"/>
                                                                     <outlet property="imageView" destination="crk-mB-GMb" id="Eev-1c-3Wq"/>
                                                                 </connections>
                                                             </collectionViewCell>
@@ -327,6 +338,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="2000"/>
                     <connections>
+                        <outlet property="collectionView" destination="lwK-OZ-2qS" id="9qk-af-mrC"/>
                         <outlet property="descriptionTextView" destination="ujA-aA-Py4" id="e1Z-YJ-IWW"/>
                         <outlet property="distanceLabel" destination="VFF-oc-uPe" id="udj-45-HIv"/>
                         <outlet property="elevationGainLabel" destination="il8-hl-lvq" id="u9B-eV-3d8"/>
@@ -339,7 +351,6 @@
                         <outlet property="mapView" destination="4rT-jb-5bm" id="6Tg-hh-T9Q"/>
                         <outlet property="singleEventScrollView" destination="a6b-le-Hxa" id="M11-6r-Raf"/>
                         <outlet property="trailNameLabel" destination="aEg-Bv-Agj" id="eDN-mG-JpS"/>
-                        <outletCollection property="collectionView" destination="lwK-OZ-2qS" collectionClass="NSMutableArray" id="Olp-m9-esj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U5m-mi-XGF" userLabel="First Responder" sceneMemberID="firstResponder"/>
